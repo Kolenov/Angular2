@@ -32,6 +32,7 @@ import { NavbarModule } from './shared/navbar';
 // Pages
 import { HomeModule } from './pages/home';
 import { CourseDetailsModule } from  './pages/course-details';
+import { LoginModule } from  './pages/login';
 
 // Services
 
@@ -61,7 +62,8 @@ const APP_PROVIDERS = [
 		HomeModule,
     CourseDetailsModule,
     LogoModule,
-    NavbarModule
+    NavbarModule,
+    LoginModule
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,
