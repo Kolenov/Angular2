@@ -13,11 +13,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.log('Home page constructor');
   }
 
-  public ngOnInit() {
-    console.log('Home page init');
-  }
+  public ngOnInit() {}
 
-  public ngOnDestroy() {
-    console.log('unsubscribe');
-  }
+  public ngOnDestroy() {}
 }

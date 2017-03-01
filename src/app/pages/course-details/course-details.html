@@ -1,12 +1,5 @@
 <div class="course-details">
-  <div class="course-details__info">
-    <div class="course-details__name">Video course 1</div>
-    <div class="course-details__duration">1h 28min</div>
-    <div class="course-details__date">date</div>
-    <div class="course-details__description">Description</div>
-  </div>
-  <div class="course-details__actions">
-    <button>Edit course</button>
-    <button>Delete</button>
+  <div class="course-details__list">
+    <course-item *ngFor="let course of courseList" [course]="course"></course-item>
   </div>
 </div>
