@@ -4,10 +4,11 @@
 	height: 60px;
 	background-color: $c-cornflower-blue;
 	color: $white;
-}
 
-.logo {
-	float: left;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .logo-title {
@@ -19,30 +20,3 @@
 	font-size: 0.7rem;
 }
 
-.menu {
-	float: right;
-	font-size: 0.8rem;
-	padding-top: 20px;
-
-	.menu-item {
-		text-transform: uppercase;
-		border-left: solid 1px $white;
-		border-right: solid 1px $white;
-		padding: 0 15px;
-		display: inline-block;
-		position: relative;
-		cursor: pointer;
-
-		&:first-child {
-			border: none;
-		}
-
-		&:last-child {
-			border: none;
-		}
-
-		&.active {
-			background-color: darken($c-primary, 10%);
-		}
-	}
-}

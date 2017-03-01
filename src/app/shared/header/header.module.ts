@@ -3,12 +3,15 @@ import { HeaderComponent } from './header.component';
 import { RouterModule } from '@angular/router';
 
 import { LogoModule } from './../logo';
-
-// import { LogoComponent } from './../logo';
+import { NavbarModule } from './../navbar';
 
 @NgModule({
 	declarations: [HeaderComponent],
-	imports: [RouterModule, LogoModule],
+	imports: [
+	  RouterModule,
+    LogoModule,
+    NavbarModule
+  ],
 	exports: [HeaderComponent]
 })
 
