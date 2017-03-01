@@ -50,12 +50,8 @@
 			"timeEnd",
 			"trace"
 		],
-		"max-line-length": [
-			true,
-			100
-		],
 		"indent": [
-			true,
+			false,
 			"spaces"
 		],
 		"no-string-literal": false,
@@ -67,7 +63,6 @@
 			"single",
 			"avoid-escape"
 		],
-		"experimentalDecorators": true,
 		"variable-name": [
 			true,
 			"allow-leading-underscore",
