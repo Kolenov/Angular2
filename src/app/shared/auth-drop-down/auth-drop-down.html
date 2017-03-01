@@ -1,0 +1,8 @@
+<ul class="auth-drop-down navbar-nav nav">
+  <li class="auth-drop-down__item" *ngIf="!isLogin">
+    <a [routerLink]="'login'" routerLinkActive="active">Login</a>
+  </li>
+  <li class="auth-drop-down__item" *ngIf="isLogin">
+    <a href="#">Logout</a>
+  </li>
+</ul>

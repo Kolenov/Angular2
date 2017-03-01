@@ -21,7 +21,7 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
-import { NoContentComponent } from './pages/no-content';
+import { NoContentComponent } from './shared/no-content';
 
 // Components
 import { HeaderModule } from './shared/header';

@@ -4,13 +4,15 @@ import { RouterModule } from '@angular/router';
 
 import { LogoModule } from './../logo';
 import { NavbarModule } from './../navbar';
+import { AuthDropDownModule } from './../auth-drop-down';
 
 @NgModule({
 	declarations: [HeaderComponent],
 	imports: [
 	  RouterModule,
     LogoModule,
-    NavbarModule
+    NavbarModule,
+    AuthDropDownModule
   ],
 	exports: [HeaderComponent]
 })
