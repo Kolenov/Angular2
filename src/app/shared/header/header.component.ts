@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
 	selector: 'main-header',
-	templateUrl: 'header.component.html',
-	styles: [require('./header.component.scss')],
+	templateUrl: './header.html',
+  styleUrls: [ './header.scss' ],
 	providers: [],
 	encapsulation: ViewEncapsulation.None
 })
