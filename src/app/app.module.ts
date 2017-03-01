@@ -26,6 +26,7 @@ import { NoContentComponent } from './pages/no-content';
 // Components
 import { HeaderModule } from './shared/header';
 import { FooterModule } from './shared/footer';
+import { LogoModule } from './shared/logo';
 
 // Pages
 import { HomeModule } from './pages/home';
@@ -57,7 +58,8 @@ const APP_PROVIDERS = [
 		HeaderModule,
 		FooterModule,
 		HomeModule,
-    CourseDetailsModule
+    CourseDetailsModule,
+    LogoModule
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,
