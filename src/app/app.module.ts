@@ -29,8 +29,7 @@ import { FooterModule } from './shared/footer';
 
 // Pages
 import { HomeModule } from './pages/home';
-import { PageOneModule } from  './pages/page-one';
-import { PageTwoModule } from  './pages/page-two';
+import { CourseDetailsModule } from  './pages/course-details';
 
 // Services
 
@@ -58,8 +57,7 @@ const APP_PROVIDERS = [
 		HeaderModule,
 		FooterModule,
 		HomeModule,
-		PageOneModule,
-		PageTwoModule
+    CourseDetailsModule
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,
