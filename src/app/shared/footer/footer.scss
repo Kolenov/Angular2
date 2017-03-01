@@ -1,0 +1,15 @@
+@import "../../styles/variables/colors.scss";
+
+.main-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	background-color: $c-primary;
+  text-align: center;
+	color: $white;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 50px;
+}
