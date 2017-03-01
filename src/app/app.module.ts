@@ -36,12 +36,12 @@ import { LoginModule } from  './pages/login';
 
 // Services
 
-import { TodoService } from './core/services';
+// import { TodoService } from './core/services';
 
 // Application wide providers
-const APP_PROVIDERS = [
-	TodoService
-];
+// const APP_PROVIDERS = [
+// 	TodoService
+// ];
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -67,7 +67,7 @@ const APP_PROVIDERS = [
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,
-		APP_PROVIDERS
+		// APP_PROVIDERS
 	]
 })
 export class AppModule {
