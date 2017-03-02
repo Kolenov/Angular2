@@ -9,22 +9,24 @@ import { coursesRoutes } from './courses.routes';
 
 // custom components
 import { CoursesComponent } from './courses.component';
-import { CourseItemComponent } from './course-item/course-item.component';
-import { CourseAddComponent } from './course-add/course-add.component';
+
+// custom modules
 import { CourseSearchModule } from './course-search';
+import { CourseItemModule } from './course-item';
+import { CourseAddModule } from './course-add';
 
 @NgModule({
   declarations: [
-    CoursesComponent,
-    CourseItemComponent,
-    CourseAddComponent
+    CoursesComponent
   ],
   imports: [
     RouterModule.forChild(coursesRoutes),
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    CourseSearchModule
+    CourseSearchModule,
+    CourseItemModule,
+    CourseAddModule
   ],
   providers: []
 })

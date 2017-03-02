@@ -24,7 +24,6 @@ import { AppComponent } from './app.component';
 import { NoContentComponent } from './shared/no-content';
 
 // Components
-import { FooterModule } from './shared/footer';
 import { LogoModule } from './shared/logo';
 import { NavbarModule } from './shared/navbar';
 
@@ -34,6 +33,7 @@ import {
   CoursesModule,
   LoginModule
 } from './pages';
+
 import { SharedModule } from './shared/shared.module';
 
 // Services
@@ -59,7 +59,6 @@ import { SharedModule } from './shared/shared.module';
 		FormsModule,
 		HttpModule,
 		RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
-		FooterModule,
 		HomeModule,
     CoursesModule,
     LogoModule,

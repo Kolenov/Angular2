@@ -4,7 +4,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 // routes
-import { routes } from './home.routes';
+import { RouterModule } from '@angular/router';
+import { homeRoutes } from './home.routes';
 
 // custom components
 import { HomeComponent } from './home.component';
@@ -14,7 +15,7 @@ import { HomeComponent } from './home.component';
     HomeComponent
   ],
   imports: [
-    routes,
+    RouterModule.forChild(homeRoutes),
     FormsModule,
     ReactiveFormsModule,
     CommonModule

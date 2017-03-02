@@ -1,8 +1,6 @@
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent }    	  from './login.component';
+import { Routes } from '@angular/router';
+import { LoginComponent } from './login.component';
 
-const loginRoutes: Routes = [
+export const loginRoutes: Routes = [
 	{ path: 'login', component: LoginComponent },
 ];
-
-export const routes = RouterModule.forChild(loginRoutes);
