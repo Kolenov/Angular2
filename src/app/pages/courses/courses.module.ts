@@ -12,8 +12,8 @@ import { CoursesComponent } from './courses.component';
 
 // custom modules
 import { CourseSearchModule } from './course-search';
-import { CourseItemModule } from './course-item';
 import { CourseAddModule } from './course-add';
+import { CourseListModule } from './course-list';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { CourseAddModule } from './course-add';
     ReactiveFormsModule,
     CommonModule,
     CourseSearchModule,
-    CourseItemModule,
-    CourseAddModule
+    CourseAddModule,
+    CourseListModule
   ],
   providers: []
 })

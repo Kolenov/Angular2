@@ -22,6 +22,7 @@
     }
 
     &.active {
+      color: $white;
       background-color: darken($c-primary, 10%);
     }
   }
