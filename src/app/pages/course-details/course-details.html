@@ -1,4 +1,8 @@
 <div class="course-details">
+  <div class="course-details__panel">
+    <course-search></course-search>
+    <course-add></course-add>
+  </div>
   <div class="course-details__list">
     <course-item *ngFor="let course of courseList" [course]="course"></course-item>
   </div>

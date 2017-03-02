@@ -9,11 +9,15 @@ import { routes } from './course-details.routes';
 // custom components
 import { CourseDetailsComponent } from './course-details.component';
 import { CourseItemComponent } from './course-item/course-item.component';
+import { CourseAddComponent } from './course-add/course-add.component';
+import { CourseSearchComponent } from './course-search/course-search.component';
 
 @NgModule({
   declarations: [
     CourseDetailsComponent,
-    CourseItemComponent
+    CourseItemComponent,
+    CourseAddComponent,
+    CourseSearchComponent
   ],
   imports: [
     routes,
