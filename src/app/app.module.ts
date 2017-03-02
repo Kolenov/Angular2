@@ -24,15 +24,17 @@ import { AppComponent } from './app.component';
 import { NoContentComponent } from './shared/no-content';
 
 // Components
-import { HeaderModule } from './shared/header';
 import { FooterModule } from './shared/footer';
 import { LogoModule } from './shared/logo';
 import { NavbarModule } from './shared/navbar';
 
 // Pages
-import { HomeModule } from './pages/home';
-import { CourseDetailsModule } from  './pages/course-details';
-import { LoginModule } from  './pages/login';
+import {
+  HomeModule,
+  CoursesModule,
+  LoginModule
+} from './pages';
+import { SharedModule } from './shared/shared.module';
 
 // Services
 
@@ -57,13 +59,13 @@ import { LoginModule } from  './pages/login';
 		FormsModule,
 		HttpModule,
 		RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
-		HeaderModule,
 		FooterModule,
 		HomeModule,
-    CourseDetailsModule,
+    CoursesModule,
     LogoModule,
     NavbarModule,
-    LoginModule
+    LoginModule,
+    SharedModule
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,

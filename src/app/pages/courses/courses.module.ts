@@ -4,29 +4,31 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 // routes
-import { routes } from './course-details.routes';
+import { RouterModule } from '@angular/router';
+import { coursesRoutes } from './courses.routes';
 
 // custom components
-import { CourseDetailsComponent } from './course-details.component';
+import { CoursesComponent } from './courses.component';
 import { CourseItemComponent } from './course-item/course-item.component';
 import { CourseAddComponent } from './course-add/course-add.component';
-import { CourseSearchComponent } from './course-search/course-search.component';
+import { CourseSearchModule } from './course-search';
 
 @NgModule({
   declarations: [
-    CourseDetailsComponent,
+    CoursesComponent,
     CourseItemComponent,
-    CourseAddComponent,
-    CourseSearchComponent
+    CourseAddComponent
   ],
   imports: [
-    routes,
+    RouterModule.forChild(coursesRoutes),
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    CourseSearchModule
   ],
   providers: []
 })
-export class CourseDetailsModule {
+
+export class CoursesModule {
   constructor() {}
 }

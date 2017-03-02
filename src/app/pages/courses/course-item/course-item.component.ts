@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { CourseItem } from './../../../shared/course-item';
+import { CourseItem } from '../course-item.model';
 
 @Component({
   selector: 'course-item',
