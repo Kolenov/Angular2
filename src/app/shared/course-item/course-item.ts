@@ -1,4 +1,4 @@
-export  class CourseItem {
+export class CourseItem {
   public name: string;
   public duration: number;
   public date: Date;
