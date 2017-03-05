@@ -4,6 +4,7 @@ import { FooterModule } from './footer';
 import { LogoModule } from './logo';
 import { NavbarModule } from './navbar';
 import { AuthDropDownModule } from './auth-drop-down';
+import { NoContentModule } from './no-content';
 
 @NgModule({
     imports: [
@@ -11,14 +12,16 @@ import { AuthDropDownModule } from './auth-drop-down';
       FooterModule,
       LogoModule,
       NavbarModule,
-      AuthDropDownModule
+      AuthDropDownModule,
+      NoContentModule
     ],
     exports: [
       HeaderModule,
       FooterModule,
       LogoModule,
       NavbarModule,
-      AuthDropDownModule
+      AuthDropDownModule,
+      NoContentModule
     ],
     declarations: [],
     providers: [],

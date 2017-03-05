@@ -21,7 +21,7 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
-import { NoContentComponent } from './shared/no-content';
+// import { NoContentComponent } from './shared';
 
 // Components
 
@@ -49,9 +49,8 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
 	bootstrap: [AppComponent],
 	declarations: [
-		AppComponent,
-		NoContentComponent
-	],
+		AppComponent
+  ],
 	imports: [ // import Angular's modules
 		BrowserModule,
 		FormsModule,
