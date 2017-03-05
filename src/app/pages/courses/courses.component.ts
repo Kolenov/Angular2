@@ -20,19 +20,19 @@ export class CoursesComponent implements OnInit, OnDestroy {
       name: 'name 1',
       duration: 5000,
       date: new Date(),
-      description: 'description'
+      description: 'description 1'
     }, {
       id: '2',
       name: 'name 2',
       duration: 5000,
       date: new Date(),
-      description: 'description'
+      description: 'description 2'
     }, {
       id: '3',
       name: 'name 3',
       duration: 5000,
       date: new Date(),
-      description: 'description'
+      description: 'description 3'
     }];
   }
 
