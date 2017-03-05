@@ -10,7 +10,7 @@ import { CourseItem } from './course-item.model';
 })
 
 export class CoursesComponent implements OnInit, OnDestroy {
-  private courseList: CourseItem[];
+  public courseList: CourseItem[];
 
   constructor() {
     console.log('CourseDetailsComponent constructor');

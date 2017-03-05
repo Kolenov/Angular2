@@ -24,8 +24,6 @@ import { AppComponent } from './app.component';
 import { NoContentComponent } from './shared/no-content';
 
 // Components
-import { LogoModule } from './shared/logo';
-import { NavbarModule } from './shared/navbar';
 
 // Pages
 import {
@@ -61,8 +59,6 @@ import { SharedModule } from './shared/shared.module';
 		RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
 		HomeModule,
     CoursesModule,
-    LogoModule,
-    NavbarModule,
     LoginModule,
     SharedModule
 	],
