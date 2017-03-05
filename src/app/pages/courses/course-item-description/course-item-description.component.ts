@@ -9,7 +9,7 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 })
 
 export class CourseItemDescriptionComponent {
-  @Input() public description: string;
+  @Input() public courseDescription: string;
 
   constructor() {
   }

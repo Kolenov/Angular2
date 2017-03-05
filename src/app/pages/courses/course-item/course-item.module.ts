@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CourseItemComponent } from './course-item.component';
-import { CourseItemActionsModule } from '../course-item-actions';
+import { CourseItemHeaderModule } from '../course-item-header';
 import { CourseItemDescriptionModule } from '../course-item-description';
+import { CourseItemActionsModule } from '../course-item-actions';
 
 @NgModule({
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    CourseItemActionsModule,
-    CourseItemDescriptionModule
+    CourseItemHeaderModule,
+    CourseItemDescriptionModule,
+    CourseItemActionsModule
   ],
   exports: [
     CourseItemComponent

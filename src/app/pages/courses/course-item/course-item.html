@@ -1,10 +1,12 @@
 <div class="course-item">
   <div class="course-item__info">
-    <div class="course-item__name">{{course.title}}</div>
-    <div class="course-item__duration">{{course.duration}}</div>
-    <div class="course-item__date">{{course.date}}</div>
+    <course-item-header
+      [courseName]="course.name"
+      [courseDuration]="course.duration"
+      [courseDate]="course.date"
+    ></course-item-header>
 
-    <course-item-description [description]="course.description"></course-item-description>
+    <course-item-description [courseDescription]="course.description"></course-item-description>
   </div>
 
   <course-item-actions></course-item-actions>
