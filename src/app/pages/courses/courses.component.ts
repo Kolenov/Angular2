@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { CourseItem } from './course-item.model';
-import { CourseService } from './courses.service';
+import { CoursesService } from './courses.service';
 
 @Component({
   selector: 'courses',
   encapsulation: ViewEncapsulation.None,
   providers: [
-    CourseService
+    CoursesService
   ],
   styleUrls: [ './courses.scss' ],
   templateUrl: './courses.html'
@@ -15,14 +15,14 @@ import { CourseService } from './courses.service';
 export class CoursesComponent implements OnInit, OnDestroy {
   public courseList: CourseItem[];
 
-  constructor(private CourseService: CourseService) {
+  constructor(private CoursesService: CoursesService) {
     console.log('CourseDetailsComponent constructor');
 
     this.courseList = [];
   }
 
   public ngOnInit() {
-    this.courseList = this.CourseService.getCourseItems();
+    this.courseList = this.CoursesService.getCourseItems();
   }
 
   public ngOnDestroy() {}

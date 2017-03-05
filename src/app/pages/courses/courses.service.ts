@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CourseItem } from './course-item.model';
 
 @Injectable()
-export class CourseService {
+export class CoursesService {
   private courseList: CourseItem[] = [{
     id: '1',
     name: 'name 1',
