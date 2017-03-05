@@ -5,6 +5,7 @@ import { LogoModule } from './logo';
 import { NavbarModule } from './navbar';
 import { AuthDropDownModule } from './auth-drop-down';
 import { NoContentModule } from './no-content';
+import { CrButtonModule } from './cr-button';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import { NoContentModule } from './no-content';
       LogoModule,
       NavbarModule,
       AuthDropDownModule,
-      NoContentModule
+      NoContentModule,
+      CrButtonModule
     ],
     exports: [
       HeaderModule,
@@ -21,7 +23,8 @@ import { NoContentModule } from './no-content';
       LogoModule,
       NavbarModule,
       AuthDropDownModule,
-      NoContentModule
+      NoContentModule,
+      CrButtonModule
     ],
     declarations: [],
     providers: [],

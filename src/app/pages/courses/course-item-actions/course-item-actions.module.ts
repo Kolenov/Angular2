@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CourseItemActionsComponent } from './course-item-actions.component';
+import { CrButtonModule } from '../../../shared/cr-button';
 
 @NgModule({
-  imports: [],
+  imports: [
+    CrButtonModule
+  ],
   exports: [
     CourseItemActionsComponent
   ],

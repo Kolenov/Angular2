@@ -11,4 +11,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class CourseItemActionsComponent {
   constructor() {
   }
+
+  public editCourse() {
+    console.log('edit course');
+  }
 }
