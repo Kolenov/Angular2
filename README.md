@@ -5,7 +5,7 @@
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/angularclass/angular2-webpack-starter.git
+git clone https://github.com/angularclass/angular2-webpack-starter.git
 
 # change directory to our repo
 cd angular2-webpack-starter
@@ -40,8 +40,6 @@ Once you have those, you should install these globals with `npm install --global
 * `typescript` (`npm install --global typescript`)
 
 ## Installing
-* `fork` this repo
-* `clone` your fork
 * `npm install webpack-dev-server rimraf webpack -g` to install required global dependencies
 * `npm install` to install all dependencies or `yarn`
 * `npm run server` to start the dev server in another tab
