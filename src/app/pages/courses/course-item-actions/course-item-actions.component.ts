@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'course-item-actions',
+  selector: 'cr-course-item-actions',
   templateUrl: 'course-item-actions.html',
   styleUrls: [ './course-item-actions.scss' ],
   providers: [],

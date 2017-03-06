@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'home',
+  selector: 'cr-home',
   encapsulation: ViewEncapsulation.None,
   providers: [],
   styleUrls: [ './home.scss' ],

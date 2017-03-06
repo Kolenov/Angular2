@@ -3,7 +3,7 @@ import { CourseItem } from './course-item.model';
 import { CoursesService } from './courses.service';
 
 @Component({
-  selector: 'courses',
+  selector: 'cr-courses',
   encapsulation: ViewEncapsulation.None,
   providers: [
     CoursesService

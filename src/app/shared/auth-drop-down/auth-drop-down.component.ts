@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 // import {isBoolean} from "util";
 
 @Component({
-	selector: 'auth-drop-down',
+	selector: 'cr-auth-drop-down',
 	templateUrl: './auth-drop-down.html',
   styleUrls: [ './auth-drop-down.scss' ],
 	providers: [],

@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-	selector: 'navbar',
+	selector: 'cr-navbar',
 	templateUrl: './navbar.html',
   styleUrls: [ './navbar.scss' ],
 	providers: [],

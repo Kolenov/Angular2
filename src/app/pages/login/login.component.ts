@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'login',
+  selector: 'cr-login',
   encapsulation: ViewEncapsulation.None,
   providers: [],
   styleUrls: [ './login.scss' ],

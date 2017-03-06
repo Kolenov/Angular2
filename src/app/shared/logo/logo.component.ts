@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-	selector: 'logo',
+	selector: 'cr-logo',
 	templateUrl: './logo.html',
   styleUrls: [ './logo.scss' ],
 	providers: [],

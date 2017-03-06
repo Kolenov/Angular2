@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
-  selector: 'course-item-header',
+  selector: 'cr-course-item-header',
   templateUrl: 'course-item-header.html',
   styleUrls: [ './course-item-header.scss' ],
   providers: [],

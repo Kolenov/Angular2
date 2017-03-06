@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-	selector: 'main-footer',
+	selector: 'cr-footer',
   templateUrl: './footer.html',
   styleUrls: ['./footer.scss'],
 	providers: [],

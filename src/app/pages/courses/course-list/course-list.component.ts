@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { CourseItem } from '../course-item.model';
 
 @Component({
-  selector: 'course-list',
+  selector: 'cr-course-list',
   templateUrl: 'course-list.html',
   styleUrls: [ './course-list.scss' ],
   providers: [],
