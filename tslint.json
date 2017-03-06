@@ -19,12 +19,13 @@
 			"always-prefix"
 		],
 		// Angular 2
-		"component-class-suffix": true,
-		// "component-selector": [true, "element", "my", "kebab-case"],
-		"directive-class-suffix": true,
-		// "directive-selector": [true, "attribute", "my", "camelCase"],
-		// "directive-selector": [true, "attribute", "my", "camelCase"],
-		"import-destructuring-spacing": true,
+		"component-class-suffix": false,
+		"directive-class-suffix": false,
+//    "directive-selector": [true, "attribute", [], "camelCase"],
+//    "component-selector": [true, "element", [], "kebab-case"],
+//    "directive-selector": [true, "attribute", "st", "kebab-case"],
+//    "component-selector": [true, "element", "st", "kebab-case"],
+    "import-destructuring-spacing": true,
 		"invoke-injectable": true,
 		"no-access-missing-member": true,
 		"no-attribute-parameter-decorator": true,
@@ -54,6 +55,13 @@
 			false,
 			"spaces"
 		],
+    "member-ordering": [true,
+      "public-before-private",
+      "static-before-instance",
+      "variables-before-functions"
+    ],
+    "member-access": false,
+    "triple-equals": true,
 		"no-string-literal": false,
 		"no-use-before-declare": true,
 		"object-literal-sort-keys": false,

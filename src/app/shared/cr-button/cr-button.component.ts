@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'cr-button',
@@ -8,7 +8,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
 	encapsulation: ViewEncapsulation.None
 })
 export class CrButtonComponent {
+  @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
+
 	constructor() {
 
 	}
+
+  clickHandler() {
+	  this.onClick.emit();
+  }
 }

@@ -25,7 +25,7 @@ export class CoursesService {
 
   constructor() {}
 
-  public getCourseItems (): CourseItem[] {
+  getCourseItems (): CourseItem[] {
     return this.courseList;
   }
 }
