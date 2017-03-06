@@ -11,4 +11,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class CourseSearchComponent {
   constructor() {
   }
+
+  search() {
+    console.log('search');
+  }
 }
