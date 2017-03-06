@@ -5,7 +5,7 @@ import { LogoModule } from './logo';
 import { NavbarModule } from './navbar';
 import { AuthDropDownModule } from './auth-drop-down';
 import { NoContentModule } from './no-content';
-import { CrButtonModule } from './cr-button';
+import { CrButtonModule } from './button';
 
 @NgModule({
     imports: [
