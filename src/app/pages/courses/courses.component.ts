@@ -5,9 +5,6 @@ import { CoursesService } from './courses.service';
 @Component({
   selector: 'cr-courses',
   encapsulation: ViewEncapsulation.None,
-  providers: [
-    CoursesService
-  ],
   styleUrls: [ './courses.scss' ],
   templateUrl: './courses.html'
 })

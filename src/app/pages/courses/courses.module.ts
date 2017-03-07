@@ -15,6 +15,9 @@ import { CourseSearchModule } from './course-search';
 import { CourseAddModule } from './course-add';
 import { CourseListModule } from './course-list';
 
+// services
+import { CoursesService } from './courses.service';
+
 @NgModule({
   declarations: [
     CoursesComponent
@@ -28,7 +31,9 @@ import { CourseListModule } from './course-list';
     CourseAddModule,
     CourseListModule
   ],
-  providers: []
+  providers: [
+    CoursesService
+  ]
 })
 
 export class CoursesModule {
