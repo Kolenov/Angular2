@@ -1,5 +1,11 @@
 @import "../../../styles/variables/colors.scss";
 
 .course-item-header {
+  display: flex;
+  margin-right: 15px;
+  margin-bottom: 15px;
 
+  &__date {
+    margin-left: auto;
+  }
 }
