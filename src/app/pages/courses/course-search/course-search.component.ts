@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { SearchQuery } from './course-search.model';
 
 @Component({
   selector: 'cr-course-search',
