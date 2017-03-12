@@ -1,5 +1,7 @@
 @import "../../../styles/variables/colors.scss";
 
 .course-search {
-
+  &__input {
+    margin-right: 15px;
+  }
 }

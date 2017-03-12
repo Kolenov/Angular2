@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { SearchQuery } from './course-search.model';
 
 @Component({
   selector: 'cr-course-search',
@@ -9,10 +10,16 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 
 export class CourseSearchComponent {
+  @Input() public search;
+
   constructor() {
   }
 
-  search() {
-    console.log('search');
+  onSubmit(event, value) {
+    console.log('submit', event, value);
+  }
+
+  searchCourse(event, value) {
+    console.log('search', event, value);
   }
 }

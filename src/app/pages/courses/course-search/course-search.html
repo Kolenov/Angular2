@@ -1,5 +1,13 @@
-<div class="course-search">
-  <input type="text" placeholder="name fragment or date" class="" />
+<div class="course-search form-inline">
+  <input
+    #courseSearch
+    type="text"
+    [(ngModel)]="search"
+    placeholder="name fragment or date"
+    class="form-control course-search__input" />
 
-  <cr-button (onClick)="search()">Find</cr-button>
+  <cr-button
+    (onClick)="searchCourse($event, courseSearch.value)"
+    class="course-search__find"
+  >Find</cr-button>
 </div>
