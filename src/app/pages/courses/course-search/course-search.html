@@ -8,6 +8,8 @@
 
   <cr-button
     (onClick)="searchCourse($event, courseSearch.value)"
+    [type]="'button'"
+    [buttonClass]="'btn-info cr-button__middle'"
     class="course-search__find"
   >Find</cr-button>
 </div>

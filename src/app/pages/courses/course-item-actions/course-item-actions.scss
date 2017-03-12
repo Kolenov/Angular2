@@ -1,5 +1,7 @@
 @import "../../../styles/variables/colors.scss";
 
 .course-item-actions {
-
+  &__button {
+    margin-bottom: 15px;
+  }
 }
