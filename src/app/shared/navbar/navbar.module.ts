@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 	imports: [RouterModule],
 	exports: [NavbarComponent]
 })
+
 export class NavbarModule {
 	constructor() {
 	}

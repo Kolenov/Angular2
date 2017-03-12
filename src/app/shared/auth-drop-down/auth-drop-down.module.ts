@@ -1,15 +1,17 @@
 ﻿import { NgModule } from '@angular/core';
 import { AuthDropDownComponent } from './auth-drop-down.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
 
 @NgModule({
 	declarations: [AuthDropDownComponent],
 	imports: [
 	  RouterModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    DropdownModule.forRoot()
   ],
 	exports: [AuthDropDownComponent]
 })
