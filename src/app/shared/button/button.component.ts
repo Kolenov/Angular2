@@ -17,11 +17,6 @@ export class CrButtonComponent {
 	}
 
   getComponentClasses() {
-    // const classes = [
-    //   `cs-button--type-${ this.buttonType }`,
-    //   `cs-button--size-${ this.buttonSize }`
-    // ];
-
 	  return `btn ${ this.buttonClass }`;
   }
 
