@@ -1,6 +1,6 @@
 <div class="courses">
   <div class="courses__panel">
-    <cr-course-search class="courses__search"></cr-course-search>
+    <cr-course-search (onSearch)="onSearch($event)" class="courses__search"></cr-course-search>
     <cr-course-add class="courses__add-course"></cr-course-add>
   </div>
 

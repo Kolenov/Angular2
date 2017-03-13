@@ -1,7 +1,11 @@
 @import "../../styles/variables/colors.scss";
 
 .cr-button {
-  &--middle {
+  &--size-middle {
     width: 115px;
+  }
+
+  &--size-default {
+    min-width: 100px;
   }
 }

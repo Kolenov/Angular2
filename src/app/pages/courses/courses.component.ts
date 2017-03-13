@@ -23,6 +23,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
+  onSearch(search: string) {
+    console.log('search', search);
+  }
+
   onDelete(id: number) {
     console.log('delete', id);
   }

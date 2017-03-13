@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'cr-course-search',
@@ -10,11 +10,12 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 export class CourseSearchComponent {
   @Input() public search;
+  @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
   }
 
-  searchCourse(value) {
-    console.log('search', value);
+  searchCourse(value: string) {
+    this.onSearch.emit(value);
   }
 }

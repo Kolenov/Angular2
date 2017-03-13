@@ -1,6 +1,5 @@
 <div class="course-search form-inline">
   <input
-    #courseSearch
     type="text"
     [(ngModel)]="search"
     placeholder="name fragment or date"
@@ -10,6 +9,7 @@
     (onClick)="searchCourse(search)"
     [type]="'button'"
     [buttonClass]="'btn-info cr-button__middle'"
+    [buttonSize]="'middle'"
     class="course-search__find"
   >Find</cr-button>
 </div>

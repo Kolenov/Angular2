@@ -15,12 +15,14 @@
     <cr-button
       (onClick)="editCourse(course.id)"
       [type]="'button'"
-      [buttonClass]="'btn-secondary cr-button--middle course-item__button'"
+      [buttonClass]="'btn-secondary course-item__button'"
+      [buttonSize]="'middle'"
     >Edit course</cr-button>
     <cr-button
       (onClick)="deleteCourse(course.id)"
       [type]="'button'"
-      [buttonClass]="'btn-danger cr-button--middle'"
+      [buttonClass]="'btn-danger'"
+      [buttonSize]="'middle'"
     >Delete</cr-button>
   </cr-course-item-actions>
 </div>
