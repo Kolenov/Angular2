@@ -7,7 +7,7 @@ import { Component, ViewEncapsulation, Output, EventEmitter, Input } from '@angu
 	providers: [],
 	encapsulation: ViewEncapsulation.None
 })
-export class CrButtonComponent implements OnInit {
+export class CrButtonComponent {
   @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
   @Input() type: string;
   @Input() buttonSize: string = 'default';
