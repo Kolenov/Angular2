@@ -11,5 +11,16 @@
     </cr-course-item-description>
   </div>
 
-  <cr-course-item-actions class="course-item__actions" [courseId]="course.id"></cr-course-item-actions>
+  <cr-course-item-actions class="course-item__actions">
+    <cr-button
+      (onClick)="editCourse(course.id)"
+      [type]="'button'"
+      [buttonClass]="'btn-secondary cr-button--middle course-item__button'"
+    >Edit course</cr-button>
+    <cr-button
+      (onClick)="deleteCourse(course.id)"
+      [type]="'button'"
+      [buttonClass]="'btn-danger cr-button--middle'"
+    >Delete</cr-button>
+  </cr-course-item-actions>
 </div>

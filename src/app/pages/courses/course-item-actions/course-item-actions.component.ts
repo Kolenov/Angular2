@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'cr-course-item-actions',
@@ -9,16 +9,6 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 })
 
 export class CourseItemActionsComponent {
-  @Input() public courseId: number;
-
   constructor() {
-  }
-
-  editCourse() {
-    console.log('edit course id', this.courseId);
-  }
-
-  deleteCourse() {
-    console.log('delete course id', this.courseId);
   }
 }

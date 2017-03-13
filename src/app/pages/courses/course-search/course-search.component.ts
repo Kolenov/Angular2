@@ -14,10 +14,6 @@ export class CourseSearchComponent {
   constructor() {
   }
 
-  onSubmit(value) {
-    console.log('submit', value);
-  }
-
   searchCourse(value) {
     console.log('search', value);
   }

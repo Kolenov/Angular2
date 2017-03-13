@@ -1,7 +1,6 @@
 // angular modules
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared';
 
 // routes
 import { RouterModule } from '@angular/router';
@@ -16,8 +15,7 @@ import { LoginComponent } from './login.component';
   ],
   imports: [
     RouterModule.forChild(loginRoutes),
-    FormsModule,
-    CommonModule
+    SharedModule
   ],
   providers: []
 })

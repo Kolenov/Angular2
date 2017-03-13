@@ -17,9 +17,17 @@ export class CoursesComponent implements OnInit, OnDestroy {
     console.log('CourseDetailsComponent constructor');
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.courseList$ = this.CoursesService.getCourseItems();
   }
 
-  public ngOnDestroy() {}
+  ngOnDestroy() {}
+
+  onDelete(id: number) {
+    console.log('delete', id);
+  }
+
+  onEdit(id: number) {
+    console.log('edit', id);
+  }
 }

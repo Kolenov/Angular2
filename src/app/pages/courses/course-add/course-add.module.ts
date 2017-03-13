@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CourseAddComponent } from './course-add.component';
-import { CrButtonModule } from '../../../shared/button';
+import { SharedModule } from '../../../shared';
 
 @NgModule({
   imports: [
-    CrButtonModule
+    SharedModule
   ],
   exports: [
     CourseAddComponent

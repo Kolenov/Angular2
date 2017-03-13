@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { HeaderModule } from './header';
 import { FooterModule } from './footer';
 import { LogoModule } from './logo';
@@ -8,6 +9,7 @@ import { NoContentModule } from './no-content';
 import { CrButtonModule } from './button';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule }  from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -28,7 +30,8 @@ import { BrowserModule }  from '@angular/platform-browser';
       NoContentModule,
       CrButtonModule,
       BrowserModule,
-      FormsModule
+      FormsModule,
+      CommonModule
     ],
     declarations: [],
     providers: [],

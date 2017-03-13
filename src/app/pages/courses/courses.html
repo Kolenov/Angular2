@@ -4,5 +4,10 @@
     <cr-course-add class="courses__add-course"></cr-course-add>
   </div>
 
-  <cr-course-list class="courses__list" [courseList]="courseList$ | async"></cr-course-list>
+  <cr-course-list
+    class="courses__list"
+    [courseList]="courseList$ | async"
+    (onEdit)="onEdit($event)"
+    (onDelete)="onDelete($event)"
+  ></cr-course-list>
 </div>
