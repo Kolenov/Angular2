@@ -1,6 +1,6 @@
 // angular modules
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 // routes
@@ -17,7 +17,6 @@ import { HomeComponent } from './home.component';
   imports: [
     RouterModule.forChild(homeRoutes),
     FormsModule,
-    ReactiveFormsModule,
     CommonModule
   ],
   providers: []

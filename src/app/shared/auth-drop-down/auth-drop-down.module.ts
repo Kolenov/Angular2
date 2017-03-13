@@ -1,7 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
 import { AuthDropDownComponent } from './auth-drop-down.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 
@@ -9,7 +8,6 @@ import { DropdownModule } from 'ng2-bootstrap/dropdown';
 	declarations: [AuthDropDownComponent],
 	imports: [
 	  RouterModule,
-    ReactiveFormsModule,
     CommonModule,
     DropdownModule.forRoot()
   ],
