@@ -14,8 +14,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   constructor(private CoursesService: CoursesService) {
     console.log('CourseDetailsComponent constructor');
-
-    this.courseList = [];
   }
 
   public ngOnInit() {
