@@ -1,7 +1,5 @@
 // angular modules
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 // routes
 import { RouterModule } from '@angular/router';
@@ -24,9 +22,6 @@ import { CoursesService } from './courses.service';
   ],
   imports: [
     RouterModule.forChild(coursesRoutes),
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
     CourseSearchModule,
     CourseAddModule,
     CourseListModule
