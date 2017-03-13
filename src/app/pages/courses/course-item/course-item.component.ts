@@ -17,11 +17,11 @@ export class CourseItemComponent {
   constructor() {
   }
 
-  editCourse(id: number) {
+  editCourse(id: number): void {
     this.onEdit.emit(id);
   }
 
-  deleteCourse(id: number) {
+  deleteCourse(id: number): void {
     this.onDelete.emit(id);
   }
 }

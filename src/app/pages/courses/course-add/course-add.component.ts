@@ -12,7 +12,7 @@ export class CourseAddComponent {
   constructor() {
   }
 
-  public addCourse() {
+  public addCourse(): void {
     console.log('add course');
   }
 }

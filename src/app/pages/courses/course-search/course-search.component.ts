@@ -15,7 +15,7 @@ export class CourseSearchComponent {
   constructor() {
   }
 
-  searchCourse(value: string) {
+  searchCourse(value: string): void {
     this.onSearch.emit(value);
   }
 }
