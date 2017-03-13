@@ -1,5 +1,6 @@
 // angular modules
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // routes
 import { RouterModule } from '@angular/router';
@@ -24,7 +25,8 @@ import { CoursesService } from './courses.service';
     RouterModule.forChild(coursesRoutes),
     CourseSearchModule,
     CourseAddModule,
-    CourseListModule
+    CourseListModule,
+    CommonModule
   ],
   providers: [
     CoursesService

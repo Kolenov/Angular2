@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CourseItem } from './course-item.model';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class CoursesService {
@@ -40,7 +41,7 @@ export class CoursesService {
 
   constructor() {}
 
-  getCourseItems (): CourseItem[] {
-    return this.courseList;
+  getCourseItems (): Observable<CourseItem[]> {
+    return Observable.of(this.courseList);
   }
 }
