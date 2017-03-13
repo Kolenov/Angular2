@@ -14,11 +14,11 @@ export class CourseSearchComponent {
   constructor() {
   }
 
-  onSubmit(event, value) {
-    console.log('submit', event, value);
+  onSubmit(value) {
+    console.log('submit', value);
   }
 
-  searchCourse(event, value) {
-    console.log('search', event, value);
+  searchCourse(value) {
+    console.log('search', value);
   }
 }

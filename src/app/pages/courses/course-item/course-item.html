@@ -3,10 +3,12 @@
     <cr-course-item-header
       [courseName]="course.name"
       [courseDuration]="course.duration"
-      [courseDate]="course.date"
-    ></cr-course-item-header>
+      [courseDate]="course.date">
+    </cr-course-item-header>
 
-    <cr-course-item-description [courseDescription]="course.description"></cr-course-item-description>
+    <cr-course-item-description>
+      {{course.description}}
+    </cr-course-item-description>
   </div>
 
   <cr-course-item-actions class="course-item__actions" [courseId]="course.id"></cr-course-item-actions>

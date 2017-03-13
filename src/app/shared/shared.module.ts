@@ -6,6 +6,8 @@ import { NavbarModule } from './navbar';
 import { AuthDropDownModule } from './auth-drop-down';
 import { NoContentModule } from './no-content';
 import { CrButtonModule } from './button';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule }  from '@angular/platform-browser';
 
 @NgModule({
     imports: [
@@ -24,7 +26,9 @@ import { CrButtonModule } from './button';
       NavbarModule,
       AuthDropDownModule,
       NoContentModule,
-      CrButtonModule
+      CrButtonModule,
+      BrowserModule,
+      FormsModule
     ],
     declarations: [],
     providers: [],
