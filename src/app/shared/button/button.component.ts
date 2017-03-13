@@ -23,7 +23,6 @@ export class CrButtonComponent implements OnInit {
 
   getComponentClasses(): string {
     const classes: string[] = [
-      'btn',
       `cr-button--size-${ this.buttonSize }`
     ];
 
