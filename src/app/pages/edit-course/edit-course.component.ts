@@ -1,4 +1,8 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { CoursesService } from '../../services/courses.service';
+import { Observable } from 'rxjs';
+import { CourseItem } from '../../models/course-item.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cr-edit-course',
@@ -9,10 +13,14 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 })
 
 export class EditCourseComponent implements OnInit {
-  constructor() {
+  public course$: Observable<CourseItem>;
+
+  constructor(private route: ActivatedRoute, private CoursesService: CoursesService) {
   }
 
-  public ngOnInit() {}
+  public ngOnInit() {
+    this.course$ = this.CoursesService.getCourse(this.route.params.value.id); // how correct get params id?
+  }
 
   editCourse() {
     console.log('edit course');

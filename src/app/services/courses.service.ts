@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CourseItem } from './course-item.model';
+import { CourseItem } from '../models/course-item.model';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 
@@ -65,16 +65,16 @@ export class CoursesService {
     return Observable.of(newCourse);
   }
 
-  getCourse(id: string) {
-    if (this.courseList.length) {
-      this.courseList.forEach((item) => {
-        if (item.id === id) {
-          return item;
-        }
-      });
-    }
+  getCourse(id: string): Observable<CourseItem> {
+    let course: CourseItem;
 
-    return {};
+    this.courseList.forEach((item) => {
+      if (item.id === id) {
+        course = item;
+      }
+    });
+
+    return Observable.of(course);
   }
 
   update(id: string, data: CourseItem) {

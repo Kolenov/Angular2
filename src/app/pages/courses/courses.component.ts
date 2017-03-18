@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { CourseItem } from './course-item.model';
-import { CoursesService } from './courses.service';
+import { CourseItem } from '../../models/course-item.model';
+import { CoursesService } from '../../services/courses.service';
 import { Observable } from 'rxjs';
 import { ModalDirective } from 'ng2-bootstrap';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class CoursesComponent implements OnInit, OnDestroy {
   public courseList$: Observable<CourseItem[]>;
   public courseId: string;
+
   @ViewChild('confirmDeleteCourseModal') public confirmDeleteCourseModal: ModalDirective;
 
   constructor(private CoursesService: CoursesService, private router: Router) {
