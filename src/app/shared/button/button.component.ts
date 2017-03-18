@@ -19,6 +19,7 @@ export class CrButtonComponent {
 
   getComponentClasses(): string {
     const classes: string[] = [
+      'btn',
       `cr-button--size-${ this.buttonSize }`,
       this.buttonClass
     ];
