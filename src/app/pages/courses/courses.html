@@ -11,3 +11,30 @@
     (onDelete)="onDelete($event)"
   ></cr-course-list>
 </div>
+
+<div bsModal #confirmDeleteCourseModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title pull-left">Do you really want to delete this course?</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideConfirmModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <cr-button
+          (onClick)="deleteCourse()"
+          [type]="'button'"
+          [buttonClass]="'btn-secondary courses__modal-button'"
+          [buttonSize]="'lg'"
+        >Yes</cr-button>
+        <cr-button
+          (onClick)="hideConfirmModal()"
+          [type]="'button'"
+          [buttonClass]="'btn-secondary'"
+          [buttonSize]="'lg'"
+        >No</cr-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CourseItem } from './course-item.model';
 import { CoursesService } from './courses.service';
 import { Observable } from 'rxjs';
+import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
   selector: 'cr-courses',
@@ -12,6 +13,8 @@ import { Observable } from 'rxjs';
 
 export class CoursesComponent implements OnInit, OnDestroy {
   public courseList$: Observable<CourseItem[]>;
+  public courseId: number;
+  @ViewChild('confirmDeleteCourseModal') public confirmDeleteCourseModal: ModalDirective;
 
   constructor(private CoursesService: CoursesService) {
     console.log('CourseDetailsComponent constructor');
@@ -27,8 +30,24 @@ export class CoursesComponent implements OnInit, OnDestroy {
     console.log('search', search);
   }
 
+  hideConfirmModal(): void {
+    this.confirmDeleteCourseModal.hide();
+  }
+
+  showConfirmModal(): void {
+    this.confirmDeleteCourseModal.show();
+  }
+
+  deleteCourse(): void {
+    console.log('delete', this.courseId);
+
+    this.hideConfirmModal();
+  }
+
   onDelete(id: number): void {
-    console.log('delete', id);
+    this.courseId = id;
+
+    this.showConfirmModal();
   }
 
   onEdit(id: number): void {

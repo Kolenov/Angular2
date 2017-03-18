@@ -10,7 +10,7 @@ import { SharedModule } from '../../../shared';
     CourseItemHeaderModule,
     CourseItemDescriptionModule,
     CourseItemActionsModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [
     CourseItemComponent
