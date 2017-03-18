@@ -3,6 +3,7 @@ import { CourseItem } from './course-item.model';
 import { CoursesService } from './courses.service';
 import { Observable } from 'rxjs';
 import { ModalDirective } from 'ng2-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cr-courses',
@@ -13,10 +14,10 @@ import { ModalDirective } from 'ng2-bootstrap';
 
 export class CoursesComponent implements OnInit, OnDestroy {
   public courseList$: Observable<CourseItem[]>;
-  public courseId: number;
+  public courseId: string;
   @ViewChild('confirmDeleteCourseModal') public confirmDeleteCourseModal: ModalDirective;
 
-  constructor(private CoursesService: CoursesService) {
+  constructor(private CoursesService: CoursesService, private router: Router) {
     console.log('CourseDetailsComponent constructor');
   }
 
@@ -44,13 +45,13 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.hideConfirmModal();
   }
 
-  onDelete(id: number): void {
+  onDelete(id: string): void {
     this.courseId = id;
 
     this.showConfirmModal();
   }
 
-  onEdit(id: number): void {
-    console.log('edit', id);
+  onEdit(id: string): void {
+    this.router.navigateByUrl(`/edit-course/${ id }`);
   }
 }

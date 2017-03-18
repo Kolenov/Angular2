@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cr-course-add',
@@ -9,10 +10,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 
 export class CourseAddComponent {
-  constructor() {
+  constructor(private router: Router) {
   }
 
   public addCourse(): void {
+    this.router.navigateByUrl('/add-course');
+
     console.log('add course');
   }
 }

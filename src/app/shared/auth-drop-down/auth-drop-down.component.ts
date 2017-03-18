@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
-// import {isBoolean} from "util";
 
 @Component({
 	selector: 'cr-auth-drop-down',

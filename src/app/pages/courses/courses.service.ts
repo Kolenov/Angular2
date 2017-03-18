@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CourseItem } from './course-item.model';
 import { Observable } from 'rxjs';
+import * as _ from 'lodash';
 
 @Injectable()
 export class CoursesService {
@@ -41,7 +42,60 @@ export class CoursesService {
 
   constructor() {}
 
-  getCourseItems (): Observable<CourseItem[]> {
+  getCourseItems(): Observable<CourseItem[]> {
     return Observable.of(this.courseList);
+  }
+
+  generateId(): string {
+    return _.uniqueId('contact_');
+  }
+
+  createCourse() {
+    const newCourse: CourseItem = {
+      id: this.generateId(),
+      name: 'new name',
+      duration: 2500,
+      date: new Date(),
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
+      'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer...'
+    };
+
+    this.courseList.push(newCourse);
+
+    return Observable.of(newCourse);
+  }
+
+  getCourse(id: string) {
+    if (this.courseList.length) {
+      this.courseList.forEach((item) => {
+        if (item.id === id) {
+          return item;
+        }
+      });
+    }
+
+    return {};
+  }
+
+  update(id: string, data: CourseItem) {
+    if (this.courseList.length) {
+      this.courseList.forEach((item) => {
+        if (item.id === id) {
+          return Object.assign(item, data);
+        }
+      });
+    }
+  }
+
+  remove(id: string) {
+    if (this.courseList.length) {
+      this.courseList.forEach((item, index) => {
+        if (item.id === id) {
+          return this.courseList.splice(index, 1);
+        }
+      });
+    }
+
+    console.log('remove course', id);
   }
 }

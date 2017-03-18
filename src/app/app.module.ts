@@ -23,13 +23,13 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 // import { NoContentComponent } from './shared';
 
-// Components
-
 // Pages
 import {
   HomeModule,
   CoursesModule,
-  LoginModule
+  LoginModule,
+  AddCourseModule,
+  EditCourseModule
 } from './pages';
 
 import { SharedModule } from './shared/shared.module';
@@ -59,6 +59,8 @@ import { SharedModule } from './shared/shared.module';
 		HomeModule,
     CoursesModule,
     LoginModule,
+    AddCourseModule,
+    EditCourseModule,
     SharedModule
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection

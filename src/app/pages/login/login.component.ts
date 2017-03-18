@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 @Component({
   selector: 'cr-login',
@@ -8,12 +8,14 @@ import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './login.html'
 })
 
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   constructor() {
     console.log('Login page constructor');
   }
 
   public ngOnInit() {}
 
-  public ngOnDestroy() {}
+  login() {
+    console.log('login');
+  }
 }
