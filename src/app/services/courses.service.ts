@@ -87,15 +87,13 @@ export class CoursesService {
     }
   }
 
-  remove(id: string) {
-    if (this.courseList.length) {
-      this.courseList.forEach((item, index) => {
-        if (item.id === id) {
-          return this.courseList.splice(index, 1);
-        }
-      });
-    }
+  removeCourse(id: string): Observable<CourseItem[]> {
+    this.courseList.forEach((item, index) => {
+      if (item.id === id) {
+        this.courseList.splice(index, 1);
+      }
+    });
 
-    console.log('remove course', id);
+    return Observable.of(this.courseList);
   }
 }

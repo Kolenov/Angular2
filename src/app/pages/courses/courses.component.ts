@@ -41,9 +41,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   deleteCourse(): void {
-    console.log('delete', this.courseId);
-
     this.hideConfirmModal();
+    this.courseList$ = this.CoursesService.removeCourse(this.courseId);
+
+    console.log('delete', this.courseId);
   }
 
   onDelete(id: string): void {
