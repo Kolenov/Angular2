@@ -77,14 +77,16 @@ export class CoursesService {
     return Observable.of(course);
   }
 
-  update(id: string, data: CourseItem) {
-    if (this.courseList.length) {
-      this.courseList.forEach((item) => {
-        if (item.id === id) {
-          return Object.assign(item, data);
-        }
-      });
-    }
+  updateCourse(id: string, data: CourseItem): Observable<CourseItem> {
+    let updatedCourseList: CourseItem;
+
+    this.courseList.forEach((item) => {
+      if (item.id === id) {
+        updatedCourseList = Object.assign(item, data);
+      }
+    });
+
+    return Observable.of(updatedCourseList);
   }
 
   removeCourse(id: string): Observable<CourseItem[]> {

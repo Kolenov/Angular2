@@ -1,8 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
-import { Observable } from 'rxjs';
 import { CourseItem } from '../../models/course-item.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'cr-edit-course',
@@ -13,16 +12,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class EditCourseComponent implements OnInit {
-  public course$: Observable<CourseItem>;
+  public model: CourseItem;
 
-  constructor(private route: ActivatedRoute, private CoursesService: CoursesService) {
+  constructor(private router: Router, private routeParams: ActivatedRoute, private CoursesService: CoursesService) {
   }
 
   public ngOnInit() {
-    this.course$ = this.CoursesService.getCourse(this.route.params.value.id); // how correct get params id?
+    this.routeParams
+      .params
+      .subscribe((params) => {
+        this.getCourse(params['id']);
+      });
   }
 
-  editCourse() {
-    console.log('edit course');
+  getCourse(id: string): void {
+    this.CoursesService.getCourse(id)
+      .subscribe((data) => {
+          this.model = data;
+        }
+      );
+  }
+
+  onSubmit(event) {
+    this.router.navigateByUrl('/courses');
   }
 }

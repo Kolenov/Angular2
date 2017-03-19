@@ -9,7 +9,7 @@ import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angu
 })
 
 export class CourseSearchComponent {
-  @Input() public search;
+  @Input() public search: string;
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
