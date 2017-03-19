@@ -1,25 +1,39 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { UserInfo } from '../../models/user.model';
 
 @Component({
 	selector: 'cr-auth-drop-down',
 	templateUrl: './auth-drop-down.html',
   styleUrls: [ './auth-drop-down.scss' ],
-	providers: [],
+	providers: [ AuthService ],
 	encapsulation: ViewEncapsulation.None
 })
 
-export class AuthDropDownComponent implements OnInit, OnDestroy {
-  public isLogin: boolean = false;
+export class AuthDropDownComponent implements OnInit {
+  userInfo: UserInfo;
 
-  constructor() {
+  constructor(private AuthService: AuthService, private router: Router) {
 	}
 
-  public ngOnInit() {
-    console.log('Home page init');
+  ngOnInit() {}
 
-    this.isLogin = false;
+  isLogin(): boolean {
+    return this.AuthService.IsAuthenticated();
   }
 
-  public ngOnDestroy() {
+  getUser() {
+    if (this.isLogin()) {
+      const userInfo = this.AuthService.getUserInfo();
+
+      return userInfo.email;
+    }
+  }
+
+  logout() {
+    this.AuthService.logout();
+
+    this.router.navigateByUrl('/');
   }
 }

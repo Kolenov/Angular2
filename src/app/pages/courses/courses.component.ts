@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   selector: 'cr-courses',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [ './courses.scss' ],
-  templateUrl: './courses.html'
+  templateUrl: './courses.html',
+  providers: [ CoursesService ]
 })
 
 export class CoursesComponent implements OnInit, OnDestroy {

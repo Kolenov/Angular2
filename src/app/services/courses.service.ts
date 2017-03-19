@@ -47,7 +47,7 @@ export class CoursesService {
   }
 
   generateId(): string {
-    return _.uniqueId('contact_');
+    return _.uniqueId('id_');
   }
 
   createCourse(data: CourseItem): Observable<CourseItem> {

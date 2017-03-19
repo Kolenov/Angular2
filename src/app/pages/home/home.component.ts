@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'cr-home',
@@ -8,12 +8,7 @@ import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './home.html'
 })
 
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent {
   constructor() {
-    console.log('Home page constructor');
   }
-
-  public ngOnInit() {}
-
-  public ngOnDestroy() {}
 }

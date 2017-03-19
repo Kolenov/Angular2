@@ -1,16 +1,29 @@
 <div class="login">
 	<h4 class="login__title">Login Page</h4>
 
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  <form #LoginForm="ngForm" (ngSubmit)="onSubmit(LoginForm)">
+    <div class="login__wrapper-form">
+      <div class="form-group">
+        <label for="email-address">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email-address"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+          ngModel name="email" required>
+      </div>
+      <div class="password">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+          ngModel name="password" required>
+      </div>
     </div>
 
-    <cr-button (onClick)="login()" type="button" buttonClass="btn-success" [buttonSize]="'medium'">Log In</cr-button>
+    <cr-button type="submit" buttonClass="btn-success" [buttonSize]="'medium'">Log In</cr-button>
   </form>
 </div>
