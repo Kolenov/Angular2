@@ -3,7 +3,9 @@
     <div class="main-navbar__wrapper">
       <cr-logo></cr-logo>
 
-      <cr-navbar class="main-navbar__item"></cr-navbar>
+      <cr-is-authorized class="main-navbar__item">
+        <cr-navbar></cr-navbar>
+      </cr-is-authorized>
 
       <cr-auth-drop-down class="main-navbar__auth-panel"></cr-auth-drop-down>
     </div>

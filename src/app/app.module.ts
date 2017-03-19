@@ -35,7 +35,7 @@ import {
 import { SharedModule } from './shared/shared.module';
 
 // Services
-
+import { AuthService } from './services/auth.service';
 // import { TodoService } from './core/services';
 
 // Application wide providers
@@ -65,6 +65,7 @@ import { SharedModule } from './shared/shared.module';
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,
+    AuthService
 		// APP_PROVIDERS
 	]
 })

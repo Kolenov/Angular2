@@ -4,6 +4,7 @@ import { HeaderComponent } from './header.component';
 import { LogoModule } from './../logo';
 import { NavbarModule } from './../navbar';
 import { AuthDropDownModule } from './../auth-drop-down';
+import { IsAuthorizedModule } from './../is-authorized';
 
 @NgModule({
 	declarations: [
@@ -12,7 +13,8 @@ import { AuthDropDownModule } from './../auth-drop-down';
 	imports: [
     LogoModule,
     NavbarModule,
-    AuthDropDownModule
+    AuthDropDownModule,
+    IsAuthorizedModule
   ],
 	exports: [HeaderComponent]
 })
