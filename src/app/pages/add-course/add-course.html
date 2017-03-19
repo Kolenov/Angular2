@@ -1,20 +1,36 @@
 <div class="add-course">
 	<h4 class="edit__title">Add Course Page</h4>
 
-  <form>
+  <form #addCourseForm="ngForm" (ngSubmit)="onSubmit(addCourseForm)">
     <div class="form-group">
       <label for="name-course">Name</label>
-      <input type="text" class="form-control" id="name-course" aria-describedby="nameCourse" placeholder="Name Course">
+      <input
+        type="text"
+        class="form-control"
+        id="name-course"
+        aria-describedby="nameCourse"
+        placeholder="Name Course"
+        ngModel name="name" required>
     </div>
     <div class="form-group">
       <label for="duration-course">Duration</label>
-      <input type="text" class="form-control" id="duration-course" placeholder="Duration Course">
+      <input
+        type="number"
+        class="form-control"
+        id="duration-course"
+        placeholder="Duration Course"
+        ngModel name="duration" required>
     </div>
     <div class="form-group">
       <label for="description-course">description</label>
-      <textarea class="form-control" id="description-course" placeholder="Description course" rows="3"></textarea>
+      <textarea
+        class="form-control"
+        id="description-course"
+        placeholder="Description course"
+        rows="3"
+        ngModel name="description" required></textarea>
     </div>
 
-    <cr-button (onClick)="createCourse()" type="button" buttonClass="btn-success" [buttonSize]="'medium'">Create</cr-button>
+    <cr-button type="submit" buttonClass="btn-success" [buttonSize]="'medium'">Create</cr-button>
   </form>
 </div>

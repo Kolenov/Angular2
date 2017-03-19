@@ -15,7 +15,5 @@ export class CourseAddComponent {
 
   public addCourse(): void {
     this.router.navigateByUrl('/add-course');
-
-    console.log('add course');
   }
 }

@@ -1,4 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { CourseItem } from '../../models/course-item.model';
+import { Router } from '@angular/router';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'cr-add-course',
@@ -9,12 +12,19 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 })
 
 export class AddCourseComponent implements OnInit {
-  constructor() {
+  public model: CourseItem;
+
+  constructor(private router: Router, private CoursesService: CoursesService) {
   }
 
-  public ngOnInit() {}
+  public ngOnInit() {
+  }
 
-  createCourse() {
-    console.log('create course');
+  onSubmit(event): void {
+    this.CoursesService.createCourse(event.value)
+      .subscribe((data) => {
+          this.router.navigateByUrl('/courses');
+        }
+      );
   }
 }

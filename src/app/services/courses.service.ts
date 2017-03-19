@@ -50,14 +50,13 @@ export class CoursesService {
     return _.uniqueId('contact_');
   }
 
-  createCourse() {
+  createCourse(data: CourseItem): Observable<CourseItem> {
     const newCourse: CourseItem = {
       id: this.generateId(),
-      name: 'new name',
-      duration: 2500,
+      name: data.name,
+      duration: data.duration,
       date: new Date(),
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
-      'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer...'
+      description: data.description
     };
 
     this.courseList.push(newCourse);
