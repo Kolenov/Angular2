@@ -11,6 +11,7 @@ export class CrButtonComponent {
   @Input() type: string;
   @Input() buttonSize: string = 'default';
   @Input() buttonClass: string;
+  @Input() routerLink: string;
 
   getComponentClasses(): string {
     const classes: string[] = [
