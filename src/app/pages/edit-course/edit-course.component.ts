@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 import { CourseItem } from '../../models/course-item.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'cr-edit-course',
@@ -11,13 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './edit-course.html'
 })
 
-export class EditCourseComponent implements OnInit {
+export class EditCourseComponent implements OnInit, OnDestroy {
   public model: CourseItem;
+  private subscription: Subscription;
 
   constructor(private router: Router, private routeParams: ActivatedRoute, private coursesService: CoursesService) {
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.routeParams
       .params
       .subscribe((params) => {
@@ -26,7 +28,7 @@ export class EditCourseComponent implements OnInit {
   }
 
   getCourse(id: string): void {
-    this.coursesService.getCourse(id)
+    this.subscription = this.coursesService.getCourse(id)
       .subscribe((data) => {
           this.model = data;
         }
@@ -39,5 +41,9 @@ export class EditCourseComponent implements OnInit {
           this.router.navigateByUrl('/courses');
         }
       );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
