@@ -1,7 +1,9 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { CourseItem } from '../../models/course-item.model';
 import { Router } from '@angular/router';
 import { CoursesService } from '../../services/courses.service';
+import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'cr-add-course',
@@ -11,20 +13,22 @@ import { CoursesService } from '../../services/courses.service';
   templateUrl: './add-course.html'
 })
 
-export class AddCourseComponent implements OnInit {
+export class AddCourseComponent implements OnDestroy {
   public model: CourseItem;
+  private subscription: Subscription;
 
   constructor(private router: Router, private coursesService: CoursesService) {
   }
 
-  public ngOnInit() {
-  }
-
-  onSubmit(event): void {
-    this.coursesService.createCourse(event.value)
-      .subscribe((data) => {
+  onSubmit(event: NgForm): void {
+    this.subscription = this.coursesService.createCourse(event.value)
+      .subscribe(() => {
           this.router.navigateByUrl('/courses');
         }
       );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

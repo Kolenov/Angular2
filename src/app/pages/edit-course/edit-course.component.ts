@@ -3,6 +3,7 @@ import { CoursesService } from '../../services/courses.service';
 import { CourseItem } from '../../models/course-item.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'cr-edit-course',
@@ -14,36 +15,33 @@ import { Subscription } from 'rxjs';
 
 export class EditCourseComponent implements OnInit, OnDestroy {
   public model: CourseItem;
-  private subscription: Subscription;
+  private subscription: Subscription[] = [];
 
   constructor(private router: Router, private routeParams: ActivatedRoute, private coursesService: CoursesService) {
   }
 
-  ngOnInit() {
-    this.routeParams
+  ngOnInit(): void {
+    this.subscription.push(this.routeParams
       .params
-      .subscribe((params) => {
-        this.getCourse(params['id']);
-      });
+      .switchMap((params: CourseItem) => {
+        return this.coursesService.getCourse(params['id']);
+      }).subscribe((data) => {
+        this.model = data;
+      }
+    ));
   }
 
-  getCourse(id: string): void {
-    this.subscription = this.coursesService.getCourse(id)
-      .subscribe((data) => {
-          this.model = data;
-        }
-      );
-  }
-
-  submit(event) {
-    this.coursesService.updateCourse(this.model.id, event.value)
-      .subscribe((data) => {
+  submit(event: NgForm): void {
+    this.subscription.push(this.coursesService.updateCourse(this.model.id, event.value)
+      .subscribe(() => {
           this.router.navigateByUrl('/courses');
         }
-      );
+      ));
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  ngOnDestroy(): void {
+    this.subscription.forEach((item) => {
+      item.unsubscribe();
+    });
   }
 }

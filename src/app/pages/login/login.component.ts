@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'cr-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   public ngOnInit() {}
 
-  onSubmit(event) {
+  onSubmit(event: NgForm) {
     this.authService.login(event.value);
 
     this.router.navigateByUrl('/courses');

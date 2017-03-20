@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
 import { CourseItem } from '../../models/course-item.model';
 import { CoursesService } from '../../services/courses.service';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './courses.html',
 })
 
-export class CoursesComponent implements OnInit, OnDestroy {
+export class CoursesComponent implements OnInit {
   public courseList$: Observable<CourseItem[]>;
   public courseId: string;
 
@@ -23,8 +23,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.courseList$ = this.coursesService.getCourseItems();
   }
-
-  ngOnDestroy() {}
 
   onSearch(search: string): void {
     console.log('search', search);
