@@ -5,7 +5,6 @@ import { AuthService } from '../../services/auth.service';
 	selector: 'cr-is-authorized',
 	templateUrl: './is-authorized.html',
   styleUrls: [ './is-authorized.scss' ],
-	providers: [],
 	encapsulation: ViewEncapsulation.None
 })
 export class IsAuthorizedComponent {

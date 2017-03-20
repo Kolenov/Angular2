@@ -13,10 +13,8 @@ import { CourseItemModule } from '../course-item';
   ],
   declarations: [
     CourseListComponent
-  ],
-  providers: [],
+  ]
 })
 
 export class CourseListModule {
-  constructor() {}
 }

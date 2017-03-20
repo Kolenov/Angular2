@@ -3,7 +3,6 @@
  */
 import {
 	Component,
-	OnInit,
 	ViewEncapsulation
 } from '@angular/core';
 import { AppState } from './app.service';
@@ -22,12 +21,5 @@ import { AppState } from './app.service';
 	],
 	template: require('./app.template.html')
 })
-export class AppComponent implements OnInit {
-
-	constructor() {
-	}
-
-	public ngOnInit() {
-	}
-
+export class AppComponent {
 }

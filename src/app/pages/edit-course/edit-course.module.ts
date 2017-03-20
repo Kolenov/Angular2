@@ -16,9 +16,7 @@ import { EditCourseComponent } from './edit-course.component';
   imports: [
     RouterModule.forChild(editCourseRoutes),
     SharedModule
-  ],
-  providers: []
+  ]
 })
 export class EditCourseModule {
-  constructor() {}
 }

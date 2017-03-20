@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -11,11 +11,9 @@ import { NgForm } from '@angular/forms';
   templateUrl: './login.html'
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {
   }
-
-  public ngOnInit() {}
 
   onSubmit(event: NgForm) {
     this.authService.login(event.value);

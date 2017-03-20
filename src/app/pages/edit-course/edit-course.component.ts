@@ -8,7 +8,6 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'cr-edit-course',
   encapsulation: ViewEncapsulation.None,
-  providers: [],
   styleUrls: [ './edit-course.scss' ],
   templateUrl: './edit-course.html'
 })

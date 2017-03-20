@@ -16,9 +16,7 @@ import { LoginComponent } from './login.component';
   imports: [
     RouterModule.forChild(loginRoutes),
     SharedModule
-  ],
-  providers: []
+  ]
 })
 export class LoginModule {
-  constructor() {}
 }

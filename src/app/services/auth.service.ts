@@ -6,8 +6,6 @@ import { UserInfo } from '../models/user.model';
 export class AuthService {
   private userInfo: UserInfo;
 
-  constructor() {}
-
   generateId(): string {
     return _.uniqueId('id_');
   }

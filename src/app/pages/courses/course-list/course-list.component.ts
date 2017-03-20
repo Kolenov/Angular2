@@ -5,7 +5,6 @@ import { CourseItem } from '../../../models/course-item.model';
   selector: 'cr-course-list',
   templateUrl: 'course-list.html',
   styleUrls: [ './course-list.scss' ],
-  providers: [],
   encapsulation: ViewEncapsulation.None
 })
 
@@ -13,8 +12,6 @@ export class CourseListComponent {
   @Input() public courseList: CourseItem;
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
   @Output() onEdit: EventEmitter<number> = new EventEmitter<number>();
-
-  constructor() {}
 
   editCourse(id: number): void {
     this.onEdit.emit(id);

@@ -5,11 +5,8 @@ import { CrButtonComponent } from './button.component';
 	declarations: [
     CrButtonComponent
   ],
-	imports: [],
 	exports: [CrButtonComponent]
 })
 
 export class CrButtonModule {
-	constructor() {
-	}
 }

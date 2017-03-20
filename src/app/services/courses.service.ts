@@ -43,8 +43,6 @@ export class CoursesService {
   private courseListSorce: Subject<CourseItem[]> = new Subject();
   public courseList$: Observable<CourseItem[]> = this.courseListSorce.asObservable().startWith(this.courseList);
 
-  constructor() {}
-
   getCourseItems(): Observable<CourseItem[]> {
     return this.courseList$;
   }
@@ -81,9 +79,9 @@ export class CoursesService {
   updateCourse(id: string, data: CourseItem): Observable<CourseItem> {
     let courseItem: CourseItem;
 
-    this.courseList.forEach((item) => {
+    courseItem = _.find(this.courseList, (item) => {
       if (item.id === id) {
-        courseItem = Object.assign(item, data);
+        return Object.assign(item, data);
       }
     });
 
@@ -93,9 +91,9 @@ export class CoursesService {
   }
 
   removeCourse(id: string): Observable<CourseItem[]> {
-    this.courseList.forEach((item, index) => {
+    _.find(this.courseList, (item, index) => {
       if (item.id === id) {
-        this.courseList.splice(index, 1);
+        return this.courseList.splice(index, 1);
       }
     });
 

@@ -35,8 +35,6 @@ import { CommonModule } from '@angular/common';
       FormsModule,
       ReactiveFormsModule,
       CommonModule
-    ],
-    declarations: [],
-    providers: [],
+    ]
 })
 export class SharedModule { }

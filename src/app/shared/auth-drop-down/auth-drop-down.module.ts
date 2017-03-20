@@ -14,6 +14,4 @@ import { DropdownModule } from 'ng2-bootstrap/dropdown';
 	exports: [AuthDropDownComponent]
 })
 export class AuthDropDownModule {
-	constructor() {
-	}
 }

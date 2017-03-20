@@ -16,9 +16,7 @@ import { HomeComponent } from './home.component';
   imports: [
     RouterModule.forChild(homeRoutes),
     SharedModule
-  ],
-  providers: []
+  ]
 })
 export class HomeModule {
-  constructor() {}
 }

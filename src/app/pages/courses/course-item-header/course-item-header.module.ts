@@ -11,10 +11,8 @@ import { CourseItemHeaderComponent } from './course-item-header.component';
   ],
   declarations: [
     CourseItemHeaderComponent
-  ],
-  providers: [],
+  ]
 })
 
 export class CourseItemHeaderModule {
-  constructor() {}
 }

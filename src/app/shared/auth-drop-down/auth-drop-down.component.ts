@@ -1,7 +1,6 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { UserInfo } from '../../models/user.model';
 
 @Component({
 	selector: 'cr-auth-drop-down',
@@ -11,13 +10,9 @@ import { UserInfo } from '../../models/user.model';
 	encapsulation: ViewEncapsulation.None
 })
 
-export class AuthDropDownComponent implements OnInit {
-  userInfo: UserInfo;
-
+export class AuthDropDownComponent {
   constructor(private authService: AuthService, private router: Router) {
 	}
-
-  ngOnInit() {}
 
   isLogin(): boolean {
     return this.authService.IsAuthenticated();

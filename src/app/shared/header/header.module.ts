@@ -20,6 +20,4 @@ import { IsAuthorizedModule } from './../is-authorized';
 })
 
 export class HeaderModule {
-	constructor() {
-	}
 }

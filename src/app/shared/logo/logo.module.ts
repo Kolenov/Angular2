@@ -8,6 +8,4 @@ import { RouterModule } from '@angular/router';
 	exports: [LogoComponent]
 })
 export class LogoModule {
-	constructor() {
-	}
 }

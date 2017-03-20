@@ -4,7 +4,6 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
   selector: 'cr-course-item-header',
   templateUrl: 'course-item-header.html',
   styleUrls: [ './course-item-header.scss' ],
-  providers: [],
   encapsulation: ViewEncapsulation.None
 })
 
@@ -12,9 +11,6 @@ export class CourseItemHeaderComponent {
   @Input() public courseName: string;
   @Input() public courseDuration: number;
   @Input() public courseDate: Date;
-
-  constructor() {
-  }
 
   // formatTime(duration) {
   //   const durationTime = parseInt(duration, 10);

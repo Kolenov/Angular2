@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
   selector: 'cr-course-add',
   templateUrl: 'course-add.html',
   styleUrls: [ './course-add.scss' ],
-  providers: [],
   encapsulation: ViewEncapsulation.None
 })
 

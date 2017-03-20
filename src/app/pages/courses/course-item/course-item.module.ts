@@ -17,10 +17,8 @@ import { SharedModule } from '../../../shared';
   ],
   declarations: [
     CourseItemComponent
-  ],
-  providers: [],
+  ]
 })
 
 export class CourseItemModule {
-  constructor() {}
 }

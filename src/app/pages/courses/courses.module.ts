@@ -30,5 +30,4 @@ import { SharedModule } from '../../shared';
 })
 
 export class CoursesModule {
-  constructor() {}
 }

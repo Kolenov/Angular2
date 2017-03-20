@@ -11,10 +11,8 @@ import { SharedModule } from '../../../shared';
   ],
   declarations: [
     CourseAddComponent
-  ],
-  providers: [],
+  ]
 })
 
 export class CourseAddModule {
-  constructor() {}
 }

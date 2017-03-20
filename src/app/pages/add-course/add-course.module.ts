@@ -16,9 +16,7 @@ import { AddCourseComponent } from './add-course.component';
   imports: [
     RouterModule.forChild(addCourseRoutes),
     SharedModule
-  ],
-  providers: []
+  ]
 })
 export class AddCourseModule {
-  constructor() {}
 }
