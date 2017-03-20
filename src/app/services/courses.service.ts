@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CourseItem } from '../models/course-item.model';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 
 @Injectable()
@@ -40,10 +40,13 @@ export class CoursesService {
     'software like Aldus PageMaker including versions of Lorem Ipsum.'
   }];
 
+  private courseListSorce: Subject<CourseItem[]> = new Subject();
+  public courseList$: Observable<CourseItem[]> = this.courseListSorce.asObservable().startWith(this.courseList);
+
   constructor() {}
 
   getCourseItems(): Observable<CourseItem[]> {
-    return Observable.of(this.courseList);
+    return this.courseList$;
   }
 
   generateId(): string {
@@ -61,31 +64,30 @@ export class CoursesService {
 
     this.courseList.push(newCourse);
 
+    this.courseListSorce.next(this.courseList);
+
     return Observable.of(newCourse);
   }
 
   getCourse(id: string): Observable<CourseItem> {
     let course: CourseItem;
+    const courseId = { id };
 
-    this.courseList.forEach((item) => {
-      if (item.id === id) {
-        course = item;
-      }
-    });
+    course = _.find( this.courseList, courseId);
 
     return Observable.of(course);
   }
 
-  updateCourse(id: string, data: CourseItem): Observable<CourseItem> {
-    let updatedCourseList: CourseItem;
-
+  updateCourse(id: string, data: CourseItem): Observable<{}> {
     this.courseList.forEach((item) => {
       if (item.id === id) {
-        updatedCourseList = Object.assign(item, data);
+        Object.assign(item, data);
       }
     });
 
-    return Observable.of(updatedCourseList);
+    this.courseListSorce.next(this.courseList);
+
+    return Observable.of(this.courseList);
   }
 
   removeCourse(id: string): Observable<CourseItem[]> {
@@ -94,6 +96,8 @@ export class CoursesService {
         this.courseList.splice(index, 1);
       }
     });
+
+    this.courseListSorce.next(this.courseList);
 
     return Observable.of(this.courseList);
   }

@@ -14,25 +14,25 @@ import { UserInfo } from '../../models/user.model';
 export class AuthDropDownComponent implements OnInit {
   userInfo: UserInfo;
 
-  constructor(private AuthService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
 	}
 
   ngOnInit() {}
 
   isLogin(): boolean {
-    return this.AuthService.IsAuthenticated();
+    return this.authService.IsAuthenticated();
   }
 
   getUser() {
     if (this.isLogin()) {
-      const userInfo = this.AuthService.getUserInfo();
+      const userInfo = this.authService.getUserInfo();
 
       return userInfo.email;
     }
   }
 
   logout() {
-    this.AuthService.logout();
+    this.authService.logout();
 
     this.router.navigateByUrl('/');
   }

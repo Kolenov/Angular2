@@ -11,7 +11,6 @@ import { CourseSearchModule } from './course-search';
 import { CourseAddModule } from './course-add';
 import { CourseListModule } from './course-list';
 
-import { CoursesService } from '../../services/courses.service';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { SharedModule } from '../../shared';
 
@@ -27,9 +26,6 @@ import { SharedModule } from '../../shared';
     CommonModule,
     SharedModule,
     ModalModule.forRoot()
-  ],
-  providers: [
-    CoursesService
   ]
 })
 

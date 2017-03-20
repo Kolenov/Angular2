@@ -33,9 +33,10 @@ export class EditCourseComponent implements OnInit {
       );
   }
 
-  onSubmit(event): void {
+  submit(event) {
     this.CoursesService.updateCourse(this.model.id, event.value)
       .subscribe((data) => {
+          console.log('--------');
           this.router.navigateByUrl('/courses');
         }
       );
