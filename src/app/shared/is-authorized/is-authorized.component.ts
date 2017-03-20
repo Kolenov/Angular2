@@ -9,9 +9,9 @@ import { AuthService } from '../../services/auth.service';
 	encapsulation: ViewEncapsulation.None
 })
 export class IsAuthorizedComponent {
-	constructor(private AuthService: AuthService) {}
+	constructor(private authService: AuthService) {}
 
   isAuth(): boolean {
-    return this.AuthService.IsAuthenticated();
+    return this.authService.IsAuthenticated();
   }
 }

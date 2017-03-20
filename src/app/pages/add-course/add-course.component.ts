@@ -14,14 +14,14 @@ import { CoursesService } from '../../services/courses.service';
 export class AddCourseComponent implements OnInit {
   public model: CourseItem;
 
-  constructor(private router: Router, private CoursesService: CoursesService) {
+  constructor(private router: Router, private coursesService: CoursesService) {
   }
 
   public ngOnInit() {
   }
 
   onSubmit(event): void {
-    this.CoursesService.createCourse(event.value)
+    this.coursesService.createCourse(event.value)
       .subscribe((data) => {
           this.router.navigateByUrl('/courses');
         }

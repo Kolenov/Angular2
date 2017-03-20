@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditCourseComponent implements OnInit {
   public model: CourseItem;
 
-  constructor(private router: Router, private routeParams: ActivatedRoute, private CoursesService: CoursesService) {
+  constructor(private router: Router, private routeParams: ActivatedRoute, private coursesService: CoursesService) {
   }
 
   public ngOnInit() {
@@ -26,7 +26,7 @@ export class EditCourseComponent implements OnInit {
   }
 
   getCourse(id: string): void {
-    this.CoursesService.getCourse(id)
+    this.coursesService.getCourse(id)
       .subscribe((data) => {
           this.model = data;
         }
@@ -34,9 +34,8 @@ export class EditCourseComponent implements OnInit {
   }
 
   submit(event) {
-    this.CoursesService.updateCourse(this.model.id, event.value)
+    this.coursesService.updateCourse(this.model.id, event.value)
       .subscribe((data) => {
-          console.log('--------');
           this.router.navigateByUrl('/courses');
         }
       );

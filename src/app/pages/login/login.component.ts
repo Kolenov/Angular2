@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
-  constructor(private AuthService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   public ngOnInit() {}
 
   onSubmit(event) {
-    this.AuthService.login(event.value);
+    this.authService.login(event.value);
 
     this.router.navigateByUrl('/courses');
   }
