@@ -8,23 +8,24 @@ import { ModalDirective } from 'ng2-bootstrap';
 	encapsulation: ViewEncapsulation.None
 })
 export class CrModalComponent implements OnChanges {
-  @ViewChild('confirmDeleteCourseModal') public confirmDeleteCourseModal: ModalDirective;
+  @ViewChild('modalWindow') public modalWindow: ModalDirective;
 
   @Input() title: string;
+  @Input() modal: string;
   @Input() show: boolean;
   @Input() hide: boolean;
 
   ngOnChanges(): void {
     if (this.show) {
-      this.confirmDeleteCourseModal.show();
+      this.modalWindow.show();
     }
 
     if (this.hide) {
-      this.confirmDeleteCourseModal.hide();
+      this.modalWindow.hide();
     }
   }
 
   hideModal(): void {
-    this.confirmDeleteCourseModal.hide();
+    this.modalWindow.hide();
   }
 }
