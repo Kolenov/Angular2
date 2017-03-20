@@ -10,7 +10,6 @@ import { NoContentModule } from './no-content';
 import { CrButtonModule } from './button';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule }  from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -33,7 +32,6 @@ import { CommonModule } from '@angular/common';
       IsAuthorizedModule,
       NoContentModule,
       CrButtonModule,
-      BrowserModule,
       FormsModule,
       ReactiveFormsModule,
       CommonModule
