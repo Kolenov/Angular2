@@ -14,19 +14,19 @@ export class AuthDropDownComponent {
   constructor(private authService: AuthService, private router: Router) {
 	}
 
-  isLogin(): boolean {
+  isLoggedIn(): boolean {
     return this.authService.IsAuthenticated();
   }
 
-  getUser() {
-    if (this.isLogin()) {
+  getUser(): string {
+    if (this.isLoggedIn()) {
       const userInfo = this.authService.getUserInfo();
 
       return userInfo.email;
     }
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
 
     this.router.navigateByUrl('/');

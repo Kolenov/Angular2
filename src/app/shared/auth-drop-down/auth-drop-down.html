@@ -3,13 +3,13 @@
     Menu<span class="caret"></span>
   </button>
   <ul dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="single-button">
-    <li role="menuitem" *ngIf="!isLogin()">
+    <li role="menuitem" *ngIf="!isLoggedIn()">
       <a class="dropdown-item" [routerLink]="'login'" routerLinkActive="active">Login</a>
     </li>
-    <li role="menuitem" *ngIf="isLogin()">
+    <li role="menuitem" *ngIf="isLoggedIn()">
       <div class="dropdown-item">{{ getUser() }}</div>
     </li>
-    <li role="menuitem" *ngIf="isLogin()">
+    <li role="menuitem" *ngIf="isLoggedIn()">
       <a class="dropdown-item" (click)="logout()">Logout</a>
     </li>
   </ul>

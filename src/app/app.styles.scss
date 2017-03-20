@@ -6,3 +6,7 @@ html, body{
 a.active {
   background-color: gray;
 }
+
+.main-container {
+  min-height: calc(100vh - 150px);
+}

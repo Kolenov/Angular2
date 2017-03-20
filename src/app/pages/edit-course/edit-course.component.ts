@@ -30,7 +30,7 @@ export class EditCourseComponent implements OnInit, OnDestroy {
     ));
   }
 
-  submit(event: NgForm): void {
+  onSubmit(event: NgForm): void {
     this.subscription.push(this.coursesService.updateCourse(this.model.id, event.value)
       .subscribe(() => {
           this.router.navigateByUrl('/courses');

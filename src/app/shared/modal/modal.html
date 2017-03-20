@@ -1,0 +1,29 @@
+<!--<button-->
+  <!--[class]="getComponentClasses()"-->
+  <!--[type]="type"-->
+  <!--(click)="clickHandler()">-->
+  <!--<ng-content></ng-content>-->
+<!--</button>-->
+
+<div
+  bsModal
+  #confirmDeleteCourseModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title pull-left">{{title}}</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

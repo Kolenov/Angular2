@@ -1,8 +1,7 @@
-import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { CourseItem } from '../../models/course-item.model';
 import { CoursesService } from '../../services/courses.service';
 import { Observable } from 'rxjs';
-import { ModalDirective } from 'ng2-bootstrap';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,8 +14,8 @@ import { Router } from '@angular/router';
 export class CoursesComponent implements OnInit {
   public courseList$: Observable<CourseItem[]>;
   public courseId: string;
-
-  @ViewChild('confirmDeleteCourseModal') public confirmDeleteCourseModal: ModalDirective;
+  public showModal: boolean;
+  public hideModal: boolean;
 
   constructor(private coursesService: CoursesService, private router: Router) {  }
 
@@ -28,23 +27,25 @@ export class CoursesComponent implements OnInit {
     console.log('search', search);
   }
 
-  hideConfirmModal(): void {
-    this.confirmDeleteCourseModal.hide();
+  changeVisibleModal(hide, show): void {
+    this.hideModal = hide;
+    this.showModal = show;
   }
 
-  showConfirmModal(): void {
-    this.confirmDeleteCourseModal.show();
+  hideConfirmModal(): void {
+    this.changeVisibleModal(true, false);
   }
 
   deleteCourse(): void {
-    this.hideConfirmModal();
-    this.courseList$ = this.coursesService.removeCourse(this.courseId);
+    this.coursesService.removeCourse(this.courseId);
+
+    this.changeVisibleModal(true, false);
   }
 
   onDelete(id: string): void {
     this.courseId = id;
 
-    this.showConfirmModal();
+    this.changeVisibleModal(false, true);
   }
 
   onEdit(id: string): void {
