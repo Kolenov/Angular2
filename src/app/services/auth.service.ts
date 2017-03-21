@@ -20,7 +20,7 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(this.userInfo));
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('user');
   }
 
