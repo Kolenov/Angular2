@@ -26,24 +26,20 @@ export class CoursesComponent implements OnInit {
     console.log('search', search);
   }
 
-  changeVisibleModal(isShow): void {
-    this.isShowModal = isShow;
-  }
-
   hideConfirmModal(): void {
-    this.changeVisibleModal(false);
+    this.hideModal();
   }
 
   deleteCourse(): void {
     this.coursesService.removeCourse(this.courseId);
 
-    this.changeVisibleModal(false);
+    this.hideModal();
   }
 
   onDelete(id: string): void {
     this.courseId = id;
 
-    this.changeVisibleModal(true);
+    this.showModal();
   }
 
   onEdit(id: string): void {
@@ -51,6 +47,10 @@ export class CoursesComponent implements OnInit {
   }
 
   hideModal(): void {
-    this.changeVisibleModal(false);
+    this.isShowModal = false;
+  }
+
+  showModal(): void {
+    this.isShowModal = true;
   }
 }
