@@ -15,7 +15,6 @@ export class CoursesComponent implements OnInit {
   public courseList$: Observable<CourseItem[]>;
   public courseId: string;
   public isShowModal: boolean;
-  public isHideModal: boolean;
 
   constructor(private coursesService: CoursesService, private router: Router) {  }
 
@@ -27,34 +26,31 @@ export class CoursesComponent implements OnInit {
     console.log('search', search);
   }
 
-  changeVisibleModal(hide, show): void {
-    this.isHideModal = hide;
-    this.isShowModal = show;
+  changeVisibleModal(isShow): void {
+    this.isShowModal = isShow;
   }
 
   hideConfirmModal(): void {
-    this.changeVisibleModal(true, false);
+    this.changeVisibleModal(false);
   }
 
   deleteCourse(): void {
     this.coursesService.removeCourse(this.courseId);
 
-    this.changeVisibleModal(true, false);
+    this.changeVisibleModal(false);
   }
 
   onDelete(id: string): void {
     this.courseId = id;
 
-    this.changeVisibleModal(false, true);
+    this.changeVisibleModal(true);
   }
 
   onEdit(id: string): void {
     this.router.navigateByUrl(`/edit-course/${ id }`);
   }
 
-  hideModal(isHide: boolean): void {
-    if (isHide) {
-      this.changeVisibleModal(true, false);
-    }
+  hideModal(): void {
+    this.changeVisibleModal(false);
   }
 }

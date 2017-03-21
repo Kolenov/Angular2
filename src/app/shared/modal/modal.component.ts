@@ -12,23 +12,18 @@ export class CrModalComponent implements OnChanges {
 
   @Input() title: string;
   @Input() modal: string;
-  @Input() show: boolean;
-  @Input() hide: boolean;
-  @Output() onHideModal: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() isShow: boolean;
+  @Output() onHideModal: EventEmitter<void> = new EventEmitter<void>();
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['show'].currentValue) {
+    if (changes['isShow'].currentValue) {
       this.modalWindow.show();
-    }
-
-    if (changes['hide'].currentValue) {
+    } else {
       this.modalWindow.hide();
     }
   }
 
   hideModal(): void {
-    const isHide: boolean = true;
-
-    this.onHideModal.emit(isHide);
+    this.onHideModal.emit();
   }
 }
