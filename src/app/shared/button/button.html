@@ -1,14 +1,6 @@
 <button
-  *ngIf="!routerLink"
   [class]="getComponentClasses()"
   [type]="type"
   (click)="clickHandler()">
-  <ng-content select="[button]"></ng-content>{{text}}
+  <ng-content></ng-content>
 </button>
-
-<a
-  *ngIf="routerLink"
-  [class]="getComponentClasses()"
-  [routerLink]="routerLink">
-  <ng-content select="[link]"></ng-content>
-</a>

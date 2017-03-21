@@ -5,6 +5,7 @@ export * from './navbar';
 export * from './auth-drop-down';
 export * from './no-content';
 export * from './button';
+export * from './button-link';
 export * from './is-authorized';
 export * from './modal';
 export * from './shared.module';

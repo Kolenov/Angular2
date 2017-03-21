@@ -39,8 +39,10 @@ export class EditCourseComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.forEach((item) => {
-      item.unsubscribe();
-    });
+    if (this.subscription.length) {
+      this.subscription.forEach((item) => {
+        item.unsubscribe();
+      });
+    }
   }
 }

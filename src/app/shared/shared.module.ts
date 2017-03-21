@@ -8,6 +8,7 @@ import { AuthDropDownModule } from './auth-drop-down';
 import { IsAuthorizedModule } from './is-authorized';
 import { NoContentModule } from './no-content';
 import { CrButtonModule } from './button';
+import { CrButtonLinkModule } from './button-link';
 import { CrModalModule } from './modal';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -34,6 +35,7 @@ import { CommonModule } from '@angular/common';
       IsAuthorizedModule,
       NoContentModule,
       CrButtonModule,
+      CrButtonLinkModule,
       CrModalModule,
       FormsModule,
       ReactiveFormsModule,
