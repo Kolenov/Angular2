@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CourseItem } from '../models/course-item.model';
+import { CourseItem } from '../models';
 import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 

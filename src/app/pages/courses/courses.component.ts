@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { CourseItem } from '../../models/course-item.model';
-import { CoursesService } from '../../services/courses.service';
+import { CourseItem } from '../../models';
+import { CoursesService } from '../../services';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 

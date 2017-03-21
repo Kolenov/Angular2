@@ -10,7 +10,7 @@ import { CoursesComponent } from './courses.component';
 import { CourseSearchModule } from './course-search';
 import { CourseAddModule } from './course-add';
 import { CourseListModule } from './course-list';
-import { CrModalModule } from '../../shared/modal';
+import { CrModalModule } from '../../shared';
 
 // import { ModalModule } from 'ng2-bootstrap/modal';
 import { SharedModule } from '../../shared';

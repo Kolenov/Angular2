@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
-import { CoursesService } from '../../services/courses.service';
-import { CourseItem } from '../../models/course-item.model';
+import { CoursesService } from '../../services';
+import { CourseItem } from '../../models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
