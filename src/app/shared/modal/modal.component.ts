@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input, ViewChild, OnChanges } from '@angular/core';
+import { Component, ViewEncapsulation, Input, ViewChild, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
@@ -14,18 +14,21 @@ export class CrModalComponent implements OnChanges {
   @Input() modal: string;
   @Input() show: boolean;
   @Input() hide: boolean;
+  @Output() onHideModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  ngOnChanges(): void {
-    if (this.show) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['show'].currentValue) {
       this.modalWindow.show();
     }
 
-    if (this.hide) {
+    if (changes['hide'].currentValue) {
       this.modalWindow.hide();
     }
   }
 
   hideModal(): void {
-    this.modalWindow.hide();
+    const isHide: boolean = true;
+
+    this.onHideModal.emit(isHide);
   }
 }

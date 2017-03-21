@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 export class CoursesComponent implements OnInit {
   public courseList$: Observable<CourseItem[]>;
   public courseId: string;
-  public showModal: boolean;
-  public hideModal: boolean;
+  public isShowModal: boolean;
+  public isHideModal: boolean;
 
   constructor(private coursesService: CoursesService, private router: Router) {  }
 
@@ -28,8 +28,8 @@ export class CoursesComponent implements OnInit {
   }
 
   changeVisibleModal(hide, show): void {
-    this.hideModal = hide;
-    this.showModal = show;
+    this.isHideModal = hide;
+    this.isShowModal = show;
   }
 
   hideConfirmModal(): void {
@@ -50,5 +50,11 @@ export class CoursesComponent implements OnInit {
 
   onEdit(id: string): void {
     this.router.navigateByUrl(`/edit-course/${ id }`);
+  }
+
+  hideModal(isHide: boolean): void {
+    if (isHide) {
+      this.changeVisibleModal(true, false);
+    }
   }
 }

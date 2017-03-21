@@ -13,9 +13,10 @@
 </div>
 
 <cr-modal
-  [show]="showModal"
-  [hide]="hideModal"
-  title="Do you really want to delete this course?">
+  [show]="isShowModal"
+  [hide]="isHideModal"
+  title="Do you really want to delete this course?"
+  (onHideModal)="hideModal($event)">
   <cr-button
     (onClick)="deleteCourse()"
     [type]="'button'"
