@@ -19,7 +19,7 @@ export class CoursesComponent implements OnInit {
 
   constructor(private coursesService: CoursesService, private router: Router) {  }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.courseList$ = this.coursesService.getCourseItems();
   }
 
