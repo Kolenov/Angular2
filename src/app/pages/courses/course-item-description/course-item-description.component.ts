@@ -8,5 +8,4 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 })
 
 export class CourseItemDescriptionComponent {
-  @Input() public courseDescription: string;
 }
