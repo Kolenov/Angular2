@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CourseSearchComponent } from './course-search.component';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from '../../../shared';
 
 @NgModule({
   imports: [

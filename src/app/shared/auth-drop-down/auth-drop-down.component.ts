@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 	selector: 'cr-auth-drop-down',
 	templateUrl: './auth-drop-down.html',
   styleUrls: [ './auth-drop-down.scss' ],
-	providers: [ AuthService ],
 	encapsulation: ViewEncapsulation.None
 })
 

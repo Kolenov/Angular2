@@ -6,7 +6,6 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'cr-login',
   encapsulation: ViewEncapsulation.None,
-  providers: [ AuthService ],
   styleUrls: [ './login.scss' ],
   templateUrl: './login.html'
 })
