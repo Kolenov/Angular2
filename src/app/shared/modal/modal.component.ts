@@ -1,4 +1,13 @@
-import { Component, ViewEncapsulation, Input, ViewChild, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation,
+  Input,
+  ViewChild,
+  OnChanges,
+  SimpleChanges,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
