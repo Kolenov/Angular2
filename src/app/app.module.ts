@@ -31,10 +31,8 @@ import {
   AddCourseModule,
   EditCourseModule
 } from './pages';
-
-import { SharedModule } from './shared/shared.module';
-
-import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared';
+import { CoreModule } from './core';
 
 // Services
 import { AuthService, CoursesService } from './core/services';
