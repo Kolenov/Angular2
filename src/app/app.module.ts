@@ -34,6 +34,8 @@ import {
 
 import { SharedModule } from './shared/shared.module';
 
+import { CoreModule } from './core/core.module';
+
 // Services
 import { AuthService, CoursesService } from './core/services';
 // import { TodoService } from './core/services';
@@ -61,12 +63,11 @@ import { AuthService, CoursesService } from './core/services';
     LoginModule,
     AddCourseModule,
     EditCourseModule,
-    SharedModule
+    SharedModule,
+    CoreModule
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
-		ENV_PROVIDERS,
-    AuthService,
-    CoursesService
+		ENV_PROVIDERS
 		// APP_PROVIDERS
 	]
 })
