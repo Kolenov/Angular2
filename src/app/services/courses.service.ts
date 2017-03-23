@@ -41,10 +41,9 @@ export class CoursesService {
   }];
 
   private courseListSorce: Subject<CourseItem[]> = new Subject();
-  public courseList$: Observable<CourseItem[]> = this.courseListSorce.asObservable().startWith(this.courseList);
 
   getCourseItems(): Observable<CourseItem[]> {
-    return this.courseList$;
+    return this.courseListSorce.asObservable().startWith(this.courseList);
   }
 
   generateId(): string {
