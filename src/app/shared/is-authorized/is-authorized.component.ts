@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AuthService } from '../../services';
+import { AuthService } from '../../core/services';
 
 @Component({
 	selector: 'cr-is-authorized',

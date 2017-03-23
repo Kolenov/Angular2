@@ -35,7 +35,7 @@ import {
 import { SharedModule } from './shared/shared.module';
 
 // Services
-import { AuthService, CoursesService } from './services';
+import { AuthService, CoursesService } from './core/services';
 // import { TodoService } from './core/services';
 
 // Application wide providers

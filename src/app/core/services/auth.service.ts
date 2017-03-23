@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { UserInfo } from '../core/models/user.model';
+import { UserInfo } from '../models/user.model';
 
 @Injectable()
 export class AuthService {
