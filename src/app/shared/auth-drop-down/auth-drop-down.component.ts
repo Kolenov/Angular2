@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../core/services';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
 	selector: 'cr-auth-drop-down',
@@ -9,25 +10,32 @@ import { Router } from '@angular/router';
 	encapsulation: ViewEncapsulation.None
 })
 
-export class AuthDropDownComponent {
-  constructor(private authService: AuthService, private router: Router) {
+export class AuthDropDownComponent implements OnInit, OnDestroy {
+  public userInfo$: Observable<any>;
+  private subscription: Subscription;
+
+  constructor(private authService: AuthService, private router: Router ) {
 	}
+
+  ngOnInit(): void {
+    this.userInfo$ = this.authService.getUserInfo();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   isLoggedIn(): boolean {
     return this.authService.IsAuthenticated();
   }
 
-  getUser(): string {
-    if (this.isLoggedIn()) {
-      const userInfo = this.authService.getUserInfo();
-
-      return userInfo.email;
-    }
-  }
-
   logout(): void {
-    this.authService.logout();
-
-    this.router.navigateByUrl('/');
+    this.subscription = this.authService.logout()
+      .subscribe(() => {
+          this.router.navigateByUrl('/');
+        }
+      );
   }
 }
