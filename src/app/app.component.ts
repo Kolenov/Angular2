@@ -34,8 +34,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.ngZone);
-
     this.subscription.push(this.ngZone.onUnstable
       .subscribe(() => {
         this.startValue = new Date();
