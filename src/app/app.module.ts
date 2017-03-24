@@ -21,7 +21,6 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
-// import { NoContentComponent } from './shared';
 
 // Pages
 import {
@@ -33,15 +32,6 @@ import {
 } from './pages';
 import { SharedModule } from './shared';
 import { CoreModule } from './core';
-
-// Services
-import { AuthService, CoursesService } from './core/services';
-// import { TodoService } from './core/services';
-
-// Application wide providers
-// const APP_PROVIDERS = [
-// 	TodoService
-// ];
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -66,7 +56,6 @@ import { AuthService, CoursesService } from './core/services';
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS
-		// APP_PROVIDERS
 	]
 })
 export class AppModule {
