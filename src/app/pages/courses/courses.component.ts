@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { CourseItem } from '../../models';
-import { CoursesService } from '../../core/services';
+import { CoursesService, LoaderService } from '../../core/services';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -16,10 +16,15 @@ export class CoursesComponent implements OnInit {
   public courseId: string;
   public isShowModal: boolean;
 
-  constructor(private coursesService: CoursesService, private router: Router) {  }
+  constructor(private coursesService: CoursesService, private router: Router, private loaderService: LoaderService) {  }
 
   ngOnInit(): void {
-    this.courseList$ = this.coursesService.getCourseItems();
+    this.loaderService.show();
+
+    this.courseList$ = this.coursesService.getCourseItems()
+      .do(() => {
+        this.loaderService.hide();
+      });
   }
 
   onSearch(search: string): void {

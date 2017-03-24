@@ -1,5 +1,9 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation, OnInit
+} from '@angular/core';
 import { LoaderService } from '../../core/services';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'cr-loader',
@@ -7,7 +11,13 @@ import { LoaderService } from '../../core/services';
   styleUrls: [ './loader.scss' ],
 	encapsulation: ViewEncapsulation.None
 })
-export class LoaderComponent {
+export class LoaderComponent implements OnInit {
+  public isShowLoader$: Observable<boolean>;
+
   constructor(private loaderService: LoaderService) {
 	}
+
+	ngOnInit(): void {
+    this.isShowLoader$ = this.loaderService.getLoader();
+  }
 }

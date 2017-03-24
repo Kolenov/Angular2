@@ -27,6 +27,7 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   startValue: Date;
+
   private subscription: Subscription[] = [];
 
   constructor(private ngZone: NgZone) {

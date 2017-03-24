@@ -43,7 +43,9 @@ export class CoursesService {
   private courseListSorce: Subject<CourseItem[]> = new Subject();
 
   getCourseItems(): Observable<CourseItem[]> {
-    return this.courseListSorce.asObservable().startWith(this.courseList);
+    return this.courseListSorce.asObservable()
+                .startWith(this.courseList)
+                .delay(2000);
   }
 
   generateId(): string {
