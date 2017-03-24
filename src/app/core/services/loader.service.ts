@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
 export class LoaderService {
   private isShowLoaderSorce: Subject<boolean> = new Subject();
 
-  getLoader(): Observable<any> {
+  getLoader(): Observable<boolean> {
     return this.isShowLoaderSorce.asObservable().startWith(false);
   }
 
