@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../../core/services';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -7,9 +7,10 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'cr-login',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: [ './login.scss' ],
-  templateUrl: './login.html'
+  templateUrl: './login.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 
 export class LoginComponent implements OnDestroy {

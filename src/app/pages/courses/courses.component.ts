@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CourseItem } from '../../models';
 import { CoursesService, LoaderService } from '../../core/services';
 import { Observable } from 'rxjs';
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'cr-courses',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrls: [ './courses.scss' ],
   templateUrl: './courses.html',
@@ -16,7 +17,10 @@ export class CoursesComponent implements OnInit {
   public courseId: string;
   public isShowModal: boolean;
 
-  constructor(private coursesService: CoursesService, private router: Router, private loaderService: LoaderService) {  }
+  constructor(private coursesService: CoursesService,
+              private router: Router,
+              private loaderService: LoaderService,
+              private ref: ChangeDetectorRef) {  }
 
   ngOnInit(): void {
     this.loaderService.show();
@@ -38,11 +42,13 @@ export class CoursesComponent implements OnInit {
   deleteCourse(): void {
     this.loaderService.show();
 
+    this.hideModal();
+
     this.coursesService.removeCourse(this.courseId)
       .do(() => {
-        this.loaderService.hide();
+        this.ref.markForCheck();
 
-        this.hideModal();
+        this.loaderService.hide();
       });
   }
 

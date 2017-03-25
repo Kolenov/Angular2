@@ -1,9 +1,10 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
 	selector: 'cr-button-link',
 	templateUrl: './button-link.html',
   styleUrls: [ './button-link.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None
 })
 export class CrButtonLinkComponent {

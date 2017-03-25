@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../../core/services';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -7,6 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 	selector: 'cr-auth-drop-down',
 	templateUrl: './auth-drop-down.html',
   styleUrls: [ './auth-drop-down.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None
 })
 

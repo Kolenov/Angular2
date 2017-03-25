@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CoursesService } from '../../core/services';
 import { CourseItem } from '../../models';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,9 +7,10 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'cr-edit-course',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: [ './edit-course.scss' ],
-  templateUrl: './edit-course.html'
+  templateUrl: './edit-course.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 
 export class EditCourseComponent implements OnInit, OnDestroy {

@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
   NgZone,
   OnInit,
-  OnDestroy
+  OnDestroy, ChangeDetectionStrategy
 } from '@angular/core';
 import { AppState } from './app.service';
 import { Subscription } from 'rxjs';
@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs';
  */
 @Component({
 	selector: 'cr-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	styles: [
 		require('./styles/vendors.scss'),

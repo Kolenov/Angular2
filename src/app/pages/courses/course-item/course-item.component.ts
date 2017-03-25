@@ -1,10 +1,14 @@
-import { Component, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
+import {
+  Component, ViewEncapsulation, Input, EventEmitter, Output, ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 import { CourseItem } from '../../../models';
 
 @Component({
   selector: 'cr-course-item',
   templateUrl: 'course-item.html',
   styleUrls: [ './course-item.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 

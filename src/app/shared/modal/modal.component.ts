@@ -6,7 +6,7 @@ import {
   OnChanges,
   SimpleChanges,
   Output,
-  EventEmitter
+  EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
 import { ModalDirective } from 'ng2-bootstrap';
 
@@ -14,6 +14,7 @@ import { ModalDirective } from 'ng2-bootstrap';
 	selector: 'cr-modal',
 	templateUrl: './modal.html',
   styleUrls: [ './modal.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None
 })
 export class CrModalComponent implements OnChanges {
@@ -23,6 +24,8 @@ export class CrModalComponent implements OnChanges {
   @Input() modal: string;
   @Input() isShow: boolean;
   @Output() onHideModal: EventEmitter<void> = new EventEmitter<void>();
+
+  constructor(private ref: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['isShow'].currentValue) {
@@ -34,5 +37,7 @@ export class CrModalComponent implements OnChanges {
 
   hideModal(): void {
     this.onHideModal.emit();
+
+    this.ref.markForCheck();
   }
 }

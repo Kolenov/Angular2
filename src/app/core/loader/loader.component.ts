@@ -1,6 +1,6 @@
 import {
   Component,
-  ViewEncapsulation, OnInit
+  ViewEncapsulation, OnInit, ChangeDetectionStrategy
 } from '@angular/core';
 import { LoaderService } from '../../core/services';
 import { Observable } from 'rxjs';
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 	selector: 'cr-loader',
 	templateUrl: './loader.html',
   styleUrls: [ './loader.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None
 })
 export class LoaderComponent implements OnInit {
