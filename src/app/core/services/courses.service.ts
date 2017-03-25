@@ -100,6 +100,6 @@ export class CoursesService {
 
     this.courseListSorce.next(this.courseList);
 
-    return Observable.of(this.courseList);
+    return Observable.of(this.courseList).delay(2000);
   }
 }

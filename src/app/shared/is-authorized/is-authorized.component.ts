@@ -1,5 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { AuthService } from '../../core/services';
+import { UserInfo } from '../../models';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'cr-is-authorized',
@@ -7,10 +9,12 @@ import { AuthService } from '../../core/services';
   styleUrls: [ './is-authorized.scss' ],
 	encapsulation: ViewEncapsulation.None
 })
-export class IsAuthorizedComponent {
-	constructor(private authService: AuthService) {}
+export class IsAuthorizedComponent implements OnInit {
+  public userInfo$: Observable<UserInfo>;
 
-  isAuth(): boolean {
-    return this.authService.IsAuthenticated();
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.userInfo$ = this.authService.getUserInfo();
   }
 }

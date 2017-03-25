@@ -17,7 +17,7 @@ export class AuthService {
                 .startWith(JSON.parse(localStorage.getItem('user')));
   }
 
-  login(data): Observable<UserInfo> {
+  login(data: UserInfo): Observable<UserInfo> {
     this.userInfo = {
       id: this.generateId(),
       token: 'fake-jwt-token',
@@ -28,7 +28,7 @@ export class AuthService {
 
     this.userInfoSource.next(this.userInfo);
 
-    return Observable.of(this.userInfo);
+    return Observable.of(this.userInfo).delay(2000);
   }
 
   logout(): Observable<boolean> {
@@ -37,9 +37,5 @@ export class AuthService {
     this.userInfoSource.next();
 
     return Observable.of(true);
-  }
-
-  IsAuthenticated(): boolean {
-    return !!localStorage.getItem('user');
   }
 }

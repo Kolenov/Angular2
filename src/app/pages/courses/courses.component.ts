@@ -36,9 +36,14 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourse(): void {
-    this.coursesService.removeCourse(this.courseId);
+    this.loaderService.show();
 
-    this.hideModal();
+    this.coursesService.removeCourse(this.courseId)
+      .do(() => {
+        this.loaderService.hide();
+
+        this.hideModal();
+      });
   }
 
   onDelete(id: string): void {

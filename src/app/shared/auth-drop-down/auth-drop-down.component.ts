@@ -27,10 +27,6 @@ export class AuthDropDownComponent implements OnInit, OnDestroy {
     }
   }
 
-  isLoggedIn(): boolean {
-    return this.authService.IsAuthenticated();
-  }
-
   logout(): void {
     this.subscription = this.authService.logout()
       .subscribe(() => {
