@@ -3,7 +3,6 @@ import { CoursesService, LoaderService } from '../../core/services';
 import { CourseItem } from '../../models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'cr-edit-course',

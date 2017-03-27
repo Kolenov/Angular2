@@ -7,7 +7,7 @@
         <cr-navbar></cr-navbar>
       </cr-is-authorized>
 
-      <cr-auth-drop-down class="main-navbar__auth-panel"></cr-auth-drop-down>
+      <cr-auth-drop-down [userInfo]="userInfo$ | async" class="main-navbar__auth-panel"></cr-auth-drop-down>
     </div>
 	</div>
 </nav>

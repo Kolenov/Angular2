@@ -1,4 +1,6 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { AuthService } from '../../core/services';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'cr-header',
@@ -7,5 +9,13 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/
   changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  public userInfo$: Observable<any>;
+
+  constructor(private authService: AuthService ) {
+  }
+
+  ngOnInit(): void {
+    this.userInfo$ = this.authService.getUserInfo();
+  }
 }

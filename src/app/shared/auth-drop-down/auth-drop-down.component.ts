@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy, ChangeDetectionStrategy, Input } from '@angular/core';
 import { AuthService } from '../../core/services';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { CourseItem } from '../../models';
 
 @Component({
 	selector: 'cr-auth-drop-down',
@@ -11,16 +12,12 @@ import { Observable, Subscription } from 'rxjs';
 	encapsulation: ViewEncapsulation.None
 })
 
-export class AuthDropDownComponent implements OnInit, OnDestroy {
-  public userInfo$: Observable<any>;
+export class AuthDropDownComponent implements OnDestroy {
+  @Input() public userInfo: CourseItem;
   private subscription: Subscription;
 
   constructor(private authService: AuthService, private router: Router ) {
 	}
-
-  ngOnInit(): void {
-    this.userInfo$ = this.authService.getUserInfo();
-  }
 
   ngOnDestroy(): void {
     if (this.subscription) {
