@@ -1,4 +1,6 @@
-import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy
+} from '@angular/core';
 import { CourseItem } from '../../models';
 import { CoursesService, LoaderService } from '../../core/services';
 import { Observable } from 'rxjs';
@@ -19,8 +21,7 @@ export class CoursesComponent implements OnInit {
 
   constructor(private coursesService: CoursesService,
               private router: Router,
-              private loaderService: LoaderService,
-              private ref: ChangeDetectorRef) {  }
+              private loaderService: LoaderService) {  }
 
   ngOnInit(): void {
     this.loaderService.show();
@@ -46,8 +47,6 @@ export class CoursesComponent implements OnInit {
 
     this.coursesService.removeCourse(this.courseId)
       .do(() => {
-        this.ref.markForCheck();
-
         this.loaderService.hide();
       });
   }

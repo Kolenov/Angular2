@@ -1,6 +1,5 @@
 import {
-  Component, ViewEncapsulation, Input, Output, EventEmitter, ChangeDetectionStrategy,
-  ChangeDetectorRef
+  Component, ViewEncapsulation, Input, Output, EventEmitter, ChangeDetectionStrategy
 } from '@angular/core';
 import { CourseItem } from '../../../models';
 
@@ -8,7 +7,7 @@ import { CourseItem } from '../../../models';
   selector: 'cr-course-list',
   templateUrl: 'course-list.html',
   styleUrls: [ './course-list.scss' ],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 
@@ -17,15 +16,11 @@ export class CourseListComponent {
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
   @Output() onEdit: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private ref: ChangeDetectorRef) {}
-
   editCourse(id: number): void {
     this.onEdit.emit(id);
   }
 
   deleteCourse(id: number): void {
     this.onDelete.emit(id);
-
-    this.ref.markForCheck();
   }
 }

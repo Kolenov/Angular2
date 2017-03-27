@@ -45,7 +45,7 @@ export class CoursesService {
   getCourseItems(): Observable<CourseItem[]> {
     return this.courseListSorce.asObservable()
                 .startWith(this.courseList)
-                .delay(2000);
+                .delay(1000);
   }
 
   generateId(): string {
@@ -98,8 +98,8 @@ export class CoursesService {
       }
     });
 
-    this.courseListSorce.next(this.courseList);
+    this.courseListSorce.next([...this.courseList]);
 
-    return Observable.of(this.courseList).delay(2000);
+    return Observable.of(this.courseList);
   }
 }
