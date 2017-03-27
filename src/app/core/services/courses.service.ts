@@ -63,7 +63,7 @@ export class CoursesService {
 
     this.courseList.push(newCourse);
 
-    this.courseListSorce.next(this.courseList);
+    this.courseListSorce.next([...this.courseList]);
 
     return Observable.of(newCourse);
   }
@@ -86,7 +86,7 @@ export class CoursesService {
       }
     });
 
-    this.courseListSorce.next(this.courseList);
+    this.courseListSorce.next([...this.courseList]);
 
     return Observable.of(courseItem);
   }
