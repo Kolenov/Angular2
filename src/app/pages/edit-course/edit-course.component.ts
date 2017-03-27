@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnInit, OnDestroy, ChangeDetectionStrateg
 import { CoursesService } from '../../core/services';
 import { CourseItem } from '../../models';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -25,7 +25,8 @@ export class EditCourseComponent implements OnInit, OnDestroy {
       .params
       .switchMap((params: CourseItem) => {
         return this.coursesService.getCourse(params['id']);
-      }).subscribe((data) => {
+      })
+      .subscribe((data: CourseItem) => {
         this.model = data;
       }
     ));
@@ -40,10 +41,8 @@ export class EditCourseComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription.length) {
-      this.subscription.forEach((item) => {
-        item.unsubscribe();
-      });
-    }
+    this.subscription.forEach((item: Subscription) => {
+      item.unsubscribe();
+    });
   }
 }

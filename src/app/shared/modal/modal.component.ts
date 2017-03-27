@@ -21,7 +21,6 @@ export class CrModalComponent implements OnChanges {
   @ViewChild('modalWindow') public modalWindow: ModalDirective;
 
   @Input() title: string;
-  @Input() modal: string;
   @Input() isShow: boolean;
   @Output() onHideModal: EventEmitter<void> = new EventEmitter<void>();
 

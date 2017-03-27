@@ -88,7 +88,7 @@ export class CoursesService {
 
     this.courseListSorce.next([...this.courseList]);
 
-    return Observable.of(courseItem);
+    return Observable.of(courseItem).delay(1000);
   }
 
   removeCourse(id: string): Observable<CourseItem[]> {

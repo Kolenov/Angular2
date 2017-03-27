@@ -36,10 +36,6 @@ export class CoursesComponent implements OnInit {
     console.log('search', search);
   }
 
-  hideConfirmModal(): void {
-    this.hideModal();
-  }
-
   deleteCourse(): void {
     this.loaderService.show();
 
