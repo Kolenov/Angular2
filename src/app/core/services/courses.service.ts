@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CourseItem } from '../../models';
+import { HelperService } from './helper.service';
 import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 
@@ -42,19 +43,18 @@ export class CoursesService {
 
   private courseListSorce: Subject<CourseItem[]> = new Subject();
 
+  constructor(private helperService: HelperService) {
+  }
+
   getCourseItems(): Observable<CourseItem[]> {
     return this.courseListSorce.asObservable()
                 .startWith(this.courseList)
                 .delay(1000);
   }
 
-  generateId(): string {
-    return _.uniqueId('id_');
-  }
-
   createCourse(data: CourseItem): Observable<CourseItem> {
     const newCourse: CourseItem = {
-      id: this.generateId(),
+      id: this.helperService.generateId('id_'),
       name: data.name,
       duration: data.duration,
       date: new Date(),

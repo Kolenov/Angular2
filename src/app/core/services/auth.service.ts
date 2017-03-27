@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { UserInfo } from '../../models/user.model';
 import { Subject, Observable } from 'rxjs';
+import { HelperService } from './helper.service';
 
 @Injectable()
 export class AuthService {
   private userInfo: UserInfo;
   private userInfoSource: Subject<any> = new Subject();
 
-  generateId(): string {
-    return _.uniqueId('id_');
+  constructor(private helperService: HelperService) {
   }
 
   getUserInfo(): Observable<any> {
@@ -19,7 +19,7 @@ export class AuthService {
 
   login(data: UserInfo): Observable<UserInfo> {
     this.userInfo = {
-      id: this.generateId(),
+      id: this.helperService.generateId('id_'),
       token: 'fake-jwt-token',
       ...data
     };

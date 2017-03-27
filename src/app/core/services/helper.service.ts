@@ -3,7 +3,9 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class HelperService {
-  generateId(): string {
-    return _.uniqueId('id_');
+  generateId(prefix?: string): string {
+    const prfx = prefix || 'id_';
+
+    return _.uniqueId(prfx);
   }
 }
