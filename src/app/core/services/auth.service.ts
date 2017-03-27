@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
 import { UserInfo } from '../../models/user.model';
 import { Subject, Observable } from 'rxjs';
 import { HelperService } from './helper.service';
