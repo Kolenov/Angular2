@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { CoursesService } from '../../core/services';
+import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { CoursesService, LoaderService } from '../../core/services';
 import { CourseItem } from '../../models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
@@ -14,30 +14,34 @@ import { NgForm } from '@angular/forms';
 })
 
 export class EditCourseComponent implements OnInit, OnDestroy {
-  public model: CourseItem;
+  public courseInfo$: Observable<CourseItem>;
   private subscription: Subscription[] = [];
 
-  constructor(private router: Router, private routeParams: ActivatedRoute, private coursesService: CoursesService) {
+  constructor(private router: Router,
+              private routeParams: ActivatedRoute,
+              private coursesService: CoursesService,
+              private loaderService: LoaderService) {
   }
 
   ngOnInit(): void {
-    this.subscription.push(this.routeParams
+    this.loaderService.show();
+
+    this.courseInfo$ = this.routeParams
       .params
       .switchMap((params: CourseItem) => {
         return this.coursesService.getCourse(params['id']);
       })
-      .subscribe((data: CourseItem) => {
-        this.model = data;
-      }
-    ));
+      .do(() => {
+        this.loaderService.hide();
+      });
   }
 
-  onSubmit(event: NgForm): void {
-    this.subscription.push(this.coursesService.updateCourse(this.model.id, event.value)
+  submit(event: CourseItem): void {
+    this.subscription.push(this.coursesService.updateCourse(event.id, event)
       .subscribe(() => {
-          this.router.navigateByUrl('/courses');
-        }
-      ));
+        this.router.navigateByUrl('/courses');
+      })
+    );
   }
 
   ngOnDestroy(): void {

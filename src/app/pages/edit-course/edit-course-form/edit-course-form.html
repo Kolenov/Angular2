@@ -1,0 +1,34 @@
+<form #editCourseForm="ngForm" *ngIf="courseInfo" (ngSubmit)="submit(editCourseForm)">
+  <div class="form-group">
+    <label for="name-course">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name-course"
+      aria-describedby="nameCourse"
+      placeholder="Name Course"
+      [(ngModel)]="courseInfo.name" name="name"
+    >
+  </div>
+  <div class="form-group">
+    <label for="duration-course">Duration</label>
+    <input
+      type="number"
+      class="form-control"
+      id="duration-course"
+      placeholder="Duration Course"
+      [(ngModel)]="courseInfo.duration" name="duration">
+  </div>
+  <div class="form-group">
+    <label for="description-course">Description</label>
+    <textarea
+      class="form-control"
+      id="description-course"
+      placeholder="Description course"
+      rows="6"
+      [(ngModel)]="courseInfo.description" name="description"
+    ></textarea>
+  </div>
+
+  <cr-button type="submit" buttonClass="btn-success" [buttonSize]="'medium'">Save</cr-button>
+</form>

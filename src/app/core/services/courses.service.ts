@@ -74,7 +74,7 @@ export class CoursesService {
 
     course = _.find( this.courseList, courseId);
 
-    return Observable.of(course);
+    return Observable.of(course).delay(500);
   }
 
   updateCourse(id: string, data: CourseItem): Observable<CourseItem> {
@@ -88,7 +88,7 @@ export class CoursesService {
 
     this.courseListSorce.next([...this.courseList]);
 
-    return Observable.of(courseItem).delay(1000);
+    return Observable.of(courseItem);
   }
 
   removeCourse(id: string): Observable<CourseItem[]> {
