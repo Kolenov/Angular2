@@ -8,4 +8,5 @@ export * from './button';
 export * from './button-link';
 export * from './is-authorized';
 export * from './modal';
+export * from './plate-border';
 export * from './shared.module';

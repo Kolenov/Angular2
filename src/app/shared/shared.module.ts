@@ -10,6 +10,7 @@ import { NoContentModule } from './no-content';
 import { CrButtonModule } from './button';
 import { CrButtonLinkModule } from './button-link';
 import { CrModalModule } from './modal';
+import { PlateBorderModule } from './plate-border';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -24,7 +25,8 @@ import { CommonModule } from '@angular/common';
       IsAuthorizedModule,
       NoContentModule,
       CrButtonModule,
-      CrModalModule
+      CrModalModule,
+      PlateBorderModule
     ],
     exports: [
       HeaderModule,
@@ -37,6 +39,7 @@ import { CommonModule } from '@angular/common';
       CrButtonModule,
       CrButtonLinkModule,
       CrModalModule,
+      PlateBorderModule,
       FormsModule,
       ReactiveFormsModule,
       CommonModule

@@ -1,6 +1,5 @@
 import {
-  Component, ViewEncapsulation, Input, EventEmitter, Output, ChangeDetectionStrategy,
-  ChangeDetectorRef
+  Component, ViewEncapsulation, Input, EventEmitter, Output, ChangeDetectionStrategy
 } from '@angular/core';
 import { CourseItem } from '../../../models';
 

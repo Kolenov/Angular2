@@ -1,4 +1,4 @@
-<div class="course-item">
+<div class="course-item" *ngIf="course" cr-plate-border [createdDate]="course.date">
   <div class="course-item__info">
     <cr-course-item-header
       [courseName]="course.name"
