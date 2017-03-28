@@ -19,7 +19,7 @@ export class PlateBorderDirective implements OnInit {
   ngOnInit(): any {
     const currentDate: Date = new Date();
     const freshPeriod: Date = new Date();
-    freshPeriod.setDate(freshPeriod.getDate() - 2);
+    freshPeriod.setDate(freshPeriod.getDate() - 14);
 
     if (this.createdDate > currentDate) {
       this.highlightBorder(borderColor.upcomingCourse);
