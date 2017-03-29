@@ -18,6 +18,7 @@ export class CoursesComponent implements OnInit {
   public courseList$: Observable<CourseItem[]>;
   public courseId: string;
   public isShowModal: boolean;
+  public isPresentCourses: boolean;
 
   constructor(private coursesService: CoursesService,
               private router: Router,
@@ -27,8 +28,10 @@ export class CoursesComponent implements OnInit {
     this.loaderService.show();
 
     this.courseList$ = this.coursesService.getCourseItems()
-      .do(() => {
+      .do((data) => {
         this.loaderService.hide();
+
+        this.isPresentCourses = !!data;
       });
   }
 
