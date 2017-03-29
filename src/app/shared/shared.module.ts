@@ -12,6 +12,7 @@ import { CrButtonLinkModule } from './button-link';
 import { CrModalModule } from './modal';
 import { PlateBorderModule } from './plate-border';
 import { TopRatedModule } from './top-rated';
+import { DurationModule } from './duration';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -28,7 +29,8 @@ import { CommonModule } from '@angular/common';
       CrButtonModule,
       CrModalModule,
       PlateBorderModule,
-      TopRatedModule
+      TopRatedModule,
+      DurationModule
     ],
     exports: [
       HeaderModule,
@@ -43,6 +45,7 @@ import { CommonModule } from '@angular/common';
       CrModalModule,
       PlateBorderModule,
       TopRatedModule,
+      DurationModule,
       FormsModule,
       ReactiveFormsModule,
       CommonModule

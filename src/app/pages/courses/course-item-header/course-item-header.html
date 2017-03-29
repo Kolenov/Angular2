@@ -1,7 +1,7 @@
 <div class="course-item-header">
   <div class="course-item-header__name">{{ courseName | uppercase}}</div>
   <div class="course-item-header__separate">|</div>
-  <div class="course-item-header__duration">{{ courseDuration | date: 'HH:mm:ss' }}</div>
+  <div class="course-item-header__duration">{{ courseDuration | crDuration }}</div>
   <cr-top-rated *ngIf="topRated"></cr-top-rated>
   <div class="course-item-header__date">{{ courseDate | date: "MM/dd/yy" }}</div>
 </div>
