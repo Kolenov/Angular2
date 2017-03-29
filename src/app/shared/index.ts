@@ -11,4 +11,5 @@ export * from './modal';
 export * from './plate-border';
 export * from './top-rated';
 export * from './duration';
+export * from './order-by';
 export * from './shared.module';

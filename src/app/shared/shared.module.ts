@@ -13,6 +13,7 @@ import { CrModalModule } from './modal';
 import { PlateBorderModule } from './plate-border';
 import { TopRatedModule } from './top-rated';
 import { DurationModule } from './duration';
+import { OrderByModule } from './order-by';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -30,7 +31,8 @@ import { CommonModule } from '@angular/common';
       CrModalModule,
       PlateBorderModule,
       TopRatedModule,
-      DurationModule
+      DurationModule,
+      OrderByModule
     ],
     exports: [
       HeaderModule,
@@ -46,6 +48,7 @@ import { CommonModule } from '@angular/common';
       PlateBorderModule,
       TopRatedModule,
       DurationModule,
+      OrderByModule,
       FormsModule,
       ReactiveFormsModule,
       CommonModule
