@@ -11,6 +11,7 @@ import { Component, ViewEncapsulation, Input, ChangeDetectionStrategy } from '@a
 export class CourseItemHeaderComponent {
   @Input() public courseName: string;
   @Input() public courseDuration: number;
+  @Input() public topRated: boolean;
   @Input() public courseDate: Date;
 
   // formatTime(duration) {

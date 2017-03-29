@@ -10,6 +10,7 @@ export class CoursesService {
     id: '1',
     name: 'name 1',
     duration: 5000,
+    topRated: true,
     date: new Date(2018, 0, 1),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
     'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +
@@ -21,6 +22,7 @@ export class CoursesService {
     id: '2',
     name: 'name 2',
     duration: 5000,
+    topRated: false,
     date: new Date(),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
     'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +
@@ -32,6 +34,7 @@ export class CoursesService {
     id: '3',
     name: 'name 3',
     duration: 5000,
+    topRated: false,
     date: new Date(),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
     'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +

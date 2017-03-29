@@ -9,4 +9,5 @@ export * from './button-link';
 export * from './is-authorized';
 export * from './modal';
 export * from './plate-border';
+export * from './top-rated';
 export * from './shared.module';

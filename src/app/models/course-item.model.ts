@@ -4,6 +4,7 @@ export interface CourseItem {
   author?: string;
   name: string;
   duration: number;
+  topRated?: boolean;
   date: Date;
   description: string;
 }
