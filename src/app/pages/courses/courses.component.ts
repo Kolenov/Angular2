@@ -41,7 +41,7 @@ export class CoursesComponent implements OnInit {
       .do((data) => {
         this.loaderService.hide();
 
-        this.isPresentCourses = !!data;
+        this.isPresentCourses = !!data.length;
       });
   }
 
