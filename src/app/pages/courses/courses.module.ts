@@ -7,6 +7,7 @@ import { CourseSearchModule } from './course-search';
 import { CourseAddModule } from './course-add';
 import { CourseListModule } from './course-list';
 import { SharedModule } from '../../shared';
+import { FilterByNamePipe } from '../../shared';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SharedModule } from '../../shared';
     CourseAddModule,
     CourseListModule,
     SharedModule
-  ]
+  ],
+  providers: [FilterByNamePipe]
 })
 
 export class CoursesModule {

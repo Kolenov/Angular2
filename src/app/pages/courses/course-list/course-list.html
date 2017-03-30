@@ -1,6 +1,6 @@
 <div class="course-list">
   <cr-course-item
-    *ngFor="let course of courseList | crOrderBy: 'name'"
+    *ngFor="let course of courseList | crOrderBy: 'date'"
     [course]="course"
     (onEdit)="editCourse($event)"
     (onDelete)="deleteCourse($event)"

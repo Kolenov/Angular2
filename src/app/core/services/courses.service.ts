@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 export class CoursesService {
   private courseList: CourseItem[] = [{
     id: '2',
-    name: 'name 1',
+    name: '1',
     duration: 5000,
     topRated: true,
     date: new Date(),

@@ -3,8 +3,9 @@ import {
 } from '@angular/core';
 import { CourseItem } from '../../models';
 import { CoursesService, LoaderService } from '../../core/services';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { FilterByNamePipe } from '../../shared';
 
 @Component({
   selector: 'cr-courses',
@@ -19,15 +20,24 @@ export class CoursesComponent implements OnInit {
   public courseId: string;
   public isShowModal: boolean;
   public isPresentCourses: boolean;
+  private searchCourseSorce: Subject<string> = new Subject();
 
   constructor(private coursesService: CoursesService,
               private router: Router,
-              private loaderService: LoaderService) {  }
+              private loaderService: LoaderService,
+              private filterByNamePipe: FilterByNamePipe) {  }
 
   ngOnInit(): void {
     this.loaderService.show();
 
-    this.courseList$ = this.coursesService.getCourseItems()
+    this.courseList$ = this.searchCourseSorce
+      .startWith('')
+      .flatMap((query) => {
+        return this.coursesService.getCourseItems()
+          .map((courses) => {
+              return this.filterByNamePipe.transform(courses, query);
+          });
+      })
       .do((data) => {
         this.loaderService.hide();
 
@@ -36,7 +46,9 @@ export class CoursesComponent implements OnInit {
   }
 
   onSearch(search: string): void {
-    console.log('search', search);
+    this.loaderService.show();
+
+    this.searchCourseSorce.next(search);
   }
 
   deleteCourse(): void {

@@ -31,6 +31,6 @@ export class PlateBorderDirective implements OnInit {
   }
 
   private highlightBorder(color: string) {
-    this.el.nativeElement.style.borderColor = color;
+    this.el.nativeElement.style.borderLeftColor = color;
   }
 }
