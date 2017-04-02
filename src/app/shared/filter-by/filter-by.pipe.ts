@@ -6,14 +6,14 @@ import { CourseItem } from '../../models';
 import * as _ from 'lodash';
 
 @Pipe({
-  name: 'crFilterByName',
+  name: 'crFilterBy',
   pure: false
 })
-export class FilterByNamePipe implements PipeTransform {
+export class FilterByPipe implements PipeTransform {
 
-  transform(courses: CourseItem[], value: string) {
+  transform(courses: CourseItem[], field: string, value: string) {
     return _.filter(courses, (el) => {
-      const searchValue = el.name.toLowerCase();
+      const searchValue = el[field].toLowerCase();
 
       return searchValue.indexOf(value) !== -1;
     });

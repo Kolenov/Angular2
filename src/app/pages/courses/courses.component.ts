@@ -5,7 +5,7 @@ import { CourseItem, CourseRaiting } from '../../models';
 import { CoursesService, LoaderService } from '../../core/services';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { FilterByNamePipe } from '../../shared';
+import { FilterByPipe } from '../../shared';
 
 @Component({
   selector: 'cr-courses',
@@ -24,7 +24,7 @@ export class CoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService,
               private router: Router,
               private loaderService: LoaderService,
-              private filterByNamePipe: FilterByNamePipe) {  }
+              private filterByPipe: FilterByPipe) {  }
 
   ngOnInit(): void {
     this.loaderService.show();
@@ -34,7 +34,9 @@ export class CoursesComponent implements OnInit {
       .flatMap((query) => {
         return this.coursesService.getCourseItems()
           .map((courses) => {
-              return this.filterByNamePipe.transform(courses, query);
+            const searchByField = 'name';
+
+            return this.filterByPipe.transform(courses, searchByField, query);
           });
       })
       .do(() => {

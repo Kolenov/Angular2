@@ -12,5 +12,5 @@ export * from './plate-border';
 export * from './top-rated';
 export * from './duration';
 export * from './order-by';
-export * from './filter-by-name';
+export * from './filter-by';
 export * from './shared.module';

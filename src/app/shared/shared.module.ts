@@ -14,7 +14,7 @@ import { PlateBorderModule } from './plate-border';
 import { TopRatedModule } from './top-rated';
 import { DurationModule } from './duration';
 import { OrderByModule } from './order-by';
-import { FilterByNameModule } from './filter-by-name';
+import { FilterByModule } from './filter-by';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -34,7 +34,7 @@ import { CommonModule } from '@angular/common';
       TopRatedModule,
       DurationModule,
       OrderByModule,
-      FilterByNameModule
+      FilterByModule
     ],
     exports: [
       HeaderModule,
@@ -51,7 +51,7 @@ import { CommonModule } from '@angular/common';
       TopRatedModule,
       DurationModule,
       OrderByModule,
-      FilterByNameModule,
+      FilterByModule,
       FormsModule,
       ReactiveFormsModule,
       CommonModule
