@@ -2,7 +2,6 @@ import {
   Pipe,
   PipeTransform
 } from '@angular/core';
-import { CourseItem } from '../../models';
 import * as _ from 'lodash';
 
 @Pipe({
