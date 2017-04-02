@@ -11,7 +11,7 @@ export class PlateBorderDirective implements OnInit {
   constructor(private el: ElementRef) {
   }
 
-  ngOnInit(): any {
+  ngOnInit(): void {
     const currentDate: Date = new Date();
     const freshPeriod: Date = new Date();
 
