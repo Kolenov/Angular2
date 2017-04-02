@@ -11,7 +11,7 @@ import * as _ from 'lodash';
 })
 export class OrderByPipe implements PipeTransform {
 
-  transform(courses: CourseItem[], key: string, typeSorting: string = 'asc'): CourseItem[] {
-    return _.orderBy(courses, key, typeSorting);
+  transform<T>(collection: T, key: string, typeSorting: string = 'asc'): T {
+    return _.orderBy(collection, key, typeSorting);
   }
 }
