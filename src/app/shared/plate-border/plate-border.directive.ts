@@ -1,10 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-
-const borderColor = {
-  freshCourse: '#009d3d',
-  upcomingCourse: '#6BC5D3',
-  oldCourse: '#eeeeee'
-};
+import { BORDER_COLOR, PERIOD_OF_DATE } from './config';
 
 @Directive({
   selector: '[cr-plate-border]'
@@ -19,14 +14,15 @@ export class PlateBorderDirective implements OnInit {
   ngOnInit(): any {
     const currentDate: Date = new Date();
     const freshPeriod: Date = new Date();
-    freshPeriod.setDate(freshPeriod.getDate() - 14);
+
+    freshPeriod.setDate(freshPeriod.getDate() - PERIOD_OF_DATE);
 
     if (this.createdDate > currentDate) {
-      this.highlightBorder(borderColor.upcomingCourse);
+      this.highlightBorder(BORDER_COLOR.upcomingCourse);
     } else if (this.createdDate < currentDate && this.createdDate >= freshPeriod) {
-      this.highlightBorder(borderColor.freshCourse);
+      this.highlightBorder(BORDER_COLOR.freshCourse);
     } else {
-      this.highlightBorder(borderColor.oldCourse);
+      this.highlightBorder(BORDER_COLOR.oldCourse);
     }
   }
 
