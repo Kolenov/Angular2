@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'cr-top-rated',
@@ -7,10 +7,10 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 	encapsulation: ViewEncapsulation.None
 })
 export class TopRatedComponent {
-  starIcon: boolean = false;
+  @Input() topRated: boolean = false;
+  @Output() toggleRaiting: EventEmitter<void> = new EventEmitter<void>();
 
-  changeIcon(): void {
-    this.starIcon = !this.starIcon;
-    console.log('change star');
+  onToggleRaiting(): void {
+    this.toggleRaiting.emit();
   }
 }

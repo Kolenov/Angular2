@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { CourseRaiting } from '../../../models';
 
 @Component({
   selector: 'cr-course-item-header',
@@ -13,4 +14,10 @@ export class CourseItemHeaderComponent {
   @Input() public courseDuration: number;
   @Input() public topRated: boolean;
   @Input() public courseDate: Date;
+  @Input() public id: string;
+  @Output() toggleRaiting: EventEmitter<CourseRaiting> = new EventEmitter<CourseRaiting>();
+
+  onToggleRaiting(): void {
+    this.toggleRaiting.emit({id: this.id, topRated: this.topRated});
+  }
 }

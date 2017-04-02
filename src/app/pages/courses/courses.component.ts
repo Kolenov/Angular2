@@ -1,7 +1,7 @@
 import {
   Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy
 } from '@angular/core';
-import { CourseItem } from '../../models';
+import { CourseItem, CourseRaiting } from '../../models';
 import { CoursesService, LoaderService } from '../../core/services';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -19,7 +19,6 @@ export class CoursesComponent implements OnInit {
   public courseList$: Observable<CourseItem[]>;
   public courseId: string;
   public isShowModal: boolean;
-  public isPresentCourses: boolean;
   private searchCourseSorce: Subject<string> = new Subject();
 
   constructor(private coursesService: CoursesService,
@@ -38,10 +37,8 @@ export class CoursesComponent implements OnInit {
               return this.filterByNamePipe.transform(courses, query);
           });
       })
-      .do((data) => {
+      .do(() => {
         this.loaderService.hide();
-
-        this.isPresentCourses = !!data.length;
       });
   }
 
@@ -57,6 +54,15 @@ export class CoursesComponent implements OnInit {
     this.hideModal();
 
     this.coursesService.removeCourse(this.courseId)
+      .do(() => {
+        this.loaderService.hide();
+      });
+  }
+
+  onToggleRaiting(topRated: CourseRaiting): void {
+    this.loaderService.show();
+
+    this.coursesService.updateRaiting(topRated.id, !topRated.topRated)
       .do(() => {
         this.loaderService.hide();
       });

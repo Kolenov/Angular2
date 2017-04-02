@@ -6,12 +6,12 @@ import { HelperService } from './helper.service';
 @Injectable()
 export class AuthService {
   private userInfo: UserInfo;
-  private userInfoSource: Subject<any> = new Subject();
+  private userInfoSource: Subject<UserInfo> = new Subject();
 
   constructor(private helperService: HelperService) {
   }
 
-  getUserInfo(): Observable<any> {
+  getUserInfo(): Observable<UserInfo> {
     return this.userInfoSource.asObservable()
                 .startWith(JSON.parse(localStorage.getItem('user')));
   }

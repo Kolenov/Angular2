@@ -1,10 +1,12 @@
-<div class="course-item" *ngIf="course" cr-plate-border [createdDate]="course.date">
+<div class="course-item" cr-plate-border [createdDate]="course?.date">
   <div class="course-item__info">
     <cr-course-item-header
+      [id]="course.id"
       [courseName]="course.name"
       [courseDuration]="course.duration"
       [topRated]="course.topRated"
-      [courseDate]="course.date">
+      [courseDate]="course.date"
+      (toggleRaiting)="onToggleRaiting($event)">
     </cr-course-item-header>
 
     <cr-course-item-description>

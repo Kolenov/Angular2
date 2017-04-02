@@ -94,6 +94,20 @@ export class CoursesService {
     return Observable.of(courseItem);
   }
 
+  updateRaiting(id: string, raiting: boolean): Observable<CourseItem> {
+    let courseItem: CourseItem;
+
+    courseItem = _.find(this.courseList, (item) => {
+      if (item.id === id) {
+        return item.topRated = raiting;
+      }
+    });
+
+    this.courseListSorce.next([...this.courseList]);
+
+    return Observable.of(courseItem);
+  }
+
   removeCourse(id: string): Observable<CourseItem[]> {
     _.find(this.courseList, (item, index) => {
       if (item.id === id) {

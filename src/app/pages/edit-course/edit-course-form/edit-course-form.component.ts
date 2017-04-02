@@ -13,7 +13,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EditCourseFormComponent {
   @Input() public courseInfo: CourseItem;
-  @Output() onSubmit: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onSubmit: EventEmitter<CourseItem> = new EventEmitter<CourseItem>();
 
   submit(event: NgForm): void {
     this.onSubmit.emit(Object.assign(this.courseInfo, event.value));

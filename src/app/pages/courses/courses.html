@@ -9,9 +9,8 @@
     [courseList]="courseList$ | async"
     (onEdit)="onEdit($event)"
     (onDelete)="onDelete($event)"
+    (toggleRaiting)="onToggleRaiting($event)"
   ></cr-course-list>
-
-  <div *ngIf="!isPresentCourses">No data. Feel free to add new course.</div>
 </div>
 
 <cr-modal
