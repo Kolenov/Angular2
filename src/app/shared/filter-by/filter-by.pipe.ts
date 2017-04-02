@@ -10,7 +10,7 @@ import * as _ from 'lodash';
 })
 export class FilterByPipe implements PipeTransform {
 
-  transform<T>(collection: T, field: string, value: string): T {
+  transform<T>(collection: T[], field: string, value: string): T[] {
     return _.filter(collection, (el) => {
       const searchValue = el[field].toLowerCase();
 
