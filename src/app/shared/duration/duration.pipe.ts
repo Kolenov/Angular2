@@ -22,8 +22,6 @@ export class DurationPipe implements PipeTransform {
   private formatTime(timestamp: number): string {
     const HH: string = this.datePipe.transform(timestamp, 'HH');
     const mm: string = this.datePipe.transform(timestamp, 'mm');
-    let timeFormat: string;
-    console.log(mm);
 
     if (HH === '00') {
       return `${ mm }min`;
