@@ -2,12 +2,14 @@ import {
   Pipe,
   PipeTransform
 } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Pipe({
   name: 'crDuration',
   pure: false
 })
 export class DurationPipe implements PipeTransform {
+  constructor(private datePipe: DatePipe) {}
 
   transform(value: number): string {
     if (!value) {
@@ -17,25 +19,16 @@ export class DurationPipe implements PipeTransform {
     return this.formatTime(value);
   }
 
-  private formatTime(duration: number): string {
-    const durationTime = duration;
-    const hours = Math.floor(durationTime / 3600);
-    const minutes = Math.floor((durationTime - (hours * 3600)) / 60);
-    let hh;
-    let mm;
+  private formatTime(timestamp: number): string {
+    const HH: string = this.datePipe.transform(timestamp, 'HH');
+    const mm: string = this.datePipe.transform(timestamp, 'mm');
+    let timeFormat: string;
+    console.log(mm);
 
-    if (hours < 10) {
-      hh = `0${ hours }h`;
-    } else {
-      hh = `${ hours }h`;
+    if (HH === '00') {
+      return `${ mm }min`;
     }
 
-    if (minutes < 10) {
-      mm = `0${ minutes }min`;
-    } else {
-      mm = `${ minutes }min`;
-    }
-
-    return `${ hh } ${ mm }`;
+    return `${ HH }h ${ mm }min`;
   }
 }
