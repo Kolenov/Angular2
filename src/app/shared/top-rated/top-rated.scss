@@ -4,15 +4,12 @@
     height: 20px;
     background-position: center;
     background-repeat: no-repeat;
+    background-image: url('./assets/ic_star_border.svg');
     background-size: 100%;
     cursor: pointer;
   }
 
   &__icon-star {
     background-image: url('./assets/ic_star.svg');
-  }
-
-  &__icon-star-border {
-    background-image: url('./assets/ic_star_border.svg');
   }
 }

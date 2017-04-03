@@ -14,10 +14,9 @@ export class CourseItemHeaderComponent {
   @Input() public courseDuration: number;
   @Input() public topRated: boolean;
   @Input() public courseDate: Date;
-  @Input() public id: string;
-  @Output() toggleRaiting: EventEmitter<CourseRaiting> = new EventEmitter<CourseRaiting>();
+  @Output() toggleRaiting: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   onToggleRaiting(): void {
-    this.toggleRaiting.emit({id: this.id, topRated: this.topRated});
+    this.toggleRaiting.emit(this.topRated);
   }
 }

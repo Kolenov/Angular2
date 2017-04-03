@@ -55,19 +55,13 @@ export class CoursesComponent implements OnInit {
 
     this.hideModal();
 
-    this.coursesService.removeCourse(this.courseId)
-      .do(() => {
-        this.loaderService.hide();
-      });
+    this.coursesService.removeCourse(this.courseId);
   }
 
   onToggleRaiting(topRated: CourseRaiting): void {
     this.loaderService.show();
 
-    this.coursesService.updateRaiting(topRated.id, !topRated.topRated)
-      .do(() => {
-        this.loaderService.hide();
-      });
+    this.coursesService.updateRaiting(topRated.id, !topRated.topRated);
   }
 
   onDelete(id: string): void {

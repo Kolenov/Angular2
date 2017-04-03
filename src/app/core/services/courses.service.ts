@@ -98,10 +98,10 @@ export class CoursesService {
     let courseItem: CourseItem;
 
     courseItem = _.find(this.courseList, (item) => {
-      if (item.id === id) {
-        return item.topRated = raiting;
-      }
+      return item.id === id;
     });
+
+    courseItem.topRated = raiting;
 
     this.courseListSorce.next([...this.courseList]);
 
