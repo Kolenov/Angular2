@@ -97,7 +97,7 @@ export class CoursesService {
   updateRaiting(id: string, raiting: boolean): Observable<CourseItem> {
     let courseItem: CourseItem;
 
-    courseItem = _.find(this.courseList, (item) => {
+    courseItem = _.find(this.courseList, (item: CourseItem): boolean => {
       return item.id === id;
     });
 

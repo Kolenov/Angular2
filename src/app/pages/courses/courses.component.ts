@@ -1,9 +1,9 @@
 import {
-  Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy
+  Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, OnDestroy
 } from '@angular/core';
 import { CourseItem, CourseRaiting } from '../../models';
 import { CoursesService, LoaderService } from '../../core/services';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { FilterByPipe } from '../../shared';
 
@@ -15,10 +15,11 @@ import { FilterByPipe } from '../../shared';
   templateUrl: './courses.html',
 })
 
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit, OnDestroy {
   public courseList$: Observable<CourseItem[]>;
   public courseId: string;
   public isShowModal: boolean;
+  private subscription: Subscription[] = [];
   private searchCourseSorce: Subject<string> = new Subject();
 
   constructor(private coursesService: CoursesService,
@@ -44,6 +45,12 @@ export class CoursesComponent implements OnInit {
       });
   }
 
+  ngOnDestroy(): void {
+    this.subscription.forEach((item: Subscription) => {
+      item.unsubscribe();
+    });
+  }
+
   onSearch(search: string): void {
     this.loaderService.show();
 
@@ -55,13 +62,21 @@ export class CoursesComponent implements OnInit {
 
     this.hideModal();
 
-    this.coursesService.removeCourse(this.courseId);
+    this.subscription.push(this.coursesService.removeCourse(this.courseId)
+      .subscribe(() => {
+        this.loaderService.hide();
+      })
+    );
   }
 
   onToggleRaiting(topRated: CourseRaiting): void {
     this.loaderService.show();
 
-    this.coursesService.updateRaiting(topRated.id, !topRated.topRated);
+    this.subscription.push(this.coursesService.updateRaiting(topRated.id, topRated.topRated)
+      .subscribe(() => {
+        this.loaderService.hide();
+      })
+    );
   }
 
   onDelete(id: string): void {

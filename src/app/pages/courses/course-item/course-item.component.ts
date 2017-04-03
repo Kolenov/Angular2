@@ -26,7 +26,7 @@ export class CourseItemComponent {
     this.onDelete.emit(id);
   }
 
-  onToggleRaiting(isTopRated: boolean): void {
-    this.toggleRaiting.emit({ id: this.course.id, topRated: isTopRated });
+  onToggleRaiting(): void {
+    this.toggleRaiting.emit({ id: this.course.id, topRated: !this.course.topRated });
   }
 }
