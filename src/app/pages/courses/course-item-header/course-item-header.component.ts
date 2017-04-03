@@ -17,6 +17,6 @@ export class CourseItemHeaderComponent {
   @Output() toggleRaiting: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   onToggleRaiting(): void {
-    this.toggleRaiting.emit(this.topRated);
+    this.toggleRaiting.emit();
   }
 }
