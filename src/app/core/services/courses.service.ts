@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CourseItem } from '../../models';
+import { CourseItem, ExtendedCourseItem } from '../../models';
 import { HelperService } from './helper.service';
 import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 
 @Injectable()
 export class CoursesService {
-  private courseList: CourseItem[] = [{
+  private courseList: ExtendedCourseItem[] = [{
     id: '2',
     name: '1',
     duration: 5000,
@@ -17,7 +17,9 @@ export class CoursesService {
     'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
     'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s ' +
     'with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing ' +
-    'software like Aldus PageMaker including versions of Lorem Ipsum.'
+    'software like Aldus PageMaker including versions of Lorem Ipsum.',
+    authors: ['Andrii', 'Vit'],
+    link: ''
   }, {
     id: '1',
     name: 'name 2',
@@ -29,7 +31,9 @@ export class CoursesService {
     'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
     'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s ' +
     'with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing ' +
-    'software like Aldus PageMaker including versions of Lorem Ipsum.'
+    'software like Aldus PageMaker including versions of Lorem Ipsum.',
+    authors: [],
+    link: ''
   }, {
     id: '3',
     name: 'name 3',
@@ -41,17 +45,21 @@ export class CoursesService {
     'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
     'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s ' +
     'with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing ' +
-    'software like Aldus PageMaker including versions of Lorem Ipsum.'
+    'software like Aldus PageMaker including versions of Lorem Ipsum.',
+    authors: [],
+    link: ''
   }, {
-      id: '4',
-      name: 'name 4',
-      duration: 5000,
-      topRated: false,
-      date: new Date(2008, 8, 30),
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
-      'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +
-      'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries'
-    }];
+    id: '4',
+    name: 'name 4',
+    duration: 5000,
+    topRated: false,
+    date: new Date(2008, 8, 30),
+    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
+    'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +
+    'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+    authors: [],
+    link: ''
+  }];
 
   private courseListSorce: Subject<CourseItem[]> = new Subject();
 
@@ -62,16 +70,25 @@ export class CoursesService {
     return this.courseListSorce.asObservable()
                 .startWith(this.courseList)
                 .map(this.filteredOutdateCourse.bind(this))
+                .map(this.processingData.bind(this))
                 .delay(500);
   }
 
-  filteredOutdateCourse(data): CourseItem[]  {
+  filteredOutdateCourse(data: ExtendedCourseItem[]): ExtendedCourseItem[]  {
     const outdated: Date = new Date();
 
     outdated.setDate(outdated.getDate() - 14);
 
     return _.filter(data, (item: CourseItem): boolean => {
       return item.date > outdated;
+    });
+  }
+
+  processingData(data: ExtendedCourseItem[]): CourseItem[] {
+    const usingFieldName: string[] = ['id', 'name', 'duration', 'topRated', 'date', 'description', 'authors'];
+
+    return _.map(data, (item: ExtendedCourseItem): CourseItem => {
+      return _.pick<CourseItem, ExtendedCourseItem>(item, usingFieldName);
     });
   }
 
