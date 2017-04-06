@@ -42,7 +42,16 @@ export class CoursesService {
     'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s ' +
     'with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing ' +
     'software like Aldus PageMaker including versions of Lorem Ipsum.'
-  }];
+  }, {
+      id: '4',
+      name: 'name 4',
+      duration: 5000,
+      topRated: false,
+      date: new Date(2008, 8, 30),
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
+      'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +
+      'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries'
+    }];
 
   private courseListSorce: Subject<CourseItem[]> = new Subject();
 
@@ -52,7 +61,18 @@ export class CoursesService {
   getCourseItems(): Observable<CourseItem[]> {
     return this.courseListSorce.asObservable()
                 .startWith(this.courseList)
-                .delay(1000);
+                .map(this.filteredOutdateCourse.bind(this))
+                .delay(500);
+  }
+
+  filteredOutdateCourse(data): CourseItem[]  {
+    const outdated: Date = new Date();
+
+    outdated.setDate(outdated.getDate() - 14);
+
+    return _.filter(data, (item: CourseItem): boolean => {
+      return item.date > outdated;
+    });
   }
 
   createCourse(data: CourseItem): Observable<CourseItem> {
