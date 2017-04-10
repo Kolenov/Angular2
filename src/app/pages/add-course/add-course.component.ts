@@ -21,6 +21,8 @@ export class AddCourseComponent implements OnDestroy {
   }
 
   onSubmit(event: NgForm): void {
+    event.value.date = new Date(event.value.date);
+
     this.subscription = this.coursesService.createCourse(event.value)
       .subscribe(() => {
           this.router.navigateByUrl('/courses');

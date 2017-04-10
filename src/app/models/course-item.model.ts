@@ -1,6 +1,6 @@
 export interface CourseItem {
   id: string;
-  authors?: string[];
+  author?: string;
   name: string;
   duration: number;
   topRated?: boolean;

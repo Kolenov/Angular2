@@ -1,19 +1,17 @@
 // angular modules
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared';
-
-// routes
 import { RouterModule } from '@angular/router';
 import { addCourseRoutes } from './add-course.routes';
-
-// custom components
 import { AddCourseComponent } from './add-course.component';
+import { DurationOfCourseModule } from './duration-of-course';
 
 @NgModule({
   declarations: [
     AddCourseComponent
   ],
   imports: [
+    DurationOfCourseModule,
     RouterModule.forChild(addCourseRoutes),
     SharedModule
   ]

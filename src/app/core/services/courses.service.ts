@@ -9,21 +9,21 @@ export class CoursesService {
   private courseList: ExtendedCourseItem[] = [{
     id: '2',
     name: '1',
-    duration: 5000,
+    duration: 61,
     topRated: true,
-    date: new Date(),
+    date: new Date(2017, 4, 8),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
     'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +
     'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
     'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s ' +
     'with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing ' +
     'software like Aldus PageMaker including versions of Lorem Ipsum.',
-    authors: ['Andrii', 'Vit'],
+    author: 'Andrii',
     link: ''
   }, {
     id: '1',
     name: 'name 2',
-    duration: 5000,
+    duration: 80,
     topRated: false,
     date: new Date(2018, 0, 1),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
@@ -32,32 +32,32 @@ export class CoursesService {
     'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s ' +
     'with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing ' +
     'software like Aldus PageMaker including versions of Lorem Ipsum.',
-    authors: [],
+    author: '',
     link: ''
   }, {
     id: '3',
     name: 'name 3',
-    duration: 5000,
+    duration: 36,
     topRated: false,
-    date: new Date(),
+    date: new Date('2017-4-9'),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
     'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +
     'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ' +
     'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s ' +
     'with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing ' +
     'software like Aldus PageMaker including versions of Lorem Ipsum.',
-    authors: [],
+    author: '',
     link: ''
   }, {
     id: '4',
     name: 'name 4',
-    duration: 5000,
+    duration: 50,
     topRated: false,
     date: new Date(2008, 8, 30),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
     'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer ' +
     'took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-    authors: [],
+    author: '',
     link: ''
   }];
 
@@ -114,7 +114,7 @@ export class CoursesService {
 
     course = _.find( this.courseList, courseId);
 
-    return Observable.of(course).delay(500);
+    return Observable.of(_.cloneDeep(course)).delay(500);
   }
 
   updateCourse(id: string, data: CourseItem): Observable<CourseItem> {

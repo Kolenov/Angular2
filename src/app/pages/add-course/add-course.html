@@ -2,35 +2,74 @@
 	<h4 class="edit__title">Add Course Page</h4>
 
   <form #addCourseForm="ngForm" (ngSubmit)="onSubmit(addCourseForm)">
-    <div class="form-group">
-      <label for="name-course">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name-course"
-        aria-describedby="nameCourse"
-        placeholder="Name Course"
-        ngModel name="name" required>
-    </div>
-    <div class="form-group">
-      <label for="duration-course">Duration</label>
-      <input
-        type="number"
-        class="form-control"
-        id="duration-course"
-        placeholder="Duration Course"
-        ngModel name="duration" required>
-    </div>
-    <div class="form-group">
-      <label for="description-course">description</label>
-      <textarea
-        class="form-control"
-        id="description-course"
-        placeholder="Description course"
-        rows="3"
-        ngModel name="description" required></textarea>
+    <div class="form-group row">
+      <label for="name-course" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="name-course"
+          aria-describedby="nameCourse"
+          placeholder="Name Course"
+          ngModel name="name" required>
+      </div>
     </div>
 
-    <cr-button type="submit" buttonClass="btn-success" [buttonSize]="'medium'"><span button>Create</span></cr-button>
+    <div class="form-group row">
+      <label for="description-course" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <textarea
+          class="form-control"
+          id="description-course"
+          placeholder="Description course"
+          rows="3"
+          ngModel name="description" required></textarea>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="date-course" class="col-sm-2 col-form-label">Date</label>
+      <div class="col-sm-10">
+        <input
+          type="date"
+          class="form-control"
+          id="date-course"
+          placeholder="Date Course"
+          ngModel name="date" required>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="duration-course" class="col-sm-2 col-form-label">Duration</label>
+      <div class="col-sm-10">
+        <input
+          type="number"
+          class="form-control"
+          id="duration-course"
+          placeholder="Duration Course"
+          ngModel name="duration" required>
+      </div>
+    </div>
+
+    <!--<cr-duration-of-course></cr-duration-of-course>-->
+
+    <div class="form-group row">
+      <label for="authors-course" class="col-sm-2 col-form-label">Authors</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="authors-course"
+          placeholder="Author Course"
+          ngModel name="author">
+      </div>
+    </div>
+
+    <cr-button type="submit" buttonClass="btn-success" [buttonSize]="'medium'">Create</cr-button>
+    <cr-button-link
+      type="button"
+      buttonClass="btn-secondary"
+      routerLink="/courses"
+      [buttonSize]="'medium'">Cancel</cr-button-link>
   </form>
 </div>
