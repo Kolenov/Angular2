@@ -23,10 +23,6 @@ export class DurationPipe implements PipeTransform {
     const HH: number = Math.floor(duration / correction);
     const mm: number = Math.floor((duration - (HH * correction)));
 
-    if (HH <= 0) {
-      return `${ mm }min`;
-    }
-
-    return `${ HH }h ${ mm }min`;
+    return HH <= 0 ? `${ mm }min` : `${ HH }h ${ mm }min`;
   }
 }
