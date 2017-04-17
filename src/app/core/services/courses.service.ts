@@ -85,10 +85,10 @@ export class CoursesService {
   }
 
   processingData(data: ExtendedCourseItem[]): CourseItem[] {
-    const usingFieldName: string[] = ['id', 'name', 'duration', 'topRated', 'date', 'description', 'authors'];
+    const usingFieldsName: string[] = ['id', 'name', 'duration', 'topRated', 'date', 'description', 'authors'];
 
     return _.map(data, (item: ExtendedCourseItem): CourseItem => {
-      return _.pick<CourseItem, ExtendedCourseItem>(item, usingFieldName);
+      return _.pick<CourseItem, ExtendedCourseItem>(item, usingFieldsName);
     });
   }
 
