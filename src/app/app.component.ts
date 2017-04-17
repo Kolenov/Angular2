@@ -39,14 +39,14 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription.push(this.ngZone.onUnstable
       .subscribe(() => {
         this.startValue = new Date();
-        console.log(`start time: ${ this.startValue  }`);
+        // console.log(`start time: ${ this.startValue  }`);
       })
     );
 
     this.subscription.push(this.ngZone.onStable
       .subscribe(() => {
-        console.log(`finish time: ${ new Date() }`);
-        console.log(`diff time: ${ new Date().getTime() - this.startValue.getTime() }`);
+        // console.log(`finish time: ${ new Date() }`);
+        // console.log(`diff time: ${ new Date().getTime() - this.startValue.getTime() }`);
       })
     );
   }
