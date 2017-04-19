@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { LoaderModule } from './loader';
-import { AuthService, CoursesService, LoaderService, HelperService } from './services';
+import { AuthService, CoursesService, LoaderService, HelperService, SearchService, UserService } from './services';
 
 @NgModule({
   imports: [
@@ -14,7 +14,9 @@ import { AuthService, CoursesService, LoaderService, HelperService } from './ser
     AuthService,
     CoursesService,
     LoaderService,
-    HelperService
+    HelperService,
+    SearchService,
+    UserService
   ]
 })
 export class CoreModule { }

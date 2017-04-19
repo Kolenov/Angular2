@@ -7,7 +7,7 @@
       <a class="dropdown-item" [routerLink]="'login'" routerLinkActive="active">Login</a>
     </li>
     <li role="menuitem" *ngIf="userInfo">
-      <div class="dropdown-item">{{ userInfo.email }}</div>
+      <div class="dropdown-item">{{ userInfo?.name.first }} {{ userInfo?.name.last }}</div>
     </li>
     <li role="menuitem" *ngIf="userInfo">
       <a class="dropdown-item" (click)="logout()">Logout</a>

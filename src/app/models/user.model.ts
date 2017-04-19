@@ -1,6 +1,10 @@
 export interface UserInfo {
-  id: string;
-  email: string;
+  id: number;
+  login: string;
+  name?: {
+    first: string,
+    last: string
+  };
   password: string;
-  token: string;
+  fakeToken: string;
 }

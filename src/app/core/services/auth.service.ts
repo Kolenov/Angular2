@@ -1,40 +1,62 @@
 import { Injectable } from '@angular/core';
-import { UserInfo } from '../../models/user.model';
-import { Subject, Observable } from 'rxjs';
-import { HelperService } from './helper.service';
+import { UserInfo, Token } from '../../models';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Http, Request, RequestMethod, RequestOptions, Response } from '@angular/http';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AuthService {
-  private userInfo: UserInfo;
-  private userInfoSource: Subject<UserInfo> = new Subject();
+  public token: string;
+  private logIn$: BehaviorSubject<boolean>;
+  private baseUrl: string;
 
-  constructor(private helperService: HelperService) {
+  constructor(private http: Http, private userService: UserService) {
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+
+    this.baseUrl = 'http://localhost:3004';
+    this.token = currentUser && currentUser.fakeToken;
+    this.logIn$ = new BehaviorSubject<boolean>(!!this.token);
   }
 
-  getUserInfo(): Observable<UserInfo> {
-    return this.userInfoSource.asObservable()
-                .startWith(JSON.parse(localStorage.getItem('user')));
-  }
+  login(data: UserInfo): Observable<Token> {
+    let requestOptions = new RequestOptions();
+    let request: Request;
 
-  login(data: UserInfo): Observable<UserInfo> {
-    this.userInfo = {
-      id: this.helperService.generateId('id_'),
-      token: 'fake-jwt-token',
+    requestOptions.url = `${ this.baseUrl }/auth/login`;
+    requestOptions.method = RequestMethod.Post;
+    requestOptions.body = {
       ...data
     };
+    request = new Request(requestOptions);
 
-    localStorage.setItem('user', JSON.stringify(this.userInfo));
+    return this.http.request(request)
+              .map(this.parseLoginResponse.bind(this))
+              .flatMap(() => this.userService.getUserInfoResource(this.token))
+              .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
 
-    this.userInfoSource.next(this.userInfo);
+  parseLoginResponse(res: Response): Token {
+    const token = res.json() && res.json().token;
 
-    return Observable.of(this.userInfo).delay(2000);
+    this.updateToken(token);
+
+    return res.json();
+  }
+
+  updateToken(token: string): void {
+      this.token = token;
+      this.logIn$.next(!!this.token);
   }
 
   logout(): Observable<boolean> {
-    localStorage.removeItem('user');
+    this.userService.clearUserInfo();
 
-    this.userInfoSource.next();
+    this.updateToken(null);
 
     return Observable.of(true);
+  }
+
+  isAuthorized(): Observable<boolean> {
+    return this.logIn$.asObservable();
   }
 }

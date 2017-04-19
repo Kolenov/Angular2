@@ -2,7 +2,6 @@ import { Component, ViewEncapsulation, OnDestroy, ChangeDetectionStrategy } from
 import { AuthService } from '../../core/services';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { LoaderService } from '../../core/services';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,19 +15,14 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnDestroy {
   private subscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router, private loaderService: LoaderService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   onSubmit(event: NgForm) {
-    this.loaderService.show();
-
     this.subscription = this.authService.login(event.value)
       .subscribe(() => {
           this.router.navigateByUrl('/courses');
-
-          this.loaderService.hide();
-        }
-      );
+      });
   }
 
   ngOnDestroy(): void {

@@ -2,7 +2,7 @@ import {
   Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, OnDestroy
 } from '@angular/core';
 import { CourseItem, CourseRaiting } from '../../models';
-import { CoursesService, LoaderService } from '../../core/services';
+import { CoursesService, LoaderService, SearchService } from '../../core/services';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { FilterByPipe } from '../../shared';
@@ -23,6 +23,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   private searchCourseSorce: Subject<string> = new Subject();
 
   constructor(private coursesService: CoursesService,
+              private searchService: SearchService,
               private router: Router,
               private loaderService: LoaderService,
               private filterByPipe: FilterByPipe) {  }
@@ -52,9 +53,13 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   onSearch(search: string): void {
-    this.loaderService.show();
-
     this.searchCourseSorce.next(search);
+    this.loaderService.show(); // remove spinner, implement spinner in service
+
+    this.searchService.search(search)
+      .subscribe((data) => {
+        console.log('--- search ---', data);
+      });
   }
 
   deleteCourse(): void {

@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../../core/services';
-import { UserInfo } from '../../models';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,11 +10,11 @@ import { Observable } from 'rxjs';
 	encapsulation: ViewEncapsulation.None
 })
 export class IsAuthorizedComponent implements OnInit {
-  public userInfo$: Observable<UserInfo>;
+  public isAuthorized$: Observable<boolean>;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.userInfo$ = this.authService.getUserInfo();
+    this.isAuthorized$ = this.authService.isAuthorized();
   }
 }

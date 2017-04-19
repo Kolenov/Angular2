@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { AuthService } from '../../core/services';
 import { Observable } from 'rxjs';
 import { UserInfo } from '../../models';
+import { UserService } from '../../core/services';
 
 @Component({
 	selector: 'cr-header',
@@ -13,10 +13,10 @@ import { UserInfo } from '../../models';
 export class HeaderComponent implements OnInit {
   public userInfo$: Observable<UserInfo>;
 
-  constructor(private authService: AuthService ) {
+  constructor(private userService: UserService ) {
   }
 
   ngOnInit(): void {
-    this.userInfo$ = this.authService.getUserInfo();
+    this.userInfo$ = this.userService.getUserInfo();
   }
 }
