@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserInfo } from '../../models';
-import { Headers, Http, Request, RequestMethod, RequestOptions, Response } from '@angular/http';
+import { Response } from '@angular/http';
+import { UserResourceService } from './user-rosource.service';
 
 @Injectable()
 export class UserService {
   public userInfo: UserInfo;
-  private baseUrl: string;
   private userInfo$: BehaviorSubject<UserInfo>;
 
-  constructor(private http: Http) {
-    this.baseUrl = 'http://localhost:3004';
+  constructor(private userResourceService: UserResourceService) {
     const currentUser = JSON.parse(localStorage.getItem('user'));
 
     this.userInfo$ = new BehaviorSubject<UserInfo>(currentUser);
@@ -21,19 +20,8 @@ export class UserService {
   }
 
   getUserInfoResource(token: string): Observable<UserInfo> {
-    let request: Request;
-    let requestOptions = new RequestOptions();
-    let headers: Headers = new Headers();
-
-    headers.set('Authorization', token);
-
-    requestOptions.url = `${ this.baseUrl }/auth/userinfo`;
-    requestOptions.method = RequestMethod.Post;
-    requestOptions.headers = headers;
-    request = new Request(requestOptions);
-
-    return this.http.request(request)
-      .map(this.parseResponse.bind(this));
+    return this.userResourceService.getUserInfo(token)
+        .map(this.parseResponse.bind(this));
   }
 
   parseResponse(res: Response): UserInfo {
