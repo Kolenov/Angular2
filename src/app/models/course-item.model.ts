@@ -1,11 +1,16 @@
 export interface CourseItem {
-  id: string;
-  author?: string;
+  id: number;
   name: string;
-  duration: number;
-  topRated?: boolean;
-  date: Date;
   description: string;
+  isTopRated?: boolean;
+  date: Date;
+  author?: {
+    id: number,
+    firstName: string,
+    lastName: string
+  }[];
+  length?: number;
+  duration?: number;
 }
 
 export interface ExtendedCourseItem extends CourseItem {

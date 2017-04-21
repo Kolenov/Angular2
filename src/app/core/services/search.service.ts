@@ -1,29 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http, Request, RequestMethod, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { SearchResourceService } from './search-resource.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class SearchService {
   private baseUrl: string;
 
-  constructor(private http: Http) {
+  constructor(private searchResourceService: SearchResourceService) {
     this.baseUrl = 'http://localhost:3004';
   }
 
   search(query: string) {
-    let requestOptions = new RequestOptions();
-    let request: Request;
-    let urlParams: URLSearchParams = new URLSearchParams();
-
-    urlParams.set('login_like', query);
-    requestOptions.url = `${this.baseUrl}/users`;
-    requestOptions.method = RequestMethod.Get;
-    requestOptions.search = urlParams;
-    request = new Request(requestOptions);
-
-    return this.http.request(request)
-        .map((res: Response) => res.json())
-        .map((users) => users.map((item) => {
-          return users;
-        }));
+    return this.searchResourceService.search(query)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

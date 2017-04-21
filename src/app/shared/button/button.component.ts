@@ -1,10 +1,9 @@
-import { Component, ViewEncapsulation, Output, EventEmitter, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
 	selector: 'cr-button',
 	templateUrl: './button.html',
   styleUrls: [ './button.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None
 })
 export class CrButtonComponent {

@@ -8,7 +8,7 @@ import { CourseRaiting } from '../../../models';
   selector: 'cr-course-item',
   templateUrl: 'course-item.html',
   styleUrls: [ './course-item.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 

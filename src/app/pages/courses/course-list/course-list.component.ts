@@ -1,5 +1,5 @@
 import {
-  Component, ViewEncapsulation, Input, Output, EventEmitter, ChangeDetectionStrategy
+  Component, ViewEncapsulation, Input, Output, EventEmitter
 } from '@angular/core';
 import { CourseItem } from '../../../models';
 import { CourseRaiting } from '../../../models';

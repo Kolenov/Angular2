@@ -1,9 +1,9 @@
 <div class="course-item" cr-plate-border [createdDate]="course?.date">
-  <div class="course-item__info">
+  <div class="course-item__info col-10">
     <cr-course-item-header
       [courseName]="course.name"
       [courseDuration]="course.duration"
-      [topRated]="course.topRated"
+      [topRated]="course.isTopRated"
       [courseDate]="course.date"
       (toggleRaiting)="onToggleRaiting($event)">
     </cr-course-item-header>
@@ -13,7 +13,7 @@
     </cr-course-item-description>
   </div>
 
-  <cr-course-item-actions class="course-item__actions">
+  <cr-course-item-actions class="course-item__actions col-2">
     <cr-button
       (onClick)="editCourse(course.id)"
       [type]="'button'"

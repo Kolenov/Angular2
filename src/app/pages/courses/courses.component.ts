@@ -1,15 +1,14 @@
 import {
-  Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, OnDestroy
+  Component, ViewEncapsulation, OnInit, OnDestroy, ChangeDetectorRef
 } from '@angular/core';
-import { CourseItem, CourseRaiting } from '../../models';
+import { CourseItem, CourseRaiting, Pagination, CoursesCount } from '../../models';
 import { CoursesService, LoaderService, SearchService } from '../../core/services';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { FilterByPipe } from '../../shared';
+// import { FilterByPipe } from '../../shared';
 
 @Component({
   selector: 'cr-courses',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrls: [ './courses.scss' ],
   templateUrl: './courses.html',
@@ -17,8 +16,12 @@ import { FilterByPipe } from '../../shared';
 
 export class CoursesComponent implements OnInit, OnDestroy {
   public courseList$: Observable<CourseItem[]>;
-  public courseId: string;
+  public courseSearchList$: Observable<CourseItem[]>;
+  public coursesCount$: Observable<CoursesCount>;
+  public courseId: number;
   public isShowModal: boolean;
+  public currentPage: number = 0;
+  public itemsPerPage: number = 10;
   private subscription: Subscription[] = [];
   private searchCourseSorce: Subject<string> = new Subject();
 
@@ -26,24 +29,21 @@ export class CoursesComponent implements OnInit, OnDestroy {
               private searchService: SearchService,
               private router: Router,
               private loaderService: LoaderService,
-              private filterByPipe: FilterByPipe) {  }
+              private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.loaderService.show();
+    this.getCoursesCount();
+    this.getCourses(0, 10);
+  }
 
-    this.courseList$ = this.searchCourseSorce
-      .startWith('')
-      .flatMap((query) => {
-        return this.coursesService.getCourseItems()
-          .map((courses) => {
-            const searchByField = 'name';
+  getCourses(start: number, count: number): void {
+    this.courseList$ = this.coursesService.getCourses(start, count);
+    this.changeDetectorRef.detectChanges();
+  }
 
-            return this.filterByPipe.transform(courses, searchByField, query);
-          });
-      })
-      .do(() => {
-        this.loaderService.hide();
-      });
+  getCoursesCount(): void {
+    this.coursesCount$ = this.coursesService.getCoursesCount();
+    this.changeDetectorRef.detectChanges();
   }
 
   ngOnDestroy(): void {
@@ -52,39 +52,36 @@ export class CoursesComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSearch(search: string): void {
-    this.searchCourseSorce.next(search);
-    this.loaderService.show(); // remove spinner, implement spinner in service
-
-    this.searchService.search(search)
-      .subscribe((data) => {
-        console.log('--- search ---', data);
-      });
+  onSearch(search: string) {
+    this.courseList$ = this.searchService.search(search);
+    this.changeDetectorRef.detectChanges();
   }
 
-  deleteCourse(): void {
-    this.loaderService.show();
-
+  deleteCourse() {
     this.hideModal();
 
-    this.subscription.push(this.coursesService.removeCourse(this.courseId)
-      .subscribe(() => {
-        this.loaderService.hide();
+    this.subscription.push(this.coursesService.deleteCourse(this.courseId)
+      .do(() => {
+        this.getCoursesCount();
       })
+      .do(() => {
+        this.getCourses(0, 10);
+      })
+      .subscribe()
     );
   }
 
-  onToggleRaiting(topRated: CourseRaiting): void {
-    this.loaderService.show();
+  // onToggleRaiting(topRated: CourseRaiting): void {
+  //   this.loaderService.show();
+  //
+  //   this.subscription.push(this.coursesService.updateRaiting(topRated.id, topRated.topRated)
+  //     .subscribe(() => {
+  //       this.loaderService.hide();
+  //     })
+  //   );
+  // }
 
-    this.subscription.push(this.coursesService.updateRaiting(topRated.id, topRated.topRated)
-      .subscribe(() => {
-        this.loaderService.hide();
-      })
-    );
-  }
-
-  onDelete(id: string): void {
+  onDelete(id: number): void {
     this.courseId = id;
 
     this.showModal();
@@ -92,6 +89,18 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   onEdit(id: string): void {
     this.router.navigateByUrl(`/edit-course/${ id }`);
+  }
+
+  pageChange(data: Pagination): void {
+    this.itemsPerPage = data.count;
+
+    if (data.start === 1) {
+      this.currentPage = 0;
+    } else {
+      this.currentPage = (data.start - 1) * data.count;
+    }
+
+    this.getCourses(this.currentPage, this.itemsPerPage);
   }
 
   hideModal(): void {

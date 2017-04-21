@@ -1,0 +1,12 @@
+<div class="col-md-12">
+  <pagination [totalItems]="totalItems"
+              [itemsPerPage]="itemsPerPage"
+              [(ngModel)]="currentPage"
+              [maxSize]="maxSize"
+              class="cr-pagination pagination-sm cr-pagination__position-center"
+              [boundaryLinks]="true"
+              [rotate]="false"
+              (numPages)="numPages = $event"
+              (pageChanged)="pageChanged($event)"
+  ></pagination>
+</div>

@@ -10,6 +10,7 @@ import { NoContentModule } from './no-content';
 import { CrButtonModule } from './button';
 import { CrButtonLinkModule } from './button-link';
 import { CrModalModule } from './modal';
+import { CrPaginationModule } from './pagination';
 import { PlateBorderModule } from './plate-border';
 import { TopRatedModule } from './top-rated';
 import { DurationModule } from './duration';
@@ -30,6 +31,7 @@ import { CommonModule } from '@angular/common';
       NoContentModule,
       CrButtonModule,
       CrModalModule,
+      CrPaginationModule,
       PlateBorderModule,
       TopRatedModule,
       DurationModule,
@@ -47,6 +49,7 @@ import { CommonModule } from '@angular/common';
       CrButtonModule,
       CrButtonLinkModule,
       CrModalModule,
+      CrPaginationModule,
       PlateBorderModule,
       TopRatedModule,
       DurationModule,

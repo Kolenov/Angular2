@@ -1,0 +1,8 @@
+@import "../../styles/variables/colors.scss";
+
+.cr-pagination {
+  &__position-center {
+    display: flex;
+    justify-content: center;
+  }
+}

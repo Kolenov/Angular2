@@ -26,12 +26,12 @@ export class AuthService {
               .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  parseLoginResponse(res: Response): Token {
-    const token = res.json() && res.json().token;
+  parseLoginResponse(res: Token): Token {
+    const token = res.token;
 
     this.updateToken(token);
 
-    return res.json();
+    return res;
   }
 
   updateToken(token: string): void {

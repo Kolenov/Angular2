@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserInfo } from '../../models';
-import { Response } from '@angular/http';
 import { UserResourceService } from './user-rosource.service';
 
 @Injectable()
@@ -24,15 +23,13 @@ export class UserService {
         .map(this.parseResponse.bind(this));
   }
 
-  parseResponse(res: Response): UserInfo {
-    const userInfo = res.json();
+  parseResponse(res: UserInfo): UserInfo {
+    this.userInfo = res;
 
-    this.userInfo = userInfo;
+    this.setToStorageUserInfo(this.userInfo);
+    this.userInfo$.next(this.userInfo);
 
-    this.setToStorageUserInfo(userInfo);
-    this.userInfo$.next(userInfo);
-
-    return userInfo;
+    return this.userInfo;
   }
 
   setToStorageUserInfo(user: UserInfo): void {

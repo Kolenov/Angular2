@@ -4,12 +4,15 @@ import { LoaderModule } from './loader';
 import {
   AuthService,
   CoursesService,
+  CoursesResourceService,
   LoaderService,
   HelperService,
   SearchService,
+  SearchResourceService,
   UserService,
   UserResourceService,
-  AuthResourceService
+  AuthResourceService,
+  AuthorizedHttpService
 } from './services';
 
 @NgModule({
@@ -22,12 +25,15 @@ import {
   providers: [
     AuthService,
     CoursesService,
+    CoursesResourceService,
     LoaderService,
     HelperService,
     SearchService,
+    SearchResourceService,
     UserService,
     UserResourceService,
-    AuthResourceService
+    AuthResourceService,
+    AuthorizedHttpService
   ]
 })
 export class CoreModule { }

@@ -8,6 +8,7 @@ export * from './button';
 export * from './button-link';
 export * from './is-authorized';
 export * from './modal';
+export * from './pagination';
 export * from './plate-border';
 export * from './top-rated';
 export * from './duration';

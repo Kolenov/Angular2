@@ -24,6 +24,11 @@ export class AuthResourceService {
     };
     request = new Request(requestOptions);
 
-    return this.http.request(request);
+    return this.http.request(request)
+      .map(this.parseResponce);
+  }
+
+  parseResponce(res: Response) {
+    return res.json();
   }
 }
