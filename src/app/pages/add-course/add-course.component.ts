@@ -14,7 +14,6 @@ import { NgForm } from '@angular/forms';
 })
 
 export class AddCourseComponent implements OnDestroy {
-  public model: CourseItem;
   private subscription: Subscription;
 
   constructor(private router: Router, private coursesService: CoursesService) {
