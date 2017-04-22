@@ -31,8 +31,7 @@ export class EditCourseComponent implements OnInit, OnDestroy {
 
   submit(event: CourseItem): void {
     this.subscription.push(this.coursesService.updateCourse(event.id, event)
-      .subscribe((data) => {
-        // console.log(data);
+      .subscribe(() => {
         this.router.navigateByUrl('/courses');
       })
     );
