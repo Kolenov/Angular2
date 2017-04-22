@@ -24,7 +24,7 @@ export class AddCourseComponent implements OnDestroy {
     event.value.date = new Date(event.value.date);
 
     this.subscription = this.coursesService.createCourse(event.value)
-      .subscribe((data) => {
+      .subscribe(() => {
           this.router.navigateByUrl('/courses');
         }
       );
