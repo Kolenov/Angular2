@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { CourseItem } from '../../models';
 import { Router } from '@angular/router';
 import { CoursesService } from '../../core/services';
 import { Subscription } from 'rxjs';
@@ -23,7 +22,7 @@ export class AddCourseComponent implements OnDestroy {
     event.value.date = new Date(event.value.date);
 
     this.subscription = this.coursesService.createCourse(event.value)
-      .subscribe(() => {
+      .subscribe((): void => {
           this.router.navigateByUrl('/courses');
         }
       );

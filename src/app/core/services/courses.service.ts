@@ -62,20 +62,4 @@ export class CoursesService {
       return item.date > outdated;
     });
   }
-
-  // createCourse(data: CourseItem): Observable<CourseItem> {
-  //   const newCourse: CourseItem = {
-  //     id: this.helperService.generateId('id_'),
-  //     name: data.name,
-  //     duration: data.duration,
-  //     date: new Date(),
-  //     description: data.description
-  //   };
-  //
-  //   this.courseList.push(newCourse);
-  //
-  //   this.courseListSorce.next([...this.courseList]);
-  //
-  //   return Observable.of(newCourse);
-  // }
 }
