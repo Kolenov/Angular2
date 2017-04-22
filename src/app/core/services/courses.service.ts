@@ -6,8 +6,6 @@ import { CoursesResourceService } from './courses-resource.service';
 
 @Injectable()
 export class CoursesService {
-  private courseListSorce: Subject<CourseItem[]> = new Subject();
-
   constructor(private coursesResourceService: CoursesResourceService) {
   }
 
@@ -50,6 +48,11 @@ export class CoursesService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  createCourse(data: CourseItem): Observable<CourseItem> {
+    return this.coursesResourceService.createCourse(data)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   filteredOutdateCourse(data: ExtendedCourseItem[]): ExtendedCourseItem[]  {
     const outdated: Date = new Date();
 
@@ -74,19 +77,5 @@ export class CoursesService {
   //   this.courseListSorce.next([...this.courseList]);
   //
   //   return Observable.of(newCourse);
-  // }
-  //
-  // updateRaiting(id: string, raiting: boolean): Observable<CourseItem> {
-  //   let courseItem: CourseItem;
-  //
-  //   courseItem = _.find(this.courseList, (item: CourseItem): boolean => {
-  //     return item.id === id;
-  //   });
-  //
-  //   courseItem.topRated = raiting;
-  //
-  //   this.courseListSorce.next([...this.courseList]);
-  //
-  //   return Observable.of(courseItem);
   // }
 }
