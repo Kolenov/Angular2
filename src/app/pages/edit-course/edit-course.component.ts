@@ -18,26 +18,21 @@ export class EditCourseComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private routeParams: ActivatedRoute,
-              private coursesService: CoursesService,
-              private loaderService: LoaderService) {
+              private coursesService: CoursesService) {
   }
 
   ngOnInit(): void {
-    this.loaderService.show();
-
     this.courseInfo$ = this.routeParams
       .params
       .switchMap((params: CourseItem) => {
         return this.coursesService.getCourse(params['id']);
-      })
-      .do(() => {
-        this.loaderService.hide();
       });
   }
 
   submit(event: CourseItem): void {
     this.subscription.push(this.coursesService.updateCourse(event.id, event)
-      .subscribe(() => {
+      .subscribe((data) => {
+        // console.log(data);
         this.router.navigateByUrl('/courses');
       })
     );

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CourseItem, ExtendedCourseItem, CoursesCount } from '../../models';
-import { HelperService } from './helper.service';
 import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 import { CoursesResourceService } from './courses-resource.service';
@@ -9,7 +8,7 @@ import { CoursesResourceService } from './courses-resource.service';
 export class CoursesService {
   private courseListSorce: Subject<CourseItem[]> = new Subject();
 
-  constructor(private helperService: HelperService, private coursesResourceService: CoursesResourceService) {
+  constructor(private coursesResourceService: CoursesResourceService) {
   }
 
   getCourses(start?: number, count?: number): Observable<CourseItem[]> {
@@ -31,8 +30,18 @@ export class CoursesService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  getCourse(id: number): Observable<CourseItem> {
+    return this.coursesResourceService.getCourse(id)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   deleteCourse(id: number): Observable<CourseItem> {
     return this.coursesResourceService.deleteCourse(id)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  updateCourse(id: number, data: CourseItem): Observable<CourseItem> {
+    return this.coursesResourceService.updateCourse(id, data)
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
@@ -60,15 +69,6 @@ export class CoursesService {
   //   this.courseListSorce.next([...this.courseList]);
   //
   //   return Observable.of(newCourse);
-  // }
-  //
-  // getCourse(id: string): Observable<CourseItem> {
-  //   let course: CourseItem;
-  //   const courseId = { id };
-  //
-  //   course = _.find( this.courseList, courseId);
-  //
-  //   return Observable.of(_.cloneDeep(course)).delay(500);
   // }
   //
   // updateCourse(id: string, data: CourseItem): Observable<CourseItem> {

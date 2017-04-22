@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { Http, Request, RequestMethod, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { AuthorizedHttpService } from './authorized-http.service';
+import { CourseItem } from '../../models';
 
 @Injectable()
 export class CoursesResourceService {
   private baseUrl: string;
 
-  constructor(private authorizedHttp: AuthorizedHttpService) {
+  constructor(private http: Http, private authorizedHttp: AuthorizedHttpService) {
     this.baseUrl = 'http://localhost:3004';
   }
 
@@ -26,6 +27,20 @@ export class CoursesResourceService {
 
   getCoursesCount(): Observable<Response> {
     return this.authorizedHttp.get(`${ this.baseUrl }/courses/count`)
+      .map(this.parseResponce);
+  }
+
+  getCourse(id: number): Observable<Response> {
+    return this.authorizedHttp.get(`${ this.baseUrl }/courses/${id}`)
+      .map(this.parseResponce);
+  }
+
+  updateCourse(id: number, data: CourseItem): Observable<Response> {
+    let requestOptions = new RequestOptions();
+
+    requestOptions.body = data;
+
+    return this.http.put(`${ this.baseUrl }/courses/${id}`, {}, requestOptions)
       .map(this.parseResponce);
   }
 
