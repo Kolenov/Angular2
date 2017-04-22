@@ -71,15 +71,14 @@ export class CoursesComponent implements OnInit, OnDestroy {
     );
   }
 
-  // onToggleRaiting(topRated: CourseRaiting): void {
-  //   this.loaderService.show();
-  //
-  //   this.subscription.push(this.coursesService.updateRaiting(topRated.id, topRated.topRated)
-  //     .subscribe(() => {
-  //       this.loaderService.hide();
-  //     })
-  //   );
-  // }
+  onToggleRaiting(topRated: CourseRaiting): void {
+    this.subscription.push(this.coursesService.updateRaiting(topRated.id, topRated.topRated)
+      .subscribe((data) => {
+        console.log(data); // need update ui
+        this.changeDetectorRef.detectChanges();
+      })
+    );
+  }
 
   onDelete(id: number): void {
     this.courseId = id;

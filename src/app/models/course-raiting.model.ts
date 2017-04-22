@@ -1,4 +1,4 @@
 export interface CourseRaiting {
-  id: string;
+  id: number;
   topRated: boolean;
 }

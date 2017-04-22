@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { CoursesService, LoaderService } from '../../core/services';
+import { CoursesService } from '../../core/services';
 import { CourseItem } from '../../models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';

@@ -45,6 +45,11 @@ export class CoursesService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  updateRaiting(id: number, raiting: boolean): Observable<CourseItem> {
+    return this.coursesResourceService.updateTopRated(id, { isTopRated: raiting })
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   filteredOutdateCourse(data: ExtendedCourseItem[]): ExtendedCourseItem[]  {
     const outdated: Date = new Date();
 
@@ -69,20 +74,6 @@ export class CoursesService {
   //   this.courseListSorce.next([...this.courseList]);
   //
   //   return Observable.of(newCourse);
-  // }
-  //
-  // updateCourse(id: string, data: CourseItem): Observable<CourseItem> {
-  //   let courseItem: CourseItem;
-  //
-  //   courseItem = _.find(this.courseList, (item) => {
-  //     if (item.id === id) {
-  //       return Object.assign(item, data);
-  //     }
-  //   });
-  //
-  //   this.courseListSorce.next([...this.courseList]);
-  //
-  //   return Observable.of(courseItem);
   // }
   //
   // updateRaiting(id: string, raiting: boolean): Observable<CourseItem> {

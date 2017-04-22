@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Http, Request, RequestMethod, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { Http, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { AuthorizedHttpService } from './authorized-http.service';
-import { CourseItem } from '../../models';
+import { CourseItem, TopRated } from '../../models';
 
 @Injectable()
 export class CoursesResourceService {
@@ -40,7 +40,16 @@ export class CoursesResourceService {
 
     requestOptions.body = data;
 
-    return this.http.put(`${ this.baseUrl }/courses/${id}`, {}, requestOptions)
+    return this.authorizedHttp.put(`${ this.baseUrl }/courses/${id}`, {}, requestOptions)
+      .map(this.parseResponce);
+  }
+
+  updateTopRated(id: number, data: TopRated): Observable<Response> {
+    let requestOptions = new RequestOptions();
+
+    requestOptions.body = data;
+
+    return this.authorizedHttp.put(`${ this.baseUrl }/courses/${id}`, {}, requestOptions)
       .map(this.parseResponce);
   }
 
