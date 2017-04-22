@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Http, Request, RequestMethod, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { AuthorizedHttpService } from './authorized-http.service';
 
 @Injectable()
 export class SearchResourceService {
   private baseUrl: string;
 
-  constructor(private http: Http) {
+  constructor(private authorizedHttp: AuthorizedHttpService) {
     this.baseUrl = 'http://localhost:3004';
   }
 
   search(query: string): Observable<Response> {
     let requestOptions = new RequestOptions();
-    let request: Request;
     let urlParams: URLSearchParams = new URLSearchParams();
 
     urlParams.set('query', query);
 
-    requestOptions.url = `${ this.baseUrl }/courses`;
-    requestOptions.method = RequestMethod.Get;
     requestOptions.search = urlParams;
 
-    request = new Request(requestOptions);
-    return this.http.request(request)
+    return this.authorizedHttp.get(`${ this.baseUrl }/courses`, requestOptions)
       .map(this.parseResponce);
   }
 

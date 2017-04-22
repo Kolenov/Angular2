@@ -18,8 +18,8 @@ export class UserService {
     return this.userInfo$.asObservable();
   }
 
-  getUserInfoResource(token: string): Observable<UserInfo> {
-    return this.userResourceService.getUserInfo(token)
+  getUserInfoResource(): Observable<UserInfo> {
+    return this.userResourceService.getUserInfo()
         .map(this.parseResponse.bind(this));
   }
 

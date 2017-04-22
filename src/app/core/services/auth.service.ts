@@ -22,7 +22,7 @@ export class AuthService {
   login(data: UserInfo): Observable<Token> {
     return this.authResourceService.login(data)
               .map(this.parseLoginResponse.bind(this))
-              .flatMap(() => this.userService.getUserInfoResource(this.token))
+              .flatMap(() => this.userService.getUserInfoResource())
               .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 

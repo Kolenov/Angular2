@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Http, Request, RequestMethod, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { AuthorizedHttpService } from './authorized-http.service';
 
 @Injectable()
 export class CoursesResourceService {
   private baseUrl: string;
 
-  constructor(private http: Http, private authorizedHttp: AuthorizedHttpService) {
+  constructor(private authorizedHttp: AuthorizedHttpService) {
     this.baseUrl = 'http://localhost:3004';
   }
 
