@@ -11,7 +11,6 @@ export class AuthorizedHttpService extends Http {
   private authService: AuthService;
 
   constructor (backend: XHRBackend, options: RequestOptions, authService: AuthService) {
-    console.log('c', options);
     options.headers.set('Authorization', `Bearer ${authService.token}`);
 
     super(backend, options);
@@ -27,8 +26,6 @@ export class AuthorizedHttpService extends Http {
 
       options.headers.set('Authorization', `Bearer ${ this.authService.token }`);
     } else {
-      console.log('r', options);
-
       url.headers.set('Authorization', `Bearer ${ this.authService.token }`);
     }
 
@@ -36,7 +33,7 @@ export class AuthorizedHttpService extends Http {
   }
 
   private catchAuthError (self: AuthorizedHttpService) {
-    return (res: Response) => {
+    return (res: Response): Observable<Response> => {
       console.log(res);
 
       if (res.status === 401 || res.status === 403) {
