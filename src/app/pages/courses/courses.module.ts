@@ -5,7 +5,7 @@ import { coursesRoutes } from './courses.routes';
 import { CoursesComponent } from './courses.component';
 import { CourseSearchModule } from './course-search';
 import { CourseAddModule } from './course-add';
-import { CourseListModule } from './course-list';
+import { CoursesWrapperModule } from './courses-wrapper';
 import { SharedModule } from '../../shared';
 import { FilterByPipe } from '../../shared';
 
@@ -17,7 +17,7 @@ import { FilterByPipe } from '../../shared';
     RouterModule.forChild(coursesRoutes),
     CourseSearchModule,
     CourseAddModule,
-    CourseListModule,
+    CoursesWrapperModule,
     SharedModule
   ],
   providers: [FilterByPipe]

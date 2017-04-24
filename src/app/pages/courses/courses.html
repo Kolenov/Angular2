@@ -4,21 +4,12 @@
     <cr-course-add class="courses__add-course"></cr-course-add>
   </div>
 
-    <cr-course-list
-      class="courses__list"
-      [courseList]="courseList$ | async"
-      (onEdit)="onEdit($event)"
-      (onDelete)="onDelete($event)"
-      (toggleRaiting)="onToggleRaiting($event)"
-    ></cr-course-list>
-
-    <cr-pagination [currentPage]="1"
-                   [itemsPerPage]="10"
-                   [maxSize]="5"
-                   [numPages]="0"
-                   [totalItems]="(coursesCount$ | async)?.count"
-                   (onPageChange)="pageChange($event)"
-    ></cr-pagination>
+  <cr-courses-wrapper [coursesInfo]="courseList$ | async"
+                      (onEdit)="onEdit($event)"
+                      (onDelete)="onDelete($event)"
+                      (toggleRaiting)="onToggleRaiting($event)"
+                      (onPageChange)="pageChange($event)">
+  </cr-courses-wrapper>
 </div>
 
 <cr-modal

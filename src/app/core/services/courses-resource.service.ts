@@ -7,10 +7,7 @@ import { HelperService } from './helper.service';
 
 @Injectable()
 export class CoursesResourceService {
-  private baseUrl: string;
-
-  constructor(private http: Http, private authorizedHttp: AuthorizedHttpService, private helperService: HelperService) {
-    this.baseUrl = 'http://localhost:3004';
+  constructor(private authorizedHttp: AuthorizedHttpService, private helperService: HelperService) {
   }
 
   getCourses(start: number, count: number, query?: string): Observable<Response> {
@@ -23,17 +20,12 @@ export class CoursesResourceService {
 
     requestOptions.search = urlParams;
 
-    return this.authorizedHttp.get(`${ this.baseUrl }/courses`, requestOptions)
-      .map(this.parseResponce);
-  }
-
-  getCoursesCount(): Observable<Response> {
-    return this.authorizedHttp.get(`${ this.baseUrl }/courses/count`)
+    return this.authorizedHttp.get('/courses', requestOptions)
       .map(this.parseResponce);
   }
 
   getCourse(id: number): Observable<Response> {
-    return this.authorizedHttp.get(`${ this.baseUrl }/courses/${id}`)
+    return this.authorizedHttp.get(`/courses/${id}`)
       .map(this.parseResponce);
   }
 
@@ -42,7 +34,7 @@ export class CoursesResourceService {
 
     requestOptions.body = data;
 
-    return this.authorizedHttp.put(`${ this.baseUrl }/courses/${id}`, {}, requestOptions)
+    return this.authorizedHttp.put(`/courses/${id}`, {}, requestOptions)
       .map(this.parseResponce);
   }
 
@@ -51,7 +43,7 @@ export class CoursesResourceService {
 
     requestOptions.body = data;
 
-    return this.authorizedHttp.put(`${ this.baseUrl }/courses/${id}`, {}, requestOptions)
+    return this.authorizedHttp.put(`/courses/${id}`, {}, requestOptions)
       .map(this.parseResponce);
   }
 
@@ -62,12 +54,12 @@ export class CoursesResourceService {
 
     requestOptions.body = data;
 
-    return this.authorizedHttp.post(`${ this.baseUrl }/courses`, {}, requestOptions)
+    return this.authorizedHttp.post('/courses', {}, requestOptions)
       .map(this.parseResponce);
   }
 
   deleteCourse(id: number): Observable<Response> {
-    return this.authorizedHttp.delete(`${ this.baseUrl }/courses/${ id }`)
+    return this.authorizedHttp.delete(`/courses/${ id }`)
       .map(this.parseResponce);
   }
 

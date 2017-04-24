@@ -16,3 +16,8 @@ export interface CourseItem {
 export interface ExtendedCourseItem extends CourseItem {
   link?: string;
 }
+
+export interface CoursesInfo {
+  courses: ExtendedCourseItem[];
+  count: number;
+}

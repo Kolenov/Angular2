@@ -3,6 +3,7 @@ import { CourseItem, ExtendedCourseItem, CoursesCount } from '../../models';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { CoursesResourceService } from './courses-resource.service';
+import { CoursesInfo } from '../../models/course-item.model';
 
 @Injectable()
 export class CoursesService {
@@ -15,17 +16,14 @@ export class CoursesService {
         .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  processingData(data: ExtendedCourseItem[]): CourseItem[] {
+  processingData(data: CoursesInfo): CoursesInfo {
     const usingFieldsName: string[] = ['id', 'name', 'duration', 'isTopRated', 'date', 'description', 'authors'];
 
-    return _.map(data, (item: ExtendedCourseItem): CourseItem => {
+    data.courses = _.map(data.courses, (item: ExtendedCourseItem): CourseItem => {
       return _.pick<CourseItem, ExtendedCourseItem>(item, usingFieldsName);
     });
-  }
 
-  getCoursesCount(): Observable<CoursesCount> {
-    return this.coursesResourceService.getCoursesCount()
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    return data;
   }
 
   getCourse(id: number): Observable<CourseItem> {

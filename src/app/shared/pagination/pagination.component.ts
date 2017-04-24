@@ -1,9 +1,10 @@
 import {
   Component, EventEmitter,
-  Input, Output,
+  Input, OnInit, Output,
   ViewEncapsulation
 } from '@angular/core';
 import { Pagination } from '../../models';
+import { PageChangedEvent } from 'ng2-bootstrap/pagination/pagination.component';
 
 @Component({
 	selector: 'cr-pagination',
@@ -16,12 +17,9 @@ export class CrPaginationComponent {
   @Input() totalItems: number;
   @Input() itemsPerPage: number;
   @Input() currentPage: number;
-  @Input() numPages: number;
   @Output() onPageChange: EventEmitter<Pagination> = new EventEmitter<Pagination>();
 
-  pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
+  pageChanged(event: PageChangedEvent): void {
     this.onPageChange.emit({
       start: event.page,
       count: this.itemsPerPage

@@ -1,0 +1,14 @@
+<cr-course-list
+  class="courses__list"
+  [courseList]="courses"
+  (onEdit)="onEdit($event)"
+  (onDelete)="onDelete($event)"
+  (toggleRaiting)="onToggleRaiting($event)"
+></cr-course-list>
+
+<cr-pagination [currentPage]="currentPage"
+               [itemsPerPage]="10"
+               [maxSize]="5"
+               [totalItems]="totalCount"
+               (onPageChange)="pageChange($event)"
+></cr-pagination>

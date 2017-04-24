@@ -9,6 +9,7 @@ import { AuthTokenService } from './auth-token.service';
 @Injectable()
 export class AuthorizedHttpService extends Http {
   private authToken: AuthTokenService;
+  private baseUrl: string;
 
   constructor (backend: XHRBackend, options: RequestOptions, authToken: AuthTokenService) {
     options.headers.set('Authorization', `${ authToken.getToken() }`);
@@ -16,20 +17,27 @@ export class AuthorizedHttpService extends Http {
     super(backend, options);
 
     this.authToken = authToken;
+    this.baseUrl = 'http://localhost:3004';
   }
 
-  request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-    if (typeof url === 'string') {
+  request(requestUrl: string | Request, options?: RequestOptionsArgs): Observable<Response> {
+    let url: string;
+
+    if (typeof requestUrl === 'string') {
+      url = this.baseUrl + requestUrl;
+
       if (!options) {
         options = { headers: new Headers() };
       }
 
       options.headers.set('Authorization', `${ this.authToken.getToken() }`);
     } else {
-      url.headers.set('Authorization', `${ this.authToken.getToken() }`);
+      requestUrl.url = this.baseUrl + requestUrl.url;
+
+      requestUrl.headers.set('Authorization', `${ this.authToken.getToken() }`);
     }
 
-    return super.request(url, options).catch(this.catchAuthError(this));
+    return super.request(url || requestUrl, options).catch(this.catchAuthError(this));
   }
 
   private catchAuthError (self: AuthorizedHttpService) {

@@ -6,14 +6,11 @@ import { AuthorizedHttpService } from './authorized-http.service';
 
 @Injectable()
 export class AuthResourceService {
-  private baseUrl: string;
-
   constructor(private authorizedHttp: AuthorizedHttpService) {
-    this.baseUrl = 'http://localhost:3004';
   }
 
   login(data: UserInfo): Observable<Response> {
-    return this.authorizedHttp.post(`${ this.baseUrl }/auth/login`, { ...data })
+    return this.authorizedHttp.post('/auth/login', { ...data })
       .map(this.parseResponce);
   }
 

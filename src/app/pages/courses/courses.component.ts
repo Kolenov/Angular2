@@ -1,9 +1,9 @@
 import {
   Component, ViewEncapsulation, OnInit, OnDestroy, ChangeDetectorRef
 } from '@angular/core';
-import { CourseItem, CourseRaiting, Pagination, CoursesCount } from '../../models';
-import { CoursesService, LoaderService, SearchService } from '../../core/services';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { CourseItem, CourseRaiting, Pagination } from '../../models';
+import { CoursesService, LoaderService } from '../../core/services';
+import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 
 export class CoursesComponent implements OnInit, OnDestroy {
   public courseList$: Observable<CourseItem[]>;
-  public coursesCount$: Observable<CoursesCount>;
   public courseId: number;
   public isShowModal: boolean;
   public currentPage: number = 0;
@@ -25,20 +24,15 @@ export class CoursesComponent implements OnInit, OnDestroy {
   constructor(private coursesService: CoursesService,
               private router: Router,
               private loaderService: LoaderService,
-              private changeDetectorRef: ChangeDetectorRef) {}
+              private changeDetectorRef: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
-    this.getCoursesCount();
-    this.getCourses(0, 10);
+    this.getCourses(this.currentPage, this.itemsPerPage);
   }
 
   getCourses(start: number, count: number, search?: string): void {
     this.courseList$ = this.coursesService.getCourses(start, count, search);
-    this.changeDetectorRef.detectChanges();
-  }
-
-  getCoursesCount(): void {
-    this.coursesCount$ = this.coursesService.getCoursesCount();
     this.changeDetectorRef.detectChanges();
   }
 
@@ -53,7 +47,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
     const itemsPerPage: number = 10;
 
     this.getCourses(currentPage, itemsPerPage, search);
-    this.getCoursesCount();
     this.changeDetectorRef.detectChanges();
   }
 
@@ -63,9 +56,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.subscription.push(this.coursesService.deleteCourse(this.courseId)
       .do(() => {
         this.getCourses(0, 10);
-      })
-      .do(() => {
-        this.getCoursesCount();
       })
       .subscribe()
     );
