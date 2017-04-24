@@ -13,12 +13,13 @@ export class CoursesResourceService {
     this.baseUrl = 'http://localhost:3004';
   }
 
-  getCourses(start: number, count: number): Observable<Response> {
+  getCourses(start: number, count: number, query?: string): Observable<Response> {
     let requestOptions = new RequestOptions();
     let urlParams: URLSearchParams = new URLSearchParams();
 
     urlParams.set('start', start.toString());
     urlParams.set('count', count.toString());
+    urlParams.set('query', query);
 
     requestOptions.search = urlParams;
 

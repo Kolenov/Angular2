@@ -5,7 +5,6 @@ import { CourseItem, CourseRaiting, Pagination, CoursesCount } from '../../model
 import { CoursesService, LoaderService, SearchService } from '../../core/services';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-// import { FilterByPipe } from '../../shared';
 
 @Component({
   selector: 'cr-courses',
@@ -16,14 +15,12 @@ import { Router } from '@angular/router';
 
 export class CoursesComponent implements OnInit, OnDestroy {
   public courseList$: Observable<CourseItem[]>;
-  public courseSearchList$: Observable<CourseItem[]>;
   public coursesCount$: Observable<CoursesCount>;
   public courseId: number;
   public isShowModal: boolean;
   public currentPage: number = 0;
   public itemsPerPage: number = 10;
   private subscription: Subscription[] = [];
-  private searchCourseSorce: Subject<string> = new Subject();
 
   constructor(private coursesService: CoursesService,
               private searchService: SearchService,
@@ -36,8 +33,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.getCourses(0, 10);
   }
 
-  getCourses(start: number, count: number): void {
-    this.courseList$ = this.coursesService.getCourses(start, count);
+  getCourses(start: number, count: number, search?: string): void {
+    this.courseList$ = this.coursesService.getCourses(start, count, search);
     this.changeDetectorRef.detectChanges();
   }
 
@@ -53,7 +50,11 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   onSearch(search: string) {
-    this.courseList$ = this.searchService.search(search);
+    const currentPage: number = 0;
+    const itemsPerPage: number = 10;
+
+    this.getCourses(currentPage, itemsPerPage, search);
+    this.getCoursesCount();
     this.changeDetectorRef.detectChanges();
   }
 
@@ -62,10 +63,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
     this.subscription.push(this.coursesService.deleteCourse(this.courseId)
       .do(() => {
-        this.getCoursesCount();
+        this.getCourses(0, 10);
       })
       .do(() => {
-        this.getCourses(0, 10);
+        this.getCoursesCount();
       })
       .subscribe()
     );

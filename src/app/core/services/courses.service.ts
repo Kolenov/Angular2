@@ -9,8 +9,8 @@ export class CoursesService {
   constructor(private coursesResourceService: CoursesResourceService) {
   }
 
-  getCourses(start?: number, count?: number): Observable<CourseItem[]> {
-    return this.coursesResourceService.getCourses(start, count)
+  getCourses(start: number, count: number, query?: string): Observable<CourseItem[]> {
+    return this.coursesResourceService.getCourses(start, count, query)
         .map(this.processingData.bind(this))
         .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

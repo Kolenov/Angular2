@@ -11,11 +11,13 @@ export class SearchResourceService {
     this.baseUrl = 'http://localhost:3004';
   }
 
-  search(query: string): Observable<Response> {
+  search(query: string, start: number, count: number): Observable<Response> {
     let requestOptions = new RequestOptions();
     let urlParams: URLSearchParams = new URLSearchParams();
 
     urlParams.set('query', query);
+    urlParams.set('start', start.toString());
+    urlParams.set('count', count.toString());
 
     requestOptions.search = urlParams;
 
