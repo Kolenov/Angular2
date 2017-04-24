@@ -6,7 +6,8 @@
   (toggleRaiting)="onToggleRaiting($event)"
 ></cr-course-list>
 
-<cr-pagination [currentPage]="currentPage"
+<cr-pagination *ngIf="totalCount"
+               [currentPage]="currentPage"
                [itemsPerPage]="10"
                [maxSize]="5"
                [totalItems]="totalCount"
