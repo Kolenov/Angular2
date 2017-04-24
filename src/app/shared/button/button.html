@@ -1,6 +1,7 @@
 <button
   [class]="getComponentClasses()"
   [type]="type"
+  [disabled]="disabled"
   (click)="clickHandler()">
   <ng-content></ng-content>
 </button>

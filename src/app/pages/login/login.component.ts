@@ -13,16 +13,23 @@ import { Subscription } from 'rxjs';
 })
 
 export class LoginComponent implements OnDestroy {
+  public formLogin: any = {
+    login: '',
+    password: ''
+  };
   private subscription: Subscription;
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
   onSubmit(event: NgForm) {
-    this.subscription = this.authService.login(event.value)
-      .subscribe(() => {
+    console.log(event)
+    if (event.valid) {
+      this.subscription = this.authService.login(event.value)
+        .subscribe(() => {
           this.router.navigateByUrl('/courses');
-      });
+        });
+    }
   }
 
   ngOnDestroy(): void {

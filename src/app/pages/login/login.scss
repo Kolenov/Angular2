@@ -3,6 +3,10 @@
 .login {
   margin-top: 20px;
 
+  &__title {
+    text-align: center;
+  }
+
   &__wrapper-form {
     margin-bottom: 20px;
   }

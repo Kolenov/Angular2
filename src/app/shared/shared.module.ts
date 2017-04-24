@@ -17,6 +17,7 @@ import { DurationModule } from './duration';
 import { OrderByModule } from './order-by';
 import { FilterByModule } from './filter-by';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -56,6 +57,7 @@ import { CommonModule } from '@angular/common';
       OrderByModule,
       FilterByModule,
       FormsModule,
+      BrowserModule,
       ReactiveFormsModule,
       CommonModule
     ]

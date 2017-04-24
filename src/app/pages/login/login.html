@@ -1,29 +1,39 @@
 <div class="login">
 	<h4 class="login__title">Login Page</h4>
 
-  <form #LoginForm="ngForm" (ngSubmit)="onSubmit(LoginForm)">
-    <div class="login__wrapper-form">
-      <div class="form-group">
-        <label for="login">Login</label>
-        <input
-          type="text"
-          class="form-control"
-          id="login"
-          aria-describedby="loginHelp"
-          placeholder="Enter login"
-          ngModel name="login" required>
+  <div class="row justify-content-center">
+    <form class="col-6" novalidate #LoginForm="ngForm" (ngSubmit)="onSubmit(LoginForm)">
+      <div class="login__wrapper-form">
+        <div class="form-group">
+          <label for="login">Login</label>
+          <input
+            type="text"
+            class="form-control"
+            id="login"
+            aria-describedby="loginHelp"
+            placeholder="Enter login"
+            name="login" #login="ngModel" [ngModel]="formLogin.login" required minlength="3"
+            [class.has-error]="login.touched && login.invalid">
+          <div class="has-error" *ngIf="login.touched && login.invalid && login?.errors.minlength">minlength 3</div>
+          <div class="has-error" *ngIf="login.touched && login.invalid && login?.errors.required">required</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            name="password" #password="ngModel" [ngModel]="formLogin.password" required
+            [class.has-error]="password.touched && password.invalid">
+          <div class="has-error" *ngIf="password.touched && password.invalid && password?.errors.required">required</div>
+        </div>
       </div>
-      <div class="password">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          placeholder="Password"
-          ngModel name="password" required>
-      </div>
-    </div>
 
-    <cr-button type="submit" buttonClass="btn-success" [buttonSize]="'medium'">Log In</cr-button>
-  </form>
+      <cr-button type="submit"
+                 buttonClass="btn-success"
+                 [buttonSize]="'medium'"
+                 [disabled]="LoginForm.invalid">Log In</cr-button>
+    </form>
+  </div>
 </div>

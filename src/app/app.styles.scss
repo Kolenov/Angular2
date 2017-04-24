@@ -1,3 +1,5 @@
+@import "styles/variables/colors.scss";
+
 html, body{
   height: 100%;
   font-family: Arial, Helvetica, sans-serif
@@ -13,3 +15,10 @@ a.active {
   min-height: 85%;
 }
 
+.has-error {
+  color: $c-red;
+}
+
+input.has-error {
+  border: 1px solid $c-red;
+}
