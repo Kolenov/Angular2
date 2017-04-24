@@ -9,11 +9,6 @@ export class UserResourceService {
   }
 
   getUserInfo(): Observable<Response> {
-    return this.authorizedHttp.post('/auth/userinfo', {})
-      .map(this.parseResponce);
-  }
-
-  parseResponce(res: Response): Response {
-    return res.json();
+    return this.authorizedHttp.post('/auth/userinfo', {});
   }
 }

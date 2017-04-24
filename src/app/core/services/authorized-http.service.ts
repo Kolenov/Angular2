@@ -37,7 +37,12 @@ export class AuthorizedHttpService extends Http {
       requestUrl.headers.set('Authorization', `${ this.authToken.getToken() }`);
     }
 
-    return super.request(url || requestUrl, options).catch(this.catchAuthError(this));
+    return super.request(url || requestUrl, options).catch(this.catchAuthError(this))
+      .map(this.parseResponce);
+  }
+
+  parseResponce(res: Response): Response {
+    return res.json();
   }
 
   private catchAuthError (self: AuthorizedHttpService) {

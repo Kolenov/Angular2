@@ -10,11 +10,6 @@ export class AuthResourceService {
   }
 
   login(data: UserInfo): Observable<Response> {
-    return this.authorizedHttp.post('/auth/login', { ...data })
-      .map(this.parseResponce);
-  }
-
-  parseResponce(res: Response): Response {
-    return res.json();
+    return this.authorizedHttp.post('/auth/login', { ...data });
   }
 }

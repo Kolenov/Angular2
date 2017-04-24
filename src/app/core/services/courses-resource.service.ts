@@ -20,13 +20,11 @@ export class CoursesResourceService {
 
     requestOptions.search = urlParams;
 
-    return this.authorizedHttp.get('/courses', requestOptions)
-      .map(this.parseResponce);
+    return this.authorizedHttp.get('/courses', requestOptions);
   }
 
   getCourse(id: number): Observable<Response> {
-    return this.authorizedHttp.get(`/courses/${id}`)
-      .map(this.parseResponce);
+    return this.authorizedHttp.get(`/courses/${id}`);
   }
 
   updateCourse(id: number, data: CourseItem): Observable<Response> {
@@ -34,8 +32,7 @@ export class CoursesResourceService {
 
     requestOptions.body = data;
 
-    return this.authorizedHttp.put(`/courses/${id}`, {}, requestOptions)
-      .map(this.parseResponce);
+    return this.authorizedHttp.put(`/courses/${id}`, {}, requestOptions);
   }
 
   updateTopRated(id: number, data: TopRated): Observable<Response> {
@@ -43,8 +40,7 @@ export class CoursesResourceService {
 
     requestOptions.body = data;
 
-    return this.authorizedHttp.put(`/courses/${id}`, {}, requestOptions)
-      .map(this.parseResponce);
+    return this.authorizedHttp.put(`/courses/${id}`, {}, requestOptions);
   }
 
   createCourse(data: CourseItem): Observable<Response> {
@@ -54,17 +50,10 @@ export class CoursesResourceService {
 
     requestOptions.body = data;
 
-    return this.authorizedHttp.post('/courses', {}, requestOptions)
-      .map(this.parseResponce);
+    return this.authorizedHttp.post('/courses', {}, requestOptions);
   }
 
   deleteCourse(id: number): Observable<Response> {
-    console.log('--- id', id);
-    return this.authorizedHttp.delete(`/courses/${ id }`)
-      .map(this.parseResponce);
-  }
-
-  parseResponce(res: Response): Response {
-    return res.json();
+    return this.authorizedHttp.delete(`/courses/${ id }`);
   }
 }
