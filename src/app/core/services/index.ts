@@ -1,5 +1,6 @@
 export * from './authorized-http.service';
 export * from './auth.service';
+export * from './auth-token.service';
 export * from './auth-resource.service';
 export * from './courses.service';
 export * from './helper.service';

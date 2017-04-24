@@ -4,18 +4,18 @@ import {
   Headers, Http, Request, RequestOptions, RequestOptionsArgs, Response,
   XHRBackend
 } from '@angular/http';
-import { AuthService } from './auth.service';
+import { AuthTokenService } from './auth-token.service';
 
 @Injectable()
 export class AuthorizedHttpService extends Http {
-  private authService: AuthService;
+  private authToken: AuthTokenService;
 
-  constructor (backend: XHRBackend, options: RequestOptions, authService: AuthService) {
-    options.headers.set('Authorization', `Bearer ${authService.token}`);
+  constructor (backend: XHRBackend, options: RequestOptions, authToken: AuthTokenService) {
+    options.headers.set('Authorization', `${ authToken.getToken() }`);
 
     super(backend, options);
 
-    this.authService = authService;
+    this.authToken = authToken;
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
@@ -24,9 +24,9 @@ export class AuthorizedHttpService extends Http {
         options = { headers: new Headers() };
       }
 
-      options.headers.set('Authorization', `Bearer ${ this.authService.token }`);
+      options.headers.set('Authorization', `${ this.authToken.getToken() }`);
     } else {
-      url.headers.set('Authorization', `Bearer ${ this.authService.token }`);
+      url.headers.set('Authorization', `${ this.authToken.getToken() }`);
     }
 
     return super.request(url, options).catch(this.catchAuthError(this));

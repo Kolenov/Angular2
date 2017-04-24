@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CourseItem, ExtendedCourseItem, CoursesCount } from '../../models';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { CoursesResourceService } from './courses-resource.service';
 

@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 import { UserInfo, Token } from '../../models';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Http, Response } from '@angular/http';
 import { UserService } from './user.service';
 import { AuthResourceService } from './auth-resource.service';
+import { AuthTokenService } from './auth-token.service';
 
 @Injectable()
 export class AuthService {
-  public token: string;
   private logIn$: BehaviorSubject<boolean>;
   private baseUrl: string;
 
-  constructor(private http: Http, private userService: UserService, private authResourceService: AuthResourceService) {
-    const currentUser = JSON.parse(localStorage.getItem('user'));
-
+  constructor(private authToken: AuthTokenService,
+              private userService: UserService,
+              private authResourceService: AuthResourceService) {
     this.baseUrl = 'http://localhost:3004';
-    this.token = currentUser && currentUser.fakeToken;
-    this.logIn$ = new BehaviorSubject<boolean>(!!this.token);
+    this.logIn$ = new BehaviorSubject<boolean>(!!this.authToken.getToken());
   }
 
   login(data: UserInfo): Observable<Token> {
@@ -35,8 +33,8 @@ export class AuthService {
   }
 
   updateToken(token: string): void {
-      this.token = token;
-      this.logIn$.next(!!this.token);
+      this.authToken.updateToken(token);
+      this.logIn$.next(!!token);
   }
 
   logout(): Observable<boolean> {

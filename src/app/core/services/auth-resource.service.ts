@@ -1,30 +1,19 @@
 import { Injectable } from '@angular/core';
 import { UserInfo } from '../../models';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { Http, Request, RequestMethod, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import { RequestOptions, Response } from '@angular/http';
+import { AuthorizedHttpService } from './authorized-http.service';
 
 @Injectable()
 export class AuthResourceService {
-  public token: string;
-  private logIn$: BehaviorSubject<boolean>;
   private baseUrl: string;
 
-  constructor(private http: Http) {
+  constructor(private authorizedHttp: AuthorizedHttpService) {
     this.baseUrl = 'http://localhost:3004';
   }
 
   login(data: UserInfo): Observable<Response> {
-    let requestOptions = new RequestOptions();
-    let request: Request;
-
-    requestOptions.url = `${ this.baseUrl }/auth/login`;
-    requestOptions.method = RequestMethod.Post;
-    requestOptions.body = {
-      ...data
-    };
-    request = new Request(requestOptions);
-
-    return this.http.request(request)
+    return this.authorizedHttp.post(`${ this.baseUrl }/auth/login`, { ...data })
       .map(this.parseResponce);
   }
 

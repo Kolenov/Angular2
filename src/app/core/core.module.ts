@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { LoaderModule } from './loader';
 import {
   AuthService,
+  AuthTokenService,
   CoursesService,
   CoursesResourceService,
   LoaderService,
@@ -24,6 +25,7 @@ import {
   ],
   providers: [
     AuthService,
+    AuthTokenService,
     CoursesService,
     CoursesResourceService,
     LoaderService,
