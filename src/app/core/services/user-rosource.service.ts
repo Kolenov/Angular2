@@ -16,7 +16,7 @@ export class UserResourceService {
       .map(this.parseResponce);
   }
 
-  parseResponce(res: Response) {
+  parseResponce(res: Response): Response {
     return res.json();
   }
 }

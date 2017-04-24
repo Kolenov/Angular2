@@ -70,7 +70,7 @@ export class CoursesResourceService {
       .map(this.parseResponce);
   }
 
-  parseResponce(res: Response) {
+  parseResponce(res: Response): Response {
     return res.json();
   }
 }
