@@ -23,7 +23,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
   private subscription: Subscription[] = [];
 
   constructor(private coursesService: CoursesService,
-              private searchService: SearchService,
               private router: Router,
               private loaderService: LoaderService,
               private changeDetectorRef: ChangeDetectorRef) {}
