@@ -28,6 +28,14 @@ export class CoursesWrapperComponent implements OnChanges {
     }
   }
 
+  editCourse(id: number): void {
+    this.onEdit.emit(id);
+  }
+
+  deleteCourse(id: number): void {
+    this.onDelete.emit(id);
+  }
+
   onToggleRaiting(topRated: CourseRaiting): void {
     this.toggleRaiting.emit(topRated);
   }

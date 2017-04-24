@@ -59,6 +59,7 @@ export class CoursesResourceService {
   }
 
   deleteCourse(id: number): Observable<Response> {
+    console.log('--- id', id);
     return this.authorizedHttp.delete(`/courses/${ id }`)
       .map(this.parseResponce);
   }

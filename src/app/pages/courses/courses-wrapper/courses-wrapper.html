@@ -1,8 +1,8 @@
 <cr-course-list
   class="courses__list"
   [courseList]="courses"
-  (onEdit)="onEdit($event)"
-  (onDelete)="onDelete($event)"
+  (onEdit)="editCourse($event)"
+  (onDelete)="deleteCourse($event)"
   (toggleRaiting)="onToggleRaiting($event)"
 ></cr-course-list>
 
