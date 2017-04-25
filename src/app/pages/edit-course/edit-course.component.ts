@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { CoursesService } from '../../core/services';
 import { CourseItem } from '../../models';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,7 +8,6 @@ import { Subscription, Observable } from 'rxjs';
   selector: 'cr-edit-course',
   styleUrls: [ './edit-course.scss' ],
   templateUrl: './edit-course.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 

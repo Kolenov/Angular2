@@ -5,3 +5,4 @@ export * from './token.model';
 export * from './pagination.model';
 export * from './courses-count.model';
 export * from './top-rated.model';
+export * from './login.model';

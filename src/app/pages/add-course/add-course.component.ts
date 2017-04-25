@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoursesService } from '../../core/services';
 import { Subscription } from 'rxjs';
@@ -6,7 +6,6 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'cr-add-course',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrls: [ './add-course.scss' ],
   templateUrl: './add-course.html'

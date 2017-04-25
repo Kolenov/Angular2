@@ -1,29 +1,37 @@
-import { Component, ViewEncapsulation, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component, ViewEncapsulation, OnDestroy, ViewChild, OnInit
+} from '@angular/core';
 import { AuthService } from '../../core/services';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Login } from '../../models';
 
 @Component({
   selector: 'cr-login',
   styleUrls: [ './login.scss' ],
   templateUrl: './login.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 
-export class LoginComponent implements OnDestroy {
-  public formLogin: any = {
-    login: '',
-    password: ''
+export class LoginComponent implements OnInit, OnDestroy {
+  public formModel: Login = {
+    login: undefined,
+    password: undefined
   };
+
+  @ViewChild('form') public userForm: NgForm;
+
   private subscription: Subscription;
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
+  ngOnInit() {
+    console.log(this.userForm);
+  }
+
   onSubmit(event: NgForm) {
-    console.log(event)
     if (event.valid) {
       this.subscription = this.authService.login(event.value)
         .subscribe(() => {

@@ -2,7 +2,7 @@
 	<h4 class="login__title">Login Page</h4>
 
   <div class="row justify-content-center">
-    <form class="col-6" novalidate #LoginForm="ngForm" (ngSubmit)="onSubmit(LoginForm)">
+    <form class="col-6" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
       <div class="login__wrapper-form">
         <div class="form-group">
           <label for="login">Login</label>
@@ -12,7 +12,7 @@
             id="login"
             aria-describedby="loginHelp"
             placeholder="Enter login"
-            name="login" #login="ngModel" [ngModel]="formLogin.login" required minlength="3"
+            name="login" #login="ngModel" [(ngModel)]="formModel.login" required minlength="3"
             [class.has-error]="login.touched && login.invalid">
           <div class="has-error" *ngIf="login.touched && login.invalid && login?.errors.minlength">minlength 3</div>
           <div class="has-error" *ngIf="login.touched && login.invalid && login?.errors.required">required</div>
@@ -24,8 +24,9 @@
             class="form-control"
             id="password"
             placeholder="Password"
-            name="password" #password="ngModel" [ngModel]="formLogin.password" required
+            name="password" #password="ngModel" [(ngModel)]="formModel.password" required minlength="2"
             [class.has-error]="password.touched && password.invalid">
+          <div class="has-error" *ngIf="password.touched && password.invalid && password?.errors.minlength">minlength 2</div>
           <div class="has-error" *ngIf="password.touched && password.invalid && password?.errors.required">required</div>
         </div>
       </div>
@@ -33,7 +34,7 @@
       <cr-button type="submit"
                  buttonClass="btn-success"
                  [buttonSize]="'medium'"
-                 [disabled]="LoginForm.invalid">Log In</cr-button>
+                 [disabled]="loginForm.invalid">Log In</cr-button>
     </form>
   </div>
 </div>
