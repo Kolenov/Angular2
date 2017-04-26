@@ -1,20 +1,42 @@
 import {
-  Component, ViewEncapsulation, Output, EventEmitter, Input, ChangeDetectionStrategy, AfterContentInit
+  Component, ViewEncapsulation, Output, EventEmitter, Input, OnInit, SimpleChanges, OnChanges
 } from '@angular/core';
 import { CourseItem } from '../../../models';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import * as _ from 'lodash';
 
 @Component({
 	selector: 'cr-edit-course-form',
 	templateUrl: './edit-course-form.html',
   styleUrls: [ './edit-course-form.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None
 })
-export class EditCourseFormComponent {
+export class EditCourseFormComponent implements OnInit, OnChanges {
   @Input() public courseInfo: CourseItem;
   @Output() onSubmit: EventEmitter<CourseItem> = new EventEmitter<CourseItem>();
-  course: CourseItem;
+  formGroup: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+  }
+
+  ngOnInit() {
+    this.formGroup = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(500)]]
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['courseInfo'] && changes['courseInfo'].currentValue) {
+      _.forOwn(this.formGroup.controls, (value, key) => {
+        this.setControlValue(key, changes['courseInfo'].currentValue[key]);
+      });
+    }
+  }
+
+  setControlValue(controlName, value): void {
+    this.formGroup.controls[controlName].setValue(value);
+  }
 
   submit(event: NgForm): void {
     event.value.date = new Date( event.value.date );
