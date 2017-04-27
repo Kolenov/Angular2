@@ -8,3 +8,4 @@ export * from './loader.service';
 export * from './user.service';
 export * from './user-rosource.service';
 export * from './courses-resource.service';
+export * from './control-value-accessor.service';

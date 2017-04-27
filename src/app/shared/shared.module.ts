@@ -16,6 +16,7 @@ import { TopRatedModule } from './top-rated';
 import { DurationModule } from './duration';
 import { OrderByModule } from './order-by';
 import { FilterByModule } from './filter-by';
+import { DateInputModule } from './form-components/date-input';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -37,7 +38,8 @@ import { CommonModule } from '@angular/common';
       TopRatedModule,
       DurationModule,
       OrderByModule,
-      FilterByModule
+      FilterByModule,
+      DateInputModule
     ],
     exports: [
       HeaderModule,
@@ -59,7 +61,8 @@ import { CommonModule } from '@angular/common';
       FormsModule,
       BrowserModule,
       ReactiveFormsModule,
-      CommonModule
+      CommonModule,
+      DateInputModule
     ]
 })
 export class SharedModule { }

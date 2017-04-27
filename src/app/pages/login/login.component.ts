@@ -1,5 +1,5 @@
 import {
-  Component, ViewEncapsulation, OnDestroy, ViewChild, OnInit
+  Component, ViewEncapsulation, OnDestroy
 } from '@angular/core';
 import { AuthService } from '../../core/services';
 import { Router } from '@angular/router';
@@ -14,21 +14,15 @@ import { Login } from '../../models';
   encapsulation: ViewEncapsulation.None
 })
 
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnDestroy {
   public formModel: Login = {
     login: undefined,
     password: undefined
   };
 
-  @ViewChild('form') public userForm: NgForm;
-
   private subscription: Subscription;
 
   constructor(private authService: AuthService, private router: Router) {
-  }
-
-  ngOnInit() {
-    console.log(this.userForm);
   }
 
   onSubmit(event: NgForm) {

@@ -19,14 +19,15 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
   constructor(private formBuilder: FormBuilder) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(500)]]
+      description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(500)]],
+      date: ['', [Validators.required]]
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['courseInfo'] && changes['courseInfo'].currentValue) {
       _.forOwn(this.formGroup.controls, (value, key) => {
         this.setControlValue(key, changes['courseInfo'].currentValue[key]);

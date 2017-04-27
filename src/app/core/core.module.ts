@@ -11,7 +11,8 @@ import {
   UserService,
   UserResourceService,
   AuthResourceService,
-  AuthorizedHttpService
+  AuthorizedHttpService,
+  ControlValueAccessorService
 } from './services';
 
 @NgModule({
@@ -31,7 +32,8 @@ import {
     UserService,
     UserResourceService,
     AuthResourceService,
-    AuthorizedHttpService
+    AuthorizedHttpService,
+    ControlValueAccessorService
   ]
 })
 export class CoreModule { }
