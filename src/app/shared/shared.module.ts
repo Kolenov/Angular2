@@ -22,6 +22,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DurationInputModule } from './form-components/duration-input/duration-input.module';
+import { AuthorsCheckboxModule } from './form-components/authors-checkbox/authors-checkbox.module';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { DurationInputModule } from './form-components/duration-input/duration-i
       OrderByModule,
       FilterByModule,
       DateInputModule,
-      DurationInputModule
+      DurationInputModule,
+      AuthorsCheckboxModule
     ],
     exports: [
       HeaderModule,
@@ -65,7 +67,8 @@ import { DurationInputModule } from './form-components/duration-input/duration-i
       ReactiveFormsModule,
       CommonModule,
       DateInputModule,
-      DurationInputModule
+      DurationInputModule,
+      AuthorsCheckboxModule
     ]
 })
 export class SharedModule { }

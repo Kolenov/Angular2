@@ -24,7 +24,8 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(500)]],
       date: ['', [Validators.required]],
-      duration: ['', [Validators.required]]
+      duration: ['', [Validators.required]],
+      authors: ['', [Validators.required]]
     });
   }
 
