@@ -23,7 +23,8 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(500)]],
-      date: ['', [Validators.required]]
+      date: ['', [Validators.required]],
+      duration: ['', [Validators.required]]
     });
   }
 

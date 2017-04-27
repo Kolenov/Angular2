@@ -11,28 +11,26 @@ const CUSTOM_RADIO_VALUE_ACCESSOR = {
 };
 
 @Component({
-	selector: 'cr-date-input',
-	templateUrl: './date-input.html',
-  styleUrls: [ './date-input.scss' ],
+	selector: 'cr-duration-input',
+	templateUrl: './duration-input.html',
+  styleUrls: [ './duration-input.scss' ],
 	encapsulation: ViewEncapsulation.None,
   providers: [ CUSTOM_RADIO_VALUE_ACCESSOR, ControlValueAccessorService ]
 })
-export class DateInputComponent implements OnInit {
+export class DurationInputComponent implements OnInit {
   @Input() inputClass: string = '';
-  @Input() placeholderInput: string = '';
+  @Input() wrapperClass: string = '';
   @Input() nameInput: string = '';
 
   public value: string;
 
   constructor(private controlValueAccessorService: ControlValueAccessorService) {}
 
-  ngOnInit() {
-    this.value = this.controlValueAccessorService.value;
+  ngOnInit(): void {
+    this.value = this.controlValueAccessorService.value || '';
   }
 
-  setValue(item) {
+  setValue(item): void {
     this.controlValueAccessorService.setValue(item);
-
-    console.log('---- new', this.controlValueAccessorService.value);
   }
 }

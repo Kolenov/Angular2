@@ -1,0 +1,10 @@
+<div [class]="wrapperClass">
+  <input
+    type="text"
+    [class]="inputClass"
+    [value]="value"
+    [name]="nameInput"
+    (change)="setValue($event)"
+    placeholder="Duration in min">
+  <div class="input-group-addon">{{ value | crDuration }}</div>
+</div>

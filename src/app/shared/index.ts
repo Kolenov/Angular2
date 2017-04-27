@@ -15,4 +15,5 @@ export * from './duration';
 export * from './order-by';
 export * from './filter-by';
 export * from './form-components/date-input';
+export * from './form-components/duration-input';
 export * from './shared.module';

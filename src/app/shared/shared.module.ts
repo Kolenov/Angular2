@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { DurationInputModule } from './form-components/duration-input/duration-input.module';
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import { CommonModule } from '@angular/common';
       DurationModule,
       OrderByModule,
       FilterByModule,
-      DateInputModule
+      DateInputModule,
+      DurationInputModule
     ],
     exports: [
       HeaderModule,
@@ -62,7 +64,8 @@ import { CommonModule } from '@angular/common';
       BrowserModule,
       ReactiveFormsModule,
       CommonModule,
-      DateInputModule
+      DateInputModule,
+      DurationInputModule
     ]
 })
 export class SharedModule { }
