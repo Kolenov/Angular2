@@ -4,7 +4,6 @@ import {
 import { CourseItem } from '../../../models';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import * as _ from 'lodash';
-import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'cr-edit-course-form',
@@ -15,7 +14,10 @@ import { Subscription } from 'rxjs';
 export class EditCourseFormComponent implements OnInit, OnChanges {
   @Input() public courseInfo: CourseItem;
   @Output() onSubmit: EventEmitter<CourseItem> = new EventEmitter<CourseItem>();
+
   formGroup: FormGroup;
+
+  public usersList;
 
   constructor(private formBuilder: FormBuilder) {
   }

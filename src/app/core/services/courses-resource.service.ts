@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Http, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { AuthorizedHttpService } from './authorized-http.service';
 import { CourseItem, TopRated } from '../../models';
 import { HelperService } from './helper.service';

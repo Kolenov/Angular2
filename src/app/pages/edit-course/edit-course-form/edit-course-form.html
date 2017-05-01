@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" *ngIf="courseInfo" (ngSubmit)="submit(formGroup)">
-  {{courseInfo | json}}
+  {{courseInfo?.authors | json}}
   <div class="form-group row">
     <label for="name-course" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
@@ -49,7 +49,7 @@
     <label for="date-course" class="col-sm-2 col-form-label">Authors</label>
     <div class="col-sm-10">
       <cr-authors-checkbox id="authors-course"
-                     formControlName="authors"
+                           formControlName="authors"
       ></cr-authors-checkbox>
     </div>
   </div>

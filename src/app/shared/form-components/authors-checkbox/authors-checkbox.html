@@ -1,3 +1,11 @@
 <div [class]="wrapperClass">
-  check
+  <div *ngFor="let item of value; let i = index;" class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input"
+             type="checkbox"
+             [value]="item?.checked"
+             [checked]="item.checked"
+             (change)="setValue(item.checked, i)" /> {{ item.firstName }} {{ item.lastName }}
+    </label>
+  </div>
 </div>

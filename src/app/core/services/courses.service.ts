@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CourseItem, ExtendedCourseItem, CoursesCount } from '../../models';
+import { CourseItem, ExtendedCourseItem, Users } from '../../models';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { CoursesResourceService } from './courses-resource.service';
@@ -51,13 +51,13 @@ export class CoursesService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  filteredOutdateCourse(data: ExtendedCourseItem[]): ExtendedCourseItem[]  {
-    const outdated: Date = new Date();
-
-    outdated.setDate(outdated.getDate() - 14);
-
-    return _.filter(data, (item: CourseItem): boolean => {
-      return item.date > outdated;
-    });
-  }
+  // filteredOutdateCourse(data: ExtendedCourseItem[]): ExtendedCourseItem[]  {
+  //   const outdated: Date = new Date();
+  //
+  //   outdated.setDate(outdated.getDate() - 14);
+  //
+  //   return _.filter(data, (item: CourseItem): boolean => {
+  //     return item.date > outdated;
+  //   });
+  // }
 }

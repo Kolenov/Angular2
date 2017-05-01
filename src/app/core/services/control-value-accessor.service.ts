@@ -6,7 +6,11 @@ export class ControlValueAccessorService implements ControlValueAccessor {
   public currentValue: any;
 
   setValue(item) {
-    this.value = item.target.value;
+    if (item && item.target) {
+      this.value = item.target.value;
+    } else {
+      this.value = item;
+    }
   }
 
   set value(newValue) {

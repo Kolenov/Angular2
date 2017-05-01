@@ -22,7 +22,7 @@ export class AuthorsCheckboxComponent implements OnInit {
   @Input() wrapperClass: string = '';
   @Input() nameInput: string = '';
 
-  public value: string;
+  public value;
 
   constructor(private controlValueAccessorService: ControlValueAccessorService) {}
 
@@ -30,7 +30,9 @@ export class AuthorsCheckboxComponent implements OnInit {
     this.value = this.controlValueAccessorService.value || '';
   }
 
-  setValue(item): void {
-    this.controlValueAccessorService.setValue(item);
+  setValue(checked, index): void {
+    this.value[index].checked = (!checked);
+
+    this.controlValueAccessorService.setValue(this.value);
   }
 }
