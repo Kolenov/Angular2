@@ -30,7 +30,13 @@ export class DurationInputComponent implements OnInit {
     this.value = this.controlValueAccessorService.value || '';
   }
 
+  updateValue(data: string): void {
+    this.value = data;
+  }
+
   setValue(item): void {
+    this.updateValue(item.target.value);
+
     this.controlValueAccessorService.setValue(item);
   }
 }

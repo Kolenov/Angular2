@@ -3,6 +3,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueAccessorService } from '../../../core/services';
+import * as _ from 'lodash';
 
 const CUSTOM_RADIO_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -26,13 +27,11 @@ export class DateInputComponent implements OnInit {
 
   constructor(private controlValueAccessorService: ControlValueAccessorService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.value = this.controlValueAccessorService.value || '';
   }
 
-  setValue(item) {
-    this.controlValueAccessorService.setValue(item);
-
-    console.log('---- new', this.controlValueAccessorService.value);
+  setValue(event): void {
+    this.controlValueAccessorService.setValue(event);
   }
 }

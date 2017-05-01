@@ -1,6 +1,6 @@
 <input type="text"
        [class]="inputClass"
-       [value]="value"
+       [value]="value | date:'yyyy.MM.dd'"
        (change)="setValue($event)"
        [placeholder]="placeholderInput"
        [name]="nameInput"/>

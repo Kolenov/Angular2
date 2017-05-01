@@ -4,6 +4,7 @@ import {
 import { CourseItem } from '../../../models';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import * as _ from 'lodash';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'cr-edit-course-form',
@@ -41,13 +42,17 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
     this.formGroup.controls[controlName].setValue(value);
   }
 
-  submit(event: NgForm): void {
-    event.value.date = new Date( event.value.date );
+  formatToDateString(data: string): string {
+    const date: Date = new Date(data);
 
-    this.onSubmit.emit(Object.assign(this.courseInfo, event.value));
+    return date.toDateString();
   }
 
-  setDate(date: string): void {
-    this.courseInfo.date = new Date(date);
+  submit(event: NgForm): void {
+    event.value.date = this.formatToDateString(event.value.date);
+
+    if (event.valid) {
+      this.onSubmit.emit(Object.assign(this.courseInfo, event.value));
+    }
   }
 }

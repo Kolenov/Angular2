@@ -3,7 +3,7 @@ export interface CourseItem {
   name: string;
   description: string;
   isTopRated?: boolean;
-  date: Date;
+  date: string;
   author?: {
     id: number,
     firstName: string,
