@@ -41,6 +41,7 @@
                      placeholderInput="yyyy.mm.dd"
                      formControlName="date"
       ></cr-date-input>
+      <div class="alert alert-danger" *ngIf="formGroup.controls.date.touched && formGroup.controls.date?.errors.invalidDateFormat">invalid date format</div>
     </div>
   </div>
 
@@ -60,6 +61,7 @@
       <cr-authors-checkbox id="authors-course"
                            formControlName="authors"
       ></cr-authors-checkbox>
+      <div class="alert alert-danger" *ngIf="formGroup.controls.authors.touched && formGroup.controls.authors?.errors.invalidCheckedCheckbox">please checked authors</div>
     </div>
   </div>
 

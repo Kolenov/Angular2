@@ -5,6 +5,8 @@ import { CourseItem } from '../../../models';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import * as _ from 'lodash';
 import { validateOnlyNumbers } from '../../../shared/validators/only-numbers/only-numbers.validator';
+import { validateDateFormat } from '../../../shared/validators/date-format/date-format.validator';
+import { validateCheckedCheckbox } from '../../../shared/validators/checked-checkbox.validator/checked-checkbox.validator';
 
 @Component({
 	selector: 'cr-edit-course-form',
@@ -25,9 +27,9 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(500)]],
-      date: ['', [Validators.required]],
+      date: ['', [validateDateFormat]],
       duration: ['', [validateOnlyNumbers]],
-      authors: ['']
+      authors: ['', [validateCheckedCheckbox]]
     });
   }
 
