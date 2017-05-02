@@ -19,6 +19,7 @@ a.active {
   color: $c-red;
 }
 
-input.has-error {
+input.has-error,
+textarea.has-error {
   border: 1px solid $c-red;
 }

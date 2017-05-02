@@ -21,6 +21,7 @@ export class DurationInputComponent implements OnInit {
   @Input() inputClass: string = '';
   @Input() wrapperClass: string = '';
   @Input() nameInput: string = '';
+  @Input() name: string;
 
   public value: string;
 

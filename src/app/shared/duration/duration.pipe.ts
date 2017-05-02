@@ -8,7 +8,7 @@ import {
   pure: false
 })
 export class DurationPipe implements PipeTransform {
-  transform(value: number): string {
+  transform(value: string): string {
     if (!value) {
       return '';
     }
@@ -16,10 +16,14 @@ export class DurationPipe implements PipeTransform {
     return this.formatTime(value);
   }
 
-  private formatTime(timestamp: number): string {
+  private formatTime(timestamp: string): string {
     const correction: number = 60;
+    let duration: number = +timestamp;
 
-    const duration: number = timestamp;
+    if (!(/^\d+$/).test(timestamp)) {
+      duration = 0;
+    }
+
     const HH: number = Math.floor(duration / correction);
     const mm: number = Math.floor((duration - (HH * correction)));
 

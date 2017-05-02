@@ -3,8 +3,8 @@
     type="text"
     [class]="inputClass"
     [value]="value"
-    [name]="nameInput"
     (change)="setValue($event)"
+    [name]="name"
     placeholder="Duration in min">
   <div class="input-group-addon">{{ value | crDuration }}</div>
 </div>

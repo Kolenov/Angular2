@@ -14,7 +14,7 @@
             placeholder="Enter login"
             name="login" #login="ngModel" [(ngModel)]="formModel.login" required minlength="3"
             [class.has-error]="login.touched && login.invalid">
-          <div class="has-error" *ngIf="login.touched && login.invalid && login?.errors.minlength">minlength 3</div>
+          <div class="has-error" *ngIf="login.touched && login.invalid && login?.errors.minlength">min length 3</div>
           <div class="has-error" *ngIf="login.touched && login.invalid && login?.errors.required">required</div>
         </div>
         <div class="form-group">
@@ -26,7 +26,7 @@
             placeholder="Password"
             name="password" #password="ngModel" [(ngModel)]="formModel.password" required minlength="2"
             [class.has-error]="password.touched && password.invalid">
-          <div class="has-error" *ngIf="password.touched && password.invalid && password?.errors.minlength">minlength 2</div>
+          <div class="has-error" *ngIf="password.touched && password.invalid && password?.errors.minlength">min length 2</div>
           <div class="has-error" *ngIf="password.touched && password.invalid && password?.errors.required">required</div>
         </div>
       </div>

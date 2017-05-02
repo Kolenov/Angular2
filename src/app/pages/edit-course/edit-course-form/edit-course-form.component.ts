@@ -4,6 +4,7 @@ import {
 import { CourseItem } from '../../../models';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import * as _ from 'lodash';
+import { validateOnlyNumbers } from '../../../shared/validators/only-numbers/only-numbers.validator';
 
 @Component({
 	selector: 'cr-edit-course-form',
@@ -17,8 +18,6 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
 
   formGroup: FormGroup;
 
-  public usersList;
-
   constructor(private formBuilder: FormBuilder) {
   }
 
@@ -27,8 +26,8 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(500)]],
       date: ['', [Validators.required]],
-      duration: ['', [Validators.required]],
-      authors: ['', [Validators.required]]
+      duration: ['', [validateOnlyNumbers]],
+      authors: ['']
     });
   }
 
