@@ -5,7 +5,8 @@
              type="checkbox"
              [value]="item?.checked"
              [checked]="item.checked"
-             (change)="setValue(item.checked, i)" /> {{ item.firstName }} {{ item.lastName }}
+             (change)="setValue(item.checked, i)"
+             (blur)="onBlur()"/> {{ item.firstName }} {{ item.lastName }}
     </label>
   </div>
 </div>

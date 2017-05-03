@@ -11,7 +11,5 @@ export function validateCheckedCheckbox(data: FormControl): {[key: string]: bool
     });
   }
 
-  console.log('----- validateCheckedCheckbox', valid);
-
   return valid ? null : { invalidCheckedCheckbox: true };
 }

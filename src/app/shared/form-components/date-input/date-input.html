@@ -1,6 +1,7 @@
 <input type="text"
        [class]="inputClass"
-       [value]="value | date:'yyyy.MM.dd'"
+       [value]="value"
        (change)="setValue($event)"
+       (blur)="onBlur()"
        [placeholder]="placeholderInput"
        [name]="nameInput"/>

@@ -35,6 +35,10 @@ export class ControlValueAccessorService implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
+  onBlur() {
+    this.onTouched();
+  }
+
   writeValue(value: any): void {
     if (value !== this.currentValue) {
       this.currentValue = value;

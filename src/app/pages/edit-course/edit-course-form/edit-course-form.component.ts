@@ -1,6 +1,7 @@
 import {
   Component, ViewEncapsulation, Output, EventEmitter, Input, OnInit, SimpleChanges, OnChanges
 } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { CourseItem } from '../../../models';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import * as _ from 'lodash';
@@ -20,7 +21,7 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
 
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -35,8 +36,14 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['courseInfo'] && changes['courseInfo'].currentValue) {
-      _.forOwn(this.formGroup.controls, (value, key) => {
-        this.setControlValue(key, changes['courseInfo'].currentValue[key]);
+      _.forOwn(this.formGroup.controls, (value, key): void => {
+        let data = changes['courseInfo'].currentValue[key];
+
+        if (key === 'date') {
+          data = this.datePipe.transform(data, 'yyyy.MM.dd');
+        }
+
+        this.setControlValue(key, data);
       });
     }
   }

@@ -21,7 +21,7 @@ export class DurationInputComponent implements OnInit {
   @Input() inputClass: string = '';
   @Input() wrapperClass: string = '';
   @Input() nameInput: string = '';
-  @Input() name: string;
+  @Input() nameField: string;
 
   public value: string;
 
@@ -33,6 +33,19 @@ export class DurationInputComponent implements OnInit {
 
   updateValue(data: string): void {
     this.value = data;
+  }
+
+  getWrapperClasses(): string {
+    const classes: string[] = [
+      'wrapper-duration-input',
+      this.wrapperClass
+    ];
+
+    return classes.join(' ');
+  }
+
+  onBlur() {
+    this.controlValueAccessorService.onBlur();
   }
 
   setValue(item): void {

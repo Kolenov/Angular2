@@ -35,4 +35,8 @@ export class AuthorsCheckboxComponent implements OnInit {
 
     this.controlValueAccessorService.setValue(this.value);
   }
+
+  onBlur() {
+    this.controlValueAccessorService.onBlur();
+  }
 }

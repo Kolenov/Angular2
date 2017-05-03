@@ -1,10 +1,11 @@
-<div [class]="wrapperClass">
+<div [class]="getWrapperClasses()">
   <input
     type="text"
     [class]="inputClass"
     [value]="value"
     (change)="setValue($event)"
-    [name]="name"
+    (blur)="onBlur()"
+    [name]="nameField"
     placeholder="Duration in min">
   <div class="input-group-addon">{{ value | crDuration }}</div>
 </div>
