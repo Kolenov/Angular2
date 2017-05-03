@@ -4,14 +4,14 @@ import { SharedModule } from '../../shared';
 import { RouterModule } from '@angular/router';
 import { addCourseRoutes } from './add-course.routes';
 import { AddCourseComponent } from './add-course.component';
-import { DurationOfCourseModule } from './duration-of-course';
+import { CourseFormModule } from './course-form/course-form.module';
 
 @NgModule({
   declarations: [
     AddCourseComponent
   ],
   imports: [
-    DurationOfCourseModule,
+    CourseFormModule,
     RouterModule.forChild(addCourseRoutes),
     SharedModule
   ]

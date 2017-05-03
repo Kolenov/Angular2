@@ -1,0 +1,90 @@
+<form [formGroup]="formGroup" (ngSubmit)="submit(formGroup)">
+  <div class="form-group row">
+    <label for="name-course" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        [class.has-error]="formGroup.controls.name.touched && formGroup.controls.name.invalid"
+        id="name-course"
+        aria-describedby="nameCourse"
+        placeholder="Name Course"
+        formControlName="name"
+      >
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.name.touched && formGroup.controls.name.invalid && formGroup.controls.name?.errors.minlength">min length 2</div>
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.name.touched && formGroup.controls.name.invalid && formGroup.controls.name?.errors.maxlength">max length 50</div>
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.name.touched && formGroup.controls.name.invalid && formGroup.controls.name?.errors.required">required</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="description-course" class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+      <textarea
+        id="description-course"
+        class="form-control"
+        [class.has-error]="formGroup.controls.description.touched && formGroup.controls.description.invalid"
+        placeholder="Description course"
+        rows="6"
+        formControlName="description"
+      ></textarea>
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.description.touched && formGroup.controls.description.invalid && formGroup.controls.description?.errors.minlength">min length 2</div>
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.description.touched && formGroup.controls.description.invalid && formGroup.controls.description?.errors.maxlength">max length 500</div>
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.description.touched && formGroup.controls.description.invalid && formGroup.controls.description?.errors.required">required</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="date-course" class="col-sm-2 col-form-label">Date</label>
+    <div class="col-sm-10">
+      <cr-date-input id="date-course"
+                     placeholderInput="yyyy.mm.dd"
+                     formControlName="date"
+      ></cr-date-input>
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.date.touched && formGroup.controls.date?.errors?.invalidDateFormat">invalid date format</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="duration-course" class="col-sm-2 col-form-label">Duration</label>
+    <div class="col-sm-10">
+      <cr-duration-input id="duration-course"
+                         wrapperClass="input-group col-sm-3"
+                         formControlName="duration"
+                         nameField="duration"
+      ></cr-duration-input>
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.duration.touched && formGroup.controls.duration?.errors?.invalidOnlyNumbers">only numbers</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="date-course" class="col-sm-2 col-form-label">Authors</label>
+    <div class="col-sm-10">
+      <cr-authors-checkbox id="authors-course"
+                           formControlName="authors"
+      ></cr-authors-checkbox>
+      <div class="alert alert-danger"
+           *ngIf="formGroup.controls.authors.touched && formGroup.controls.authors?.errors?.invalidCheckedCheckbox">please check authors</div>
+    </div>
+  </div>
+
+  <cr-button type="submit"
+             buttonClass="btn-success"
+             [buttonSize]="'medium'"
+             [disabled]="formGroup.invalid"
+  >Save</cr-button>
+
+  <cr-button-link
+    type="button"
+    buttonClass="btn-secondary"
+    routerLink="/courses"
+    [buttonSize]="'medium'">Cancel</cr-button-link>
+</form>
