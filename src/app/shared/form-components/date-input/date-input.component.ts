@@ -34,7 +34,7 @@ export class DateInputComponent implements OnInit {
     this.controlValueAccessorService.onBlur();
   }
 
-  setValue(event): void {
+  setValue(event: Event): void {
     this.controlValueAccessorService.setValue(event);
   }
 }

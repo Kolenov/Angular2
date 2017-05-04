@@ -6,9 +6,9 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'cr-add-course',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: [ './add-course.scss' ],
-  templateUrl: './add-course.html'
+  templateUrl: './add-course.html',
+  encapsulation: ViewEncapsulation.None
 })
 
 export class AddCourseComponent implements OnDestroy {
@@ -17,7 +17,9 @@ export class AddCourseComponent implements OnDestroy {
   constructor(private router: Router, private coursesService: CoursesService) {
   }
 
-  onSubmit(event: NgForm): void {
+  submit(event: NgForm): void {
+    console.log('------ submit', event);
+
     event.value.date = new Date(event.value.date);
 
     this.subscription = this.coursesService.createCourse(event.value)

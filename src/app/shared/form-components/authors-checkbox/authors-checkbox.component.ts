@@ -27,7 +27,7 @@ export class AuthorsCheckboxComponent implements OnInit {
   constructor(private controlValueAccessorService: ControlValueAccessorService) {}
 
   ngOnInit(): void {
-    this.value = this.controlValueAccessorService.value || '';
+    this.value = this.controlValueAccessorService.value || [];
   }
 
   setValue(checked, index): void {

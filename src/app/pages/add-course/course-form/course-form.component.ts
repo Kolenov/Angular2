@@ -1,5 +1,5 @@
 import {
-  Component, ViewEncapsulation, Output, EventEmitter, Input, OnInit
+  Component, ViewEncapsulation, Output, EventEmitter, OnInit
 } from '@angular/core';
 import { CourseItem } from '../../../models';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -8,6 +8,8 @@ import { validateDateFormat } from '../../../shared/validators/date-format/date-
 import {
   validateCheckedCheckbox
 } from '../../../shared/validators/checked-checkbox.validator/checked-checkbox.validator';
+import { Subscription } from 'rxjs';
+import { CoursesService } from '../../../core/services';
 
 @Component({
 	selector: 'cr-course-form',
@@ -16,12 +18,14 @@ import {
 	encapsulation: ViewEncapsulation.None
 })
 export class CourseFormComponent implements OnInit {
-  @Input() public courseInfo: CourseItem;
   @Output() onSubmit: EventEmitter<CourseItem> = new EventEmitter<CourseItem>();
 
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  private subscription: Subscription;
+
+  constructor(private formBuilder: FormBuilder,
+              private coursesService: CoursesService) {
   }
 
   ngOnInit(): void {
@@ -32,6 +36,15 @@ export class CourseFormComponent implements OnInit {
       duration: ['', [validateOnlyNumbers]],
       authors: ['', [validateCheckedCheckbox]]
     });
+
+    this.subscription = this.coursesService.getCoursesUsers()
+      .subscribe((data) => {
+        this.setControlValue('authors', data);
+      });
+  }
+
+  setControlValue(controlName, value): void {
+    this.formGroup.controls[controlName].setValue(value);
   }
 
   formatToDateString(data: string): string {
@@ -44,7 +57,7 @@ export class CourseFormComponent implements OnInit {
     event.value.date = this.formatToDateString(event.value.date);
 
     if (event.valid) {
-      this.onSubmit.emit(Object.assign(this.courseInfo, event.value));
+      this.onSubmit.emit(event.value);
     }
   }
 }

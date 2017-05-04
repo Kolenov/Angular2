@@ -56,4 +56,8 @@ export class CoursesResourceService {
   deleteCourse(id: number): Observable<Response> {
     return this.authorizedHttp.delete(`/courses/${ id }`);
   }
+
+  getCoursesUsers(): Observable<Response> {
+    return this.authorizedHttp.get('/courses/users');
+  }
 }

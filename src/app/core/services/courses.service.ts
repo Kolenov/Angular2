@@ -51,6 +51,11 @@ export class CoursesService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  getCoursesUsers(): Observable<Users> {
+    return this.coursesResourceService.getCoursesUsers()
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   // filteredOutdateCourse(data: ExtendedCourseItem[]): ExtendedCourseItem[]  {
   //   const outdated: Date = new Date();
   //
