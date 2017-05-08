@@ -17,18 +17,13 @@ const CUSTOM_RADIO_VALUE_ACCESSOR = {
 	encapsulation: ViewEncapsulation.None,
   providers: [ CUSTOM_RADIO_VALUE_ACCESSOR, ControlValueAccessorService ]
 })
-export class DateInputComponent implements OnInit {
+export class DateInputComponent {
   @Input() inputClass: string = '';
   @Input() placeholderInput: string = '';
   @Input() nameInput: string = '';
-
-  public value: string;
+  @Input() value: string = '';
 
   constructor(private controlValueAccessorService: ControlValueAccessorService) {}
-
-  ngOnInit(): void {
-    this.value = this.controlValueAccessorService.value || '';
-  }
 
   onBlur() {
     this.controlValueAccessorService.onBlur();

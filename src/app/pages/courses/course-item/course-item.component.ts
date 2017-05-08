@@ -1,5 +1,5 @@
 import {
-  Component, ViewEncapsulation, Input, EventEmitter, Output, ChangeDetectionStrategy
+  Component, ViewEncapsulation, Input, EventEmitter, Output
 } from '@angular/core';
 import { CourseItem } from '../../../models';
 import { CourseRaiting } from '../../../models';
@@ -8,7 +8,6 @@ import { CourseRaiting } from '../../../models';
   selector: 'cr-course-item',
   templateUrl: 'course-item.html',
   styleUrls: [ './course-item.scss' ],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 
@@ -27,6 +26,6 @@ export class CourseItemComponent {
   }
 
   onToggleRaiting(): void {
-    this.toggleRaiting.emit({ id: this.course.id, topRated: !this.course.topRated });
+    this.toggleRaiting.emit({ id: this.course.id, topRated: !this.course.isTopRated });
   }
 }

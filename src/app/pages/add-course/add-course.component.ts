@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CoursesService } from '../../core/services';
 import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { CourseItem } from '../../models';
 
 @Component({
   selector: 'cr-add-course',
@@ -17,12 +18,8 @@ export class AddCourseComponent implements OnDestroy {
   constructor(private router: Router, private coursesService: CoursesService) {
   }
 
-  submit(event: NgForm): void {
-    console.log('------ submit', event);
-
-    event.value.date = new Date(event.value.date);
-
-    this.subscription = this.coursesService.createCourse(event.value)
+  submit(data: CourseItem): void {
+    this.subscription = this.coursesService.createCourse(data)
       .subscribe((): void => {
           this.router.navigateByUrl('/courses');
         }

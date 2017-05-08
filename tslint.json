@@ -60,6 +60,7 @@
       "static-before-instance",
       "variables-before-functions"
     ],
+    "switch-default": false,
     "member-access": false,
     "triple-equals": true,
 		"no-string-literal": false,

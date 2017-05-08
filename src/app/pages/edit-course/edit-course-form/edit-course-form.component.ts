@@ -7,7 +7,10 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import * as _ from 'lodash';
 import { validateOnlyNumbers } from '../../../shared/validators/only-numbers/only-numbers.validator';
 import { validateDateFormat } from '../../../shared/validators/date-format/date-format.validator';
-import { validateCheckedCheckbox } from '../../../shared/validators/checked-checkbox.validator/checked-checkbox.validator';
+import {
+  validateCheckedCheckbox
+} from '../../../shared/validators/checked-checkbox.validator/checked-checkbox.validator';
+import { Users } from '../../../models/users.model';
 
 @Component({
 	selector: 'cr-edit-course-form',
@@ -17,6 +20,10 @@ import { validateCheckedCheckbox } from '../../../shared/validators/checked-chec
 })
 export class EditCourseFormComponent implements OnInit, OnChanges {
   @Input() public courseInfo: CourseItem;
+  @Input() date: string;
+  @Input() duration: string;
+  @Input() authors: Users;
+
   @Output() onSubmit: EventEmitter<CourseItem> = new EventEmitter<CourseItem>();
 
   formGroup: FormGroup;
@@ -50,6 +57,18 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
 
   setControlValue(controlName, value): void {
     this.formGroup.controls[controlName].setValue(value);
+
+    switch (controlName) {
+      case 'date':
+        this.date = value || '';
+        break;
+      case 'duration':
+        this.duration = value || '';
+        break;
+      case 'authors':
+        this.authors = value;
+        break;
+    }
   }
 
   formatToDateString(data: string): string {

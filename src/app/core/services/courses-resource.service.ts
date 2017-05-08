@@ -46,7 +46,7 @@ export class CoursesResourceService {
   createCourse(data: CourseItem): Observable<Response> {
     let requestOptions = new RequestOptions();
 
-    data.id = this.helperService.generateId();
+    // data.id = this.helperService.generateId();
 
     requestOptions.body = data;
 

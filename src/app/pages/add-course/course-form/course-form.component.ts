@@ -1,5 +1,5 @@
 import {
-  Component, ViewEncapsulation, Output, EventEmitter, OnInit
+  Component, ViewEncapsulation, Output, EventEmitter, OnInit, Input
 } from '@angular/core';
 import { CourseItem } from '../../../models';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -18,6 +18,7 @@ import { CoursesService } from '../../../core/services';
 	encapsulation: ViewEncapsulation.None
 })
 export class CourseFormComponent implements OnInit {
+  @Input() authors;
   @Output() onSubmit: EventEmitter<CourseItem> = new EventEmitter<CourseItem>();
 
   formGroup: FormGroup;
@@ -45,6 +46,7 @@ export class CourseFormComponent implements OnInit {
 
   setControlValue(controlName, value): void {
     this.formGroup.controls[controlName].setValue(value);
+    this.authors = value;
   }
 
   formatToDateString(data: string): string {

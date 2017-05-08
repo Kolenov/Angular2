@@ -1,5 +1,5 @@
 import {
-  Component, ViewEncapsulation, Input, forwardRef, OnInit
+  Component, ViewEncapsulation, Input, forwardRef
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueAccessorService } from '../../../core/services';
@@ -17,18 +17,13 @@ const CUSTOM_RADIO_VALUE_ACCESSOR = {
 	encapsulation: ViewEncapsulation.None,
   providers: [ CUSTOM_RADIO_VALUE_ACCESSOR, ControlValueAccessorService ]
 })
-export class AuthorsCheckboxComponent implements OnInit {
+export class AuthorsCheckboxComponent {
   @Input() inputClass: string = '';
   @Input() wrapperClass: string = '';
   @Input() nameInput: string = '';
+  @Input() value;
 
-  public value;
-
-  constructor(private controlValueAccessorService: ControlValueAccessorService) {}
-
-  ngOnInit(): void {
-    this.value = this.controlValueAccessorService.value || [];
-  }
+  constructor(public controlValueAccessorService: ControlValueAccessorService) {}
 
   setValue(checked, index): void {
     this.value[index].checked = (!checked);

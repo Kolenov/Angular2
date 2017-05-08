@@ -17,19 +17,14 @@ const CUSTOM_RADIO_VALUE_ACCESSOR = {
 	encapsulation: ViewEncapsulation.None,
   providers: [ CUSTOM_RADIO_VALUE_ACCESSOR, ControlValueAccessorService ]
 })
-export class DurationInputComponent implements OnInit {
+export class DurationInputComponent {
   @Input() inputClass: string = '';
   @Input() wrapperClass: string = '';
   @Input() nameInput: string = '';
   @Input() nameField: string;
-
-  public value: string;
+  @Input() value: string = '';
 
   constructor(private controlValueAccessorService: ControlValueAccessorService) {}
-
-  ngOnInit(): void {
-    this.value = this.controlValueAccessorService.value || '';
-  }
 
   updateValue(data: string): void {
     this.value = data;
