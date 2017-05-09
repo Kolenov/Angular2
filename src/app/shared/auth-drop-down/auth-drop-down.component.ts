@@ -28,7 +28,7 @@ export class AuthDropDownComponent implements OnDestroy {
   logout(): void {
     this.subscription = this.authService.logout()
       .subscribe(() => {
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/login');
         }
       );
   }

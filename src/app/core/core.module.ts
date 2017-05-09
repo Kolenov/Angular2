@@ -12,7 +12,8 @@ import {
   UserResourceService,
   AuthResourceService,
   AuthorizedHttpService,
-  ControlValueAccessorService
+  ControlValueAccessorService,
+  CanActivateAuthGuardService
 } from './services';
 
 @NgModule({
@@ -33,7 +34,8 @@ import {
     UserResourceService,
     AuthResourceService,
     AuthorizedHttpService,
-    ControlValueAccessorService
+    ControlValueAccessorService,
+    CanActivateAuthGuardService
   ]
 })
 export class CoreModule { }

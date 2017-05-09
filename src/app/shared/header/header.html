@@ -3,9 +3,13 @@
     <div class="main-navbar__wrapper">
       <cr-logo></cr-logo>
 
-      <cr-is-authorized class="main-navbar__item">
+      <!--<cr-is-authorized class="main-navbar__item">-->
+        <!--<cr-navbar></cr-navbar>-->
+      <!--</cr-is-authorized>-->
+
+      <div class="main-navbar__item">
         <cr-navbar></cr-navbar>
-      </cr-is-authorized>
+      </div>
 
       <cr-auth-drop-down [userInfo]="userInfo$ | async" class="main-navbar__auth-panel"></cr-auth-drop-down>
     </div>
