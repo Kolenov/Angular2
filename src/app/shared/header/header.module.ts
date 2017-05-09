@@ -5,6 +5,7 @@ import { LogoModule } from './../logo';
 import { NavbarModule } from './../navbar';
 import { AuthDropDownModule } from './../auth-drop-down';
 import { IsAuthorizedModule } from './../is-authorized';
+import { CrBreadcrumbModule } from './../breadcrumb';
 
 @NgModule({
 	declarations: [
@@ -15,7 +16,8 @@ import { IsAuthorizedModule } from './../is-authorized';
     LogoModule,
     NavbarModule,
     AuthDropDownModule,
-    IsAuthorizedModule
+    IsAuthorizedModule,
+    CrBreadcrumbModule
   ],
 	exports: [HeaderComponent]
 })

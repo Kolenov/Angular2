@@ -1,0 +1,15 @@
+@import "../../styles/variables/colors.scss";
+
+.cr-button {
+  &--size-medium {
+    width: 115px;
+  }
+
+  &--size-default {
+    min-width: 100px;
+  }
+
+  &--size-lg {
+    min-width: 224px;
+  }
+}

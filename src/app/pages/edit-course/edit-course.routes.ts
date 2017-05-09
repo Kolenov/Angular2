@@ -3,5 +3,5 @@ import { EditCourseComponent } from './edit-course.component';
 import { CanActivateAuthGuard } from '../../core/services';
 
 export const editCourseRoutes: Routes = [
-	{ path: 'edit-course/:id', component: EditCourseComponent, canActivate: [ CanActivateAuthGuard ] },
+	{ path: 'courses/:id', component: EditCourseComponent, canActivate: [ CanActivateAuthGuard ] },
 ];

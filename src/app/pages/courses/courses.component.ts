@@ -77,7 +77,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   onEdit(id: string): void {
-    this.router.navigateByUrl(`/edit-course/${ id }`);
+    this.router.navigateByUrl(`/courses/${ id }`);
   }
 
   pageChange(data: Pagination): void {

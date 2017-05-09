@@ -1,5 +1,7 @@
 <div class="edit-course">
-	<h4 class="edit__title">Edit Course Page</h4>
+  <cr-breadcrumb></cr-breadcrumb>
+
+  <h4 class="edit__title">Edit Course Page</h4>
 
   <cr-edit-course-form [courseInfo]="courseInfo$ | async" (onSubmit)="submit($event)"></cr-edit-course-form>
 </div>

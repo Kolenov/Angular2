@@ -11,6 +11,7 @@ import {
   validateCheckedCheckbox
 } from '../../../shared/validators/checked-checkbox.validator/checked-checkbox.validator';
 import { Users } from '../../../models/users.model';
+import { BreadcrumbService } from 'ng2-breadcrumb/app/components/breadcrumbService';
 
 @Component({
 	selector: 'cr-edit-course-form',
@@ -28,7 +29,9 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
 
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private datePipe: DatePipe) {
+  constructor(private formBuilder: FormBuilder,
+              private datePipe: DatePipe,
+              private breadcrumbService: BreadcrumbService) {
   }
 
   ngOnInit(): void {
@@ -43,6 +46,8 @@ export class EditCourseFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['courseInfo'] && changes['courseInfo'].currentValue) {
+      this.breadcrumbService.addFriendlyNameForRouteRegex('/courses/[0-9]', changes['courseInfo'].currentValue.name);
+
       _.forOwn(this.formGroup.controls, (value, key): void => {
         let data = changes['courseInfo'].currentValue[key];
 

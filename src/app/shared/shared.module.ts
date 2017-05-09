@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DurationInputModule } from './form-components/duration-input/duration-input.module';
 import { AuthorsCheckboxModule } from './form-components/authors-checkbox/authors-checkbox.module';
+import { CrBreadcrumbModule } from './breadcrumb';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import { AuthorsCheckboxModule } from './form-components/authors-checkbox/author
       FilterByModule,
       DateInputModule,
       DurationInputModule,
-      AuthorsCheckboxModule
+      AuthorsCheckboxModule,
+      CrBreadcrumbModule
     ],
     exports: [
       HeaderModule,
@@ -68,7 +70,8 @@ import { AuthorsCheckboxModule } from './form-components/authors-checkbox/author
       CommonModule,
       DateInputModule,
       DurationInputModule,
-      AuthorsCheckboxModule
+      AuthorsCheckboxModule,
+      CrBreadcrumbModule
     ]
 })
 export class SharedModule { }
