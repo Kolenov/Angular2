@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AddCourseComponent } from './add-course.component';
-import { CanActivateAuthGuardService } from '../../core/services';
+import { CanActivateAuthGuard } from '../../core/services';
 
 export const addCourseRoutes: Routes = [
-	{ path: 'courses/new', component: AddCourseComponent, canActivate: [ CanActivateAuthGuardService ]  }
+	{ path: 'courses/new', component: AddCourseComponent, canActivate: [ CanActivateAuthGuard ]  }
 ];

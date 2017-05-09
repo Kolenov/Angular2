@@ -9,4 +9,4 @@ export * from './user.service';
 export * from './user-rosource.service';
 export * from './courses-resource.service';
 export * from './control-value-accessor.service';
-export * from './can-activate-auth-guard.service';
+export * from './guards/can-activate-auth-guard.service';
