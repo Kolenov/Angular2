@@ -21,15 +21,13 @@
 		// Angular 2
 		"component-class-suffix": false,
 		"directive-class-suffix": false,
-//    "directive-selector": [true, "attribute", [], "camelCase"],
-//    "component-selector": [true, "element", [], "kebab-case"],
     "directive-selector": [true, "attribute", "cr", "kebab-case"],
     "component-selector": [true, "element", "cr", "kebab-case"],
     "import-destructuring-spacing": true,
 		"invoke-injectable": true,
 		"no-access-missing-member": true,
 		"no-attribute-parameter-decorator": true,
-		"no-forward-ref": true,
+		"no-forward-ref": false,
 		"no-input-rename": true,
 		"no-output-rename": true,
 		"pipe-naming": [
