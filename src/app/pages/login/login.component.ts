@@ -4,7 +4,7 @@ import {
 import { AuthService } from '../../core/services';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Login } from '../../models';
 
 @Component({
@@ -19,6 +19,7 @@ export class LoginComponent implements OnDestroy {
     login: undefined,
     password: undefined
   };
+  public isError: boolean = false;
 
   private subscription: Subscription;
 
@@ -28,7 +29,16 @@ export class LoginComponent implements OnDestroy {
   onSubmit(event: NgForm) {
     if (event.valid) {
       this.subscription = this.authService.login(event.value)
+        .catch((data) => {
+          if (data.status === 401) {
+            this.isError = true;
+          }
+
+          return Observable.empty();
+        })
         .subscribe(() => {
+          this.isError = false;
+
           this.router.navigateByUrl('/courses');
         });
     }

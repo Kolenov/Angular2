@@ -28,32 +28,32 @@ export class CoursesService {
 
   getCourse(id: number): Observable<CourseItem> {
     return this.coursesResourceService.getCourse(id)
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.empty());
   }
 
   deleteCourse(id: number): Observable<CourseItem> {
     return this.coursesResourceService.deleteCourse(id)
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.empty());
   }
 
   updateCourse(id: number, data: CourseItem): Observable<CourseItem> {
     return this.coursesResourceService.updateCourse(id, data)
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.empty());
   }
 
   updateRaiting(id: number, raiting: boolean): Observable<CourseItem> {
     return this.coursesResourceService.updateTopRated(id, { isTopRated: raiting })
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.empty());
   }
 
   createCourse(data: CourseItem): Observable<CourseItem> {
     return this.coursesResourceService.createCourse(data)
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.empty());
   }
 
   getCoursesUsers(): Observable<Users> {
     return this.coursesResourceService.getCoursesUsers()
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.empty());
   }
 
   // filteredOutdateCourse(data: ExtendedCourseItem[]): ExtendedCourseItem[]  {

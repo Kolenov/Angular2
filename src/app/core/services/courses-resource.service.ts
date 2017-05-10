@@ -46,8 +46,6 @@ export class CoursesResourceService {
   createCourse(data: CourseItem): Observable<Response> {
     let requestOptions = new RequestOptions();
 
-    // data.id = this.helperService.generateId();
-
     requestOptions.body = data;
 
     return this.authorizedHttp.post('/courses', {}, requestOptions);

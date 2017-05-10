@@ -17,11 +17,10 @@ export class AuthService {
     this.logIn$ = new BehaviorSubject<boolean>(!!this.authToken.getToken());
   }
 
-  login(data: UserInfo): Observable<Token> {
+  login(data: UserInfo): Observable<UserInfo> {
     return this.authResourceService.login(data)
               .map(this.parseLoginResponse.bind(this))
-              .flatMap(() => this.userService.getUserInfoResource())
-              .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+              .flatMap(() => this.userService.getUserInfoResource());
   }
 
   parseLoginResponse(res: Token): Token {
