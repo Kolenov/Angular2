@@ -13,7 +13,7 @@ export class CoursesService {
   getCourses(start: number, count: number, query?: string): Observable<CourseItem[]> {
     return this.coursesResourceService.getCourses(start, count, query)
         .map(this.processingData.bind(this))
-        .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+        .catch((error: any) => Observable.empty());
   }
 
   processingData(data: CoursesInfo): CoursesInfo {
