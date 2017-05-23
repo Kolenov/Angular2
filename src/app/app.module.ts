@@ -21,8 +21,6 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
-
-// Pages
 import {
   HomeModule,
   CoursesModule,
@@ -32,6 +30,9 @@ import {
 } from './pages';
 import { SharedModule } from './shared';
 import { CoreModule } from './core';
+import { StoreModule } from '@ngrx/store';
+// import { clock, people } from './pages/home/home.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -52,7 +53,11 @@ import { CoreModule } from './core';
     AddCourseModule,
     EditCourseModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    // StoreModule.provideStore({ clock, people }),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 5
+    })
 	],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS
