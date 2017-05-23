@@ -31,7 +31,7 @@ import {
 import { SharedModule } from './shared';
 import { CoreModule } from './core';
 import { StoreModule } from '@ngrx/store';
-// import { clock, people } from './pages/home/home.reducers';
+import { clock, people } from './pages/home/home.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 /**
@@ -54,7 +54,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     EditCourseModule,
     SharedModule,
     CoreModule,
-    // StoreModule.provideStore({ clock, people }),
+    StoreModule.provideStore({ clock, people }),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 5
     })

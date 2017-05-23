@@ -5,13 +5,13 @@ import { SharedModule } from '../../shared';
 // routes
 import { RouterModule } from '@angular/router';
 import { homeRoutes } from './home.routes';
-
-// custom components
 import { HomeComponent } from './home.component';
+import { Clock } from './clock';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    Clock
   ],
   imports: [
     RouterModule.forChild(homeRoutes),
