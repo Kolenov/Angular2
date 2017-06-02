@@ -1,14 +1,24 @@
 <div class="home-page">
 	<h4 class="home-page__title">Home Page</h4>
-  <input #inputNum type="number" value="0">
-  <button (click)="click$.next(inputNum.value)">Update Hours</button>
-  <button (click)="clickMinutes$.next(inputNum.value)">Update Minutes</button>
 
-  <cr-clock [time]="time | async"></cr-clock>
+  <!--first test app-->
 
-  <div (click)="person$.next(person)" *ngFor="let person of people | async">
-    {{person.name}} is in {{person.time | date: 'jms'}}
-  </div>
+  <!--<input #inputNum type="number" value="0">-->
+  <!--<button (click)="click$.next(inputNum.value)">Update Hours</button>-->
+  <!--<button (click)="clickMinutes$.next(inputNum.value)">Update Minutes</button>-->
 
-  <button (click)="recall$.next()">Recall</button>
+  <!--<cr-clock [time]="time | async"></cr-clock>-->
+
+  <!--<div (click)="person$.next(person)" *ngFor="let person of people | async">-->
+    <!--{{person.name}} is in {{person.time | date: 'jms'}}-->
+  <!--</div>-->
+
+  <!--<button (click)="recall$.next()">Recall</button>-->
+
+  <!--second test app-->
+
+  <div>Test RX Todo</div>
+
+  <cr-todo [todos]="todos | async" (toggle)="toggle($event)"></cr-todo>
+  <cr-add-todo (add)="addTodo($event)" [reset]="addTodoSuccess$ | async"></cr-add-todo>
 </div>
