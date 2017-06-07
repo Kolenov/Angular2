@@ -12,4 +12,8 @@ export class AuthResourceService {
   login(data: UserInfo): Observable<Response> {
     return this.authorizedHttp.post('/auth/login', { ...data });
   }
+
+  logout(data): Observable<Response> {
+    return this.authorizedHttp.post('/auth/logout', { ...data });
+  }
 }

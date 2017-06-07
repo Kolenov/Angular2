@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.use(jsonServer.rewriter({
 	'/auth/login': '/auth/login',
+	'/auth/logout': '/auth/logout',
 	'/auth/userInfo': '/auth/userInfo'
 }));
 

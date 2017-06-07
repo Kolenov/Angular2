@@ -1,11 +1,11 @@
 import {
   Component, ViewEncapsulation, OnDestroy
 } from '@angular/core';
-import { AuthService } from '../../core/services';
+import { AuthService, UserService, AuthTokenService } from '../../core/services';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { Login } from '../../models';
+import { Login  } from '../../models';
 
 @Component({
   selector: 'cr-login',
@@ -23,30 +23,53 @@ export class LoginComponent implements OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private userService: UserService,
+              private authTokenService: AuthTokenService) {
+    this.subscription = this.getSubscriptions().subscribe();
   }
 
-  onSubmit(event: NgForm) {
+  private getSubscriptions(): Observable<any> {
+    return Observable.merge(
+      this.authTokenService.token$.do((token) => {
+        if (token) {
+          this.userService.getUserInfo();
+        }
+      }),
+      this.authService.error$.do((error) => {
+        if (error && error.status === 401) {
+          this.isError = true;
+        }
+      }),
+      this.userService.user$.do((user) => {
+        if (user) {
+          this.onSuccess(user);
+        }
+      }),
+      this.userService.error$.do((error) => {
+        if (error && error.status === 401) {
+          this.isError = true;
+        }
+      })
+    );
+  }
+
+  public onSubmit(event: NgForm): void {
     if (event.valid) {
-      this.subscription = this.authService.login(event.value)
-        .catch((data) => {
-          if (data.status === 401) {
-            this.isError = true;
-          }
-
-          return Observable.empty();
-        })
-        .subscribe(() => {
-          this.isError = false;
-
-          this.router.navigateByUrl('/courses');
-        });
+      this.authService.login(event.value);
     }
   }
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+  public onSuccess(data): void {
+    this.isError = false;
+
+    this.userService.setToStorageUserInfo(data);
+
+    this.router.navigateByUrl('/courses');
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

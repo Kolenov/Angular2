@@ -1,50 +1,24 @@
 import { Injectable } from '@angular/core';
-import { UserInfo, Token } from '../../models';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { UserService } from './user.service';
-import { AuthResourceService } from './auth-resource.service';
-import { AuthTokenService } from './auth-token.service';
+import { Login } from '../../models';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { loginAction, logoutAction } from '../../store/actions';
 
 @Injectable()
 export class AuthService {
-  private logIn$: BehaviorSubject<boolean>;
-  private baseUrl: string;
+  private store$;
+  public error$: Observable<any>;
 
-  constructor(private authToken: AuthTokenService,
-              private userService: UserService,
-              private authResourceService: AuthResourceService) {
-    this.baseUrl = 'http://localhost:3004';
-    this.logIn$ = new BehaviorSubject<boolean>(!!this.authToken.getToken());
+  constructor(private store: Store<any>) {
+    this.store$ = this.store.select('auth'); // add type  this.store.select<AuthResponse>('auth');
+    this.error$ = this.store$.map((data) => data['error']);
   }
 
-  login(data: UserInfo): Observable<UserInfo> {
-    return this.authResourceService.login(data)
-              .map(this.parseLoginResponse.bind(this))
-              .flatMap(() => this.userService.getUserInfoResource());
+  public login(data: Login): void  {
+    this.store$.dispatch(loginAction({ ...data }));
   }
 
-  parseLoginResponse(res: Token): Token {
-    const token = res.token;
-
-    this.updateToken(token);
-
-    return res;
-  }
-
-  updateToken(token: string): void {
-      this.authToken.updateToken(token);
-      this.logIn$.next(!!token);
-  }
-
-  logout(): Observable<boolean> {
-    this.userService.clearUserInfo();
-
-    this.updateToken(null);
-
-    return Observable.of(true);
-  }
-
-  isAuthorized(): Observable<boolean> {
-    return this.logIn$.asObservable();
+  public logout() {
+    this.store$.dispatch(logoutAction());
   }
 }

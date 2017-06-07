@@ -1,10 +1,5 @@
-export interface UserInfo {
+export interface User {
   id: number;
-  login: string;
-  name?: {
-    first: string,
-    last: string
-  };
-  password: string;
-  fakeToken: string;
+  firstName: string;
+  lastName: string;
 }

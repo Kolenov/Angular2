@@ -31,8 +31,18 @@ import {
 import { SharedModule } from './shared';
 import { CoreModule } from './core';
 import { StoreModule } from '@ngrx/store';
-import { clock, people } from './pages/home/home.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import {
+  // clock,
+  // people,
+  todos
+} from './pages/home/home.reducers';
+import { TodosEffects } from './pages/home/todo/todos.effect';
+import { EffectsModule } from '@ngrx/effects';
+
+import { auth, user } from './store/reducers';
+import { AuthEffects, UserEffects } from './store/effects';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -54,7 +64,16 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     EditCourseModule,
     SharedModule,
     CoreModule,
-    StoreModule.provideStore({ clock, people }),
+    StoreModule.provideStore({
+      // clock,
+      // people,
+      todos,
+      auth,
+      user
+    }),
+    EffectsModule.run(TodosEffects),
+    EffectsModule.run(AuthEffects),
+    EffectsModule.run(UserEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 5
     })
