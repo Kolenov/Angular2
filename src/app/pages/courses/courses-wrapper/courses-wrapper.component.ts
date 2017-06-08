@@ -23,8 +23,9 @@ export class CoursesWrapperComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['coursesInfo'] && changes['coursesInfo'].currentValue) {
+      console.log('--- changes', changes['coursesInfo']);
       this.courses = changes['coursesInfo'].currentValue.courses;
-      this.totalCount = changes['coursesInfo'].currentValue.count;
+      this.totalCount = changes['coursesInfo'].currentValue.total;
     }
   }
 
@@ -41,7 +42,7 @@ export class CoursesWrapperComponent implements OnChanges {
   }
 
   pageChange(data: Pagination) {
-    this.currentPage = data.start;
+    this.currentPage = data.start; // check
     this.onPageChange.emit(data);
   }
 }

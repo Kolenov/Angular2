@@ -25,6 +25,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
               private router: Router,
               private loaderService: LoaderService,
               private changeDetectorRef: ChangeDetectorRef) {
+    this.courseList$ = this.coursesService.store$;
   }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   getCourses(start: number, count: number, search?: string): void {
-    this.courseList$ = this.coursesService.getCourses(start, count, search);
+    this.coursesService.getCourses(start, count, search);
     this.changeDetectorRef.detectChanges();
   }
 

@@ -13,7 +13,7 @@ export class UserEffects {
         .map((user) => ({type: GET_USER_INFO_SUCCESS, payload: { user }}))
         .catch((error) => Observable.of({ type: GET_USER_INFO_ERROR, payload: { error: { status: error.status }}})));
 
-  constructor( private actions$: Actions,
-               private userResourceService: UserResourceService) {
+  constructor(private actions$: Actions,
+              private userResourceService: UserResourceService) {
   }
 }

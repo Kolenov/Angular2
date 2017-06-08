@@ -41,8 +41,8 @@ import {
 import { TodosEffects } from './pages/home/todo/todos.effect';
 import { EffectsModule } from '@ngrx/effects';
 
-import { auth, user } from './store/reducers';
-import { AuthEffects, UserEffects } from './store/effects';
+import { auth, user, course } from './store/reducers';
+import { AuthEffects, UserEffects, CourseEffects } from './store/effects';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -69,11 +69,13 @@ import { AuthEffects, UserEffects } from './store/effects';
       // people,
       todos,
       auth,
-      user
+      user,
+      course
     }),
     EffectsModule.run(TodosEffects),
     EffectsModule.run(AuthEffects),
     EffectsModule.run(UserEffects),
+    EffectsModule.run(CourseEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 5
     })

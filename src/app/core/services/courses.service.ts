@@ -4,16 +4,23 @@ import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { CoursesResourceService } from './courses-resource.service';
 import { CoursesInfo } from '../../models/course-item.model';
+import { getCoursesAction } from '../../store/actions';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class CoursesService {
-  constructor(private coursesResourceService: CoursesResourceService) {
+  public store$;
+  public courses$;
+  public error$: Observable<any>;
+
+  constructor(private store: Store<any>, private coursesResourceService: CoursesResourceService) {
+    this.store$ = this.store.select('course');
+    this.courses$ = this.store$.map((data) => data['courses']);
+    this.error$ = this.store$.map((data) => data['error']);
   }
 
-  getCourses(start: number, count: number, query?: string): Observable<CourseItem[]> {
-    return this.coursesResourceService.getCourses(start, count, query)
-        .map(this.processingData.bind(this))
-        .catch((error: any) => Observable.empty());
+  getCourses(start: number, count: number, query?: string): void {
+    this.store$.dispatch(getCoursesAction(start, count, query));
   }
 
   processingData(data: CoursesInfo): CoursesInfo {

@@ -20,7 +20,7 @@ export class AuthEffects {
         .map((data) => ({type: LOGOUT_SUCCESS, payload: { token: null, error: null }}))
         .catch((error) => Observable.of({ type: LOGOUT_ERROR, payload: { error: { status: error.status }}})));
 
-  constructor( private actions$: Actions,
-               private authResourceService: AuthResourceService) {
+  constructor(private actions$: Actions,
+              private authResourceService: AuthResourceService) {
   }
 }
