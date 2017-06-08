@@ -8,6 +8,10 @@ export const GET_COURSE = 'GET_COURSE';
 export const GET_COURSE_SUCCESS = 'GET_COURSE_SUCCESS';
 export const GET_COURSE_ERROR = 'GET_COURSE_ERROR';
 
+export const DELETE_COURSE = 'DELETE_COURSE';
+export const DELETE_COURSE_SUCCESS = 'DELETE_COURSE_SUCCESS';
+export const DELETE_COURSE_ERROR = 'DELETE_COURSE_ERROR';
+
 export function getCoursesAction(start: number, count: number, query?: string): Action {
   return {
     type: GET_COURSES,
@@ -22,6 +26,13 @@ export function getCoursesAction(start: number, count: number, query?: string): 
 export function getCourseAction(id: number): Action {
   return {
     type: GET_COURSES,
+    payload: { id }
+  };
+}
+
+export function deleteCourseAction(id: number): Action {
+  return {
+    type: DELETE_COURSE,
     payload: { id }
   };
 }

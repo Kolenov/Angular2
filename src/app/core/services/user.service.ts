@@ -19,7 +19,7 @@ export class UserService {
     this.userInfo$ = new BehaviorSubject<UserInfo>(currentUser);
 
     this.store$ = this.store.select('user'); // add type  this.store.select<AuthResponse>('auth');
-    this.user$ = this.store$.map((data) => data['user']).share();
+    this.user$ = this.store$.map((data) => data['user']);
     this.error$ = this.store$.map((data) => data['error']);
   }
 

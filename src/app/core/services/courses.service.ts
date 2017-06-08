@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { CoursesResourceService } from './courses-resource.service';
 import { CoursesInfo } from '../../models/course-item.model';
-import { getCoursesAction } from '../../store/actions';
+import { getCoursesAction, deleteCourseAction } from '../../store/actions';
 import { Store } from '@ngrx/store';
 
 @Injectable()
@@ -38,9 +38,10 @@ export class CoursesService {
       .catch((error: any) => Observable.empty());
   }
 
-  deleteCourse(id: number): Observable<CourseItem> {
-    return this.coursesResourceService.deleteCourse(id)
-      .catch((error: any) => Observable.empty());
+  deleteCourse(id: number): void {
+    this.store$.dispatch(deleteCourseAction(id));
+    // return this.coursesResourceService.deleteCourse(id)
+    //   .catch((error: any) => Observable.empty());
   }
 
   updateCourse(id: number, data: CourseItem): Observable<CourseItem> {

@@ -5,6 +5,8 @@ import { CourseItem, CourseRaiting, Pagination } from '../../models';
 import { CoursesService, LoaderService } from '../../core/services';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import * as actions from '../../store/actions';
+import { CourseEffects } from '../../store/effects';
 
 @Component({
   selector: 'cr-courses',
@@ -15,6 +17,7 @@ import { Router } from '@angular/router';
 
 export class CoursesComponent implements OnInit, OnDestroy {
   public courseList$: Observable<CourseItem[]>;
+  public removeSuccess$: Observable<any>;
   public courseId: number;
   public isShowModal: boolean;
   public currentPage: number = 0;
@@ -24,8 +27,12 @@ export class CoursesComponent implements OnInit, OnDestroy {
   constructor(private coursesService: CoursesService,
               private router: Router,
               private loaderService: LoaderService,
-              private changeDetectorRef: ChangeDetectorRef) {
+              private changeDetectorRef: ChangeDetectorRef,
+              private courseEffects: CourseEffects) {
     this.courseList$ = this.coursesService.store$;
+
+    this.removeSuccess$ = this.courseEffects.deleteCourse$.filter(({ type }) => type === actions.DELETE_COURSE_SUCCESS);
+    this.removeSuccess$.subscribe(() => this.getCourses(0, 10));
   }
 
   ngOnInit(): void {
@@ -54,12 +61,13 @@ export class CoursesComponent implements OnInit, OnDestroy {
   deleteCourse() {
     this.hideModal();
 
-    this.subscription.push(this.coursesService.deleteCourse(this.courseId)
-      .do(() => {
-        this.getCourses(0, 10);
-      })
-      .subscribe()
-    );
+    this.coursesService.deleteCourse(this.courseId);
+      // this.subscription.push(this.coursesService.deleteCourse(this.courseId)
+      // .do(() => {
+      //   this.getCourses(0, 10);
+      // })
+      // .subscribe()
+    // );
   }
 
   onToggleRaiting(topRated: CourseRaiting): void {

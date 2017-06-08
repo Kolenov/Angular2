@@ -1,4 +1,7 @@
-import { GET_COURSES_SUCCESS, GET_COURSES_ERROR } from '../actions';
+import {
+  GET_COURSES_SUCCESS, GET_COURSES_ERROR,
+  DELETE_COURSE_SUCCESS, DELETE_COURSE_ERROR
+} from '../actions';
 import { Action } from '@ngrx/store';
 
 const initialState = {
@@ -17,6 +20,10 @@ export function course( state = initialState, action: Action ) {
         courses: action.payload.courses,
       });
 
+    case DELETE_COURSE_SUCCESS:
+      return Object.assign({}, state, action.payload);
+
+    case DELETE_COURSE_ERROR:
     case GET_COURSES_ERROR:
       return Object.assign({}, state, {
         error: {
