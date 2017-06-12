@@ -40,8 +40,6 @@ export class CoursesService {
 
   deleteCourse(id: number): void {
     this.store$.dispatch(deleteCourseAction(id));
-    // return this.coursesResourceService.deleteCourse(id)
-    //   .catch((error: any) => Observable.empty());
   }
 
   updateCourse(id: number, data: CourseItem): Observable<CourseItem> {

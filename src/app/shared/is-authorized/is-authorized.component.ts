@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { AuthService } from '../../core/services';
 import { Observable } from 'rxjs';
+import { UserInfo } from '../../models';
+import { UserService } from '../../core/services';
 
 @Component({
 	selector: 'cr-is-authorized',
@@ -12,9 +13,9 @@ import { Observable } from 'rxjs';
 export class IsAuthorizedComponent implements OnInit {
   public isAuthorized$: Observable<boolean>;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.isAuthorized$ = this.authService.isAuthorized();
+    this.isAuthorized$ = this.userService.user$.map((user: UserInfo) => !!user);
   }
 }

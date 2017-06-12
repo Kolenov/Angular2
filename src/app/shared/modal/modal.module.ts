@@ -1,6 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
 import { CrModalComponent } from './modal.component';
-import { ModalModule } from 'ng2-bootstrap/modal';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
 	declarations: [
