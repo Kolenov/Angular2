@@ -33,12 +33,6 @@ import { CoreModule } from './core';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import {
-  // clock,
-  // people,
-  todos
-} from './pages/home/home.reducers';
-import { TodosEffects } from './pages/home/todo/todos.effect';
 import { EffectsModule } from '@ngrx/effects';
 
 import { auth, user, course } from './store/reducers';
@@ -65,14 +59,10 @@ import { AuthEffects, UserEffects, CourseEffects } from './store/effects';
     SharedModule,
     CoreModule,
     StoreModule.provideStore({
-      // clock,
-      // people,
-      todos,
       auth,
       user,
       course
     }),
-    EffectsModule.run(TodosEffects),
     EffectsModule.run(AuthEffects),
     EffectsModule.run(UserEffects),
     EffectsModule.run(CourseEffects),
