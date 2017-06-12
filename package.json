@@ -53,7 +53,8 @@
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
     "start": "npm run server:dev",
-    "test": "npm run lint && karma start",
+    "test": "karma start",
+    "test-with-lint": "npm run lint && karma start",
     "tslint": "tslint",
     "typedoc": "typedoc",
     "version": "npm run build",
@@ -67,7 +68,6 @@
     "webdriver:update": "webdriver-manager update",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js",
-    "test1": "karma start",
     "i18n": "ng-xi18n"
   },
   "dependencies": {
